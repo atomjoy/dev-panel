@@ -1,0 +1,99 @@
+{
+	"apilogin.updated": "Updated.",
+
+	"apilogin.email.password.welcome": "Welcome",
+	"apilogin.email.password.subject": "👋 Your new password.",
+	"apilogin.email.password.message": "This is your new password.",
+
+	"apilogin.email.register.welcome": "Welcome",
+	"apilogin.email.register.subject": "👋 Account activation.",
+	"apilogin.email.register.message": "This activation e-mail is sent to the e-mail address that you registered on our site. To activate your account, please click on the link below.",
+	"apilogin.email.register.button": "Confirm Email",
+
+	"apilogin.email.change.welcome": "Welcome",
+	"apilogin.email.change.subject": "👋 Account e-mail change.",
+	"apilogin.email.change.message": "Confirm the change of e-mail address by clicking on the link. You must be logged in to your account. The code is valid for 1 hour.",
+	"apilogin.email.change.button": "Change Email",
+	"apilogin.email.change.current": "It is your current email address.",
+
+	"apilogin.email.regards": "Regards",
+	"apilogin.email.regards_text": "Have a nice day!",
+	"apilogin.email.rights": "All Rights reserved.",
+
+	"apilogin.email.f2a.welcome": "Welcome",
+	"apilogin.email.f2a.subject": "Authentication code.",
+	"apilogin.email.f2a.message": "This is your code.",
+
+	"apilogin.logged.authenticated": "Authenticated.",
+	"apilogin.logged.unauthenticated": "Unauthenticated.",
+
+	"apilogin.locale.success": "Locale has been changed.",
+	"apilogin.locale.error": "Locale has not been changed.",
+
+	"apilogin.login.failed": "These credentials do not match our records.",
+	"apilogin.login.password": "The provided password is incorrect.",
+	"apilogin.login.throttle": "Too many login attempts. Please try again in :seconds seconds.",
+	"apilogin.login.unverified": "Your email address is not verified.",
+	"apilogin.login.authenticated": "Authenticated.",
+	"apilogin.login.unauthenticated": "Unauthenticated.",
+	"apilogin.login.f2a_limit": "Too many tries. Login again.",
+	"apilogin.login.f2a_error": "Invalid 2fa confirmation code.",
+	"apilogin.login.f2a_email_error": "Email has not been sent. Try again later.",
+
+	"apilogin.reset.password.invalid": "An account with this email address does not exist.",
+	"apilogin.reset.password.success": "A new password has been sent to the e-mail address provided.",
+	"apilogin.reset.password.error": "Password has not been updated.",
+	"apilogin.reset.password.email.error": "Unable to send e-mail, please try again later.",
+
+	"apilogin.register.success": "Account has been created, please confirm your email address.",
+	"apilogin.register.error": "Something went wrong, please try again later.",
+	"apilogin.register.email.error": "Unable to send activation email, please try to reset your password.",
+
+	"apilogin.activate.success": "Email has been confirmed.",
+	"apilogin.activate.error": "Email has not been confirmed.",
+	"apilogin.activate.invalid": "Invalid activation code.",
+	"apilogin.activate.already": "The email address has already been confirmed.",
+
+	"apilogin.confirm.invalid.current.password": "Invalid current password.",
+	"apilogin.confirm.unauthenticated": "Unauthenticated.",
+	"apilogin.confirm.confirmed": "Confirmed.",
+
+	"apilogin.change.success": "Password has been updated.",
+	"apilogin.change.error": "Password has not been updated.",
+	"apilogin.change.unauthenticated": "Unauthenticated.",
+	"apilogin.change.invalid.current.password": "Invalid current password.",
+
+	"apilogin.logout.success": "Logged out.",
+	"apilogin.logout.error": "Logged out error.",
+
+	"apilogin.middleware.not.acceptable": "Not Acceptable.",
+	"apilogin.middleware.invalid.is_admin": "User does not have the right roles (is_admin).",
+	"apilogin.middleware.invalid.role": "User does not have the right roles.",
+
+	"apilogin.email.change.success": "The e-mail with the code has been sent.",
+	"apilogin.email.change.error": "Something went wrong, please try again later.",
+	"apilogin.email.change.email.error": "Unable to send email with code, please try to change your email later.",
+
+	"apilogin.email.change.confirm.success": "Email address has been updated. Refresh panel page.",
+	"apilogin.email.change.confirm.error": "Email address has not been updated.",
+
+	"apilogin.upload.avatar.success": "Avatar has been uploaded.",
+	"apilogin.upload.avatar.error": "Avatar has not been uploaded.",
+	"apilogin.show.avatar.error": "Avatar error.",
+
+	"apilogin.remove.avatar.success": "Avatar has been removed.",
+	"apilogin.remove.avatar.error": "Avatar has not been removed.",
+
+	"apilogin.profile.success": "Profile has been updated.",
+	"apilogin.profile.error": "Profile has not been updated.",
+
+	"apilogin.address.success": "Address has been updated.",
+	"apilogin.address.error": "Address has not been updated.",
+
+	"apilogin.account.delete.success": "Account has been deleted.",
+	"apilogin.account.delete.error": "Ups! Account has not been deleted.",
+
+	"apilogin.notifications.success": "Updated.",
+	"apilogin.notifications.error": "Invalid data.",
+	"apilogin.notifications.unauthenticated": "Unauthenticated."
+}
