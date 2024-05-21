@@ -24,10 +24,6 @@ class Profile extends Model
 
 	protected static function newFactory()
 	{
-		// if (config('apilogin.force_user_factory', false)) {
-		// 	return \Database\Factories\ProfileFactory::new();
-		// }
-
 		return ProfileFactory::new();
 	}
 

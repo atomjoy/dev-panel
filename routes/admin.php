@@ -2,13 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\Admin\F2aController as AdminF2aController;
-use App\Http\Controllers\Admin\LoginController as AdminLoginController;
-use App\Http\Controllers\Admin\PasswordResetController as AdminPasswordResetController;
-use App\Http\Controllers\Admin\LoggedController as AdminLoggedController;
-use App\Http\Controllers\Admin\LogoutController as AdminLogoutController;
-use App\Http\Controllers\Admin\PasswordChangeController as AdminPasswordChangeController;
-use App\Http\Controllers\Admin\UploadAvatarController as AdminUploadAvatarController;
+use App\Http\Controllers\Auth\Admin\F2aController as AdminF2aController;
+use App\Http\Controllers\Auth\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Auth\Admin\PasswordResetController as AdminPasswordResetController;
+use App\Http\Controllers\Auth\Admin\LoggedController as AdminLoggedController;
+use App\Http\Controllers\Auth\Admin\LogoutController as AdminLogoutController;
+use App\Http\Controllers\Auth\Admin\PasswordChangeController as AdminPasswordChangeController;
+use App\Http\Controllers\Auth\Admin\UploadAvatarController as AdminUploadAvatarController;
 
 
 Route::prefix('web/api/admin')->name('web.api.admin')->middleware([
@@ -25,7 +25,7 @@ Route::prefix('web/api/admin')->name('web.api.admin')->middleware([
 	Route::middleware([
 		'auth:admin', 'ban_admin',
 		'role:' . config(
-			'apilogin.allowed_worker_roles',
+			'allowed_worker_roles',
 			'super_admin|admin|worker'
 		) . ',admin'
 	])->group(function () {
@@ -45,7 +45,7 @@ Route::prefix('web/api/admin')->name('web.api.admin')->middleware([
 	Route::middleware([
 		'auth:admin', 'ban_admin',
 		'role:' . config(
-			'apilogin.allowed_admin_roles',
+			'allowed_admin_roles',
 			'super_admin|admin'
 		) . ',admin'
 	])->group(function () {

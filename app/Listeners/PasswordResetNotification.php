@@ -21,14 +21,14 @@ class PasswordResetNotification
 
 	public function sendEmail(User|Admin $user, $password)
 	{
-		if (config('apilogin.send_password_email', true)) {
+		if (config('send_password_email', true)) {
 			try {
 				Mail::to($user)->locale(app()->getLocale())->send(new PasswordMail($user, $password));
 				PasswordResetMail::dispatch($user);
 			} catch (Exception $e) {
 				report($e);
 				PasswordResetMailError::dispatch($user);
-				throw new JsonException(__("apilogin.reset.password.email.error"), 422);
+				throw new JsonException(__("reset.password.email.error"), 422);
 			}
 		}
 	}

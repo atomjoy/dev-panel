@@ -1,23 +1,24 @@
 <?php
 
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ActivateController;
-use App\Http\Controllers\CsrfController;
-use App\Http\Controllers\LocaleController;
-use App\Http\Controllers\LoggedController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\PasswordResetController;
-use App\Http\Controllers\PasswordChangeController;
-use App\Http\Controllers\PasswordConfirmController;
-use App\Http\Controllers\EmailChangeController;
-use App\Http\Controllers\EmailChangeConfirmController;
-use App\Http\Controllers\UploadAvatarController;
-use App\Http\Controllers\AccountDeleteController;
-use App\Http\Controllers\NotificationsController;
-use App\Http\Controllers\F2aController;
+use App\Http\Controllers\Auth\AddressController;
+use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Auth\ActivateController;
+use App\Http\Controllers\Auth\CsrfController;
+use App\Http\Controllers\Auth\LocaleController;
+use App\Http\Controllers\Auth\LoggedController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\PasswordResetController;
+use App\Http\Controllers\Auth\PasswordChangeController;
+use App\Http\Controllers\Auth\PasswordConfirmController;
+use App\Http\Controllers\Auth\EmailChangeController;
+use App\Http\Controllers\Auth\EmailChangeConfirmController;
+use App\Http\Controllers\Auth\EmailChangeRecoverController;
+use App\Http\Controllers\Auth\UploadAvatarController;
+use App\Http\Controllers\Auth\AccountDeleteController;
+use App\Http\Controllers\Auth\NotificationsController;
+use App\Http\Controllers\Auth\F2aController;
 use Illuminate\Support\Facades\Route;
 
 // Show s3 image url <img src="img/url?path=image/path/here.webp" />
@@ -37,6 +38,7 @@ Route::prefix('web/api')->name('web.api.')->middleware([
 	Route::get('/csrf', [CsrfController::class, 'index'])->name('csrf');
 	Route::get('/locale/{locale}', [LocaleController::class, 'index'])->name('locale');
 	Route::post('/f2a', [F2aController::class, 'index'])->name('f2a');
+	Route::get('/change/email/recover/{id}/{code}', [EmailChangeRecoverController::class, 'index'])->name('change.email.recover');
 
 	// Private routes
 	Route::middleware(['auth', 'forcejson'])->group(function () {

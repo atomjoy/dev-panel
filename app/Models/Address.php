@@ -23,10 +23,6 @@ class Address extends Model
 
 	protected static function newFactory()
 	{
-		// if (config('apilogin.force_user_factory', false)) {
-		// 	return \Database\Factories\AddressFactory::new();
-		// }
-
 		return AddressFactory::new();
 	}
 

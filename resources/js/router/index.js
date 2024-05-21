@@ -4,7 +4,7 @@ import HomeView from '../views/page/HomeView.vue'
 
 const router = createRouter({
 	linkActiveClass: 'nav-router__link--active',
-	history: createWebHistory("/"),
+	history: createWebHistory('/'),
 	routes: [
 		{
 			path: '/',
@@ -44,7 +44,7 @@ const router = createRouter({
 			component: () => import('../views/error/404.vue'),
 		},
 	],
-    scrollBehavior(to, from, savedPosition) {
+	scrollBehavior(to, from, savedPosition) {
 		// always scroll to top
 		return { top: 0 }
 	},

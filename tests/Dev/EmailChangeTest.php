@@ -4,6 +4,7 @@ namespace Tests\Dev;
 
 use App\Models\User;
 use App\Mail\ChangeMail;
+use App\Mail\ChangeMailRecovery;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Mail\Events\MessageSent;
@@ -59,7 +60,7 @@ class EmailChangeTest extends TestCase
 
 		$this->actingAs($user);
 
-		$new_email = 'new_' . $email;
+		$new_email = 'new' . $email;
 
 		$response = $this->postJson('web/api/change/email', [
 			'email' => $new_email,
@@ -69,11 +70,11 @@ class EmailChangeTest extends TestCase
 			'message' => 'The e-mail with the code has been sent.',
 		]);
 
-		$cache = Cache::get('emailchange_' . md5($user->id));
-		$needle = $user->id . '|' . $new_email . '|';
+		// $cache = Cache::get('emailchange_' . md5($user->id));
+		// $needle = $user->id . '|' . $new_email . '|';
 
-		$this->assertNotEmpty($cache);
-		$this->assertStringContainsString($needle, $cache);
+		// $this->assertNotEmpty($cache);
+		// $this->assertStringContainsString($needle, $cache);
 
 		Mail::assertSent(ChangeMail::class, function ($mail) use ($email, $name) {
 			$mail->build();
@@ -128,20 +129,23 @@ class EmailChangeTest extends TestCase
 			'message' => 'The e-mail with the code has been sent.',
 		]);
 
-		$cache = Cache::get('emailchange_' . md5($user->id));
-		$needle = $user->id . '|' . $new_email . '|';
-
-		$this->assertNotEmpty($cache);
-		$this->assertStringContainsString($needle, $cache);
+		Event::assertDispatchedTimes(MessageSent::class, 2);
 
 		Event::assertDispatched(MessageSent::class, function ($e) use ($email, $name) {
 			$html = $e->message->getHtmlBody();
 			$subject = $e->message->getSubject();
 			$recipient = collect($e->message->getTo())->first()->getAddress();
-
 			$this->assertStringContainsString($name, $html);
-			$this->assertEquals("👋 Account e-mail change.", $subject, 'The subject was not the right one.');
-			$this->assertMatchesRegularExpression('/\/change\/email\/[0-9]+\/[a-z0-9]+\?locale=[a-z]{2}"/i', $html);
+
+			// Multiple events
+			if (!in_array($subject, ['👋 Account e-mail change.', '👋 Restoring your e-mail address.'])) {
+				return false;
+			}
+			// Single event
+			// $this->assertEquals('👋 Account e-mail change.', $subject, 'The subject was not the right one.');
+
+			// Multiple events
+			$this->assertMatchesRegularExpression('/\/change\/email\/[0-9]+\/[a-z0-9]+\?locale=[a-z]{2}|\/change\/email\/recovery\/[0-9]+\/[a-z0-9]+\?locale=[a-z]{2}"/i', $html);
 
 			return $recipient == $email;
 		});

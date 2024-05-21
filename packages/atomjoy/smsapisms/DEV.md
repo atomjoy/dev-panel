@@ -17,7 +17,10 @@
 ## Laravel
 
 ```sh
+# Clear all
 php artisan optimize:clear
+# Create storage link
+php artisan storage:link
 ```
 
 ## Events

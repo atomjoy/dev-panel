@@ -5,7 +5,7 @@ namespace Tests\Dev;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
-use App\Notifications\Contracts\NotifyMessage;
+use App\Notifications\Messages\NotifyMessage;
 use App\Notifications\DbNotify;
 
 class NotificationsTest extends TestCase

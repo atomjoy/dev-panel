@@ -19,7 +19,7 @@ class ChangeMail extends Mailable
 
 	public function build()
 	{
-		return $this->subject(trans('apilogin.email.change.subject'))
+		return $this->subject(trans('email.change.subject'))
 			->view('emails.change');
 	}
 }

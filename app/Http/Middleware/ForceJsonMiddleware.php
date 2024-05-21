@@ -22,7 +22,7 @@ class ForceJsonMiddleware
 		$this->acceptJson($request);
 
 		if ($request->is('web/api/*') && !$request->wantsJson()) {
-			throw new JsonException(__('apilogin.middleware.not.acceptable'), 406);
+			throw new JsonException(__('middleware.not.acceptable'), 406);
 		}
 
 		return $next($request);
@@ -30,14 +30,14 @@ class ForceJsonMiddleware
 
 	function acceptJson(&$request)
 	{
-		if (config('apilogin.enable_accept_json', false)) {
+		if (config('enable_accept_json', false)) {
 			$request->headers->set('Accept', 'application/json');
 		}
 	}
 
 	public function locales(&$request)
 	{
-		if (config('apilogin.enable_locales', true)) {
+		if (config('enable_locales', true)) {
 			$lang =  session('locale', config('app.locale'));
 
 			app()->setLocale($lang);

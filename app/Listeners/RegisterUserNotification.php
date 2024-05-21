@@ -19,7 +19,7 @@ class RegisterUserNotification
 
 	public function sendEmail(User $user)
 	{
-		if (config('apilogin.send_register_email', true)) {
+		if (config('send_register_email', true)) {
 			try {
 				Mail::to($user)->locale(app()->getLocale())->send(
 					new RegisterMail($user, $user->remember_token)
@@ -29,7 +29,7 @@ class RegisterUserNotification
 			} catch (Exception $e) {
 				report($e);
 				RegisterUserMailError::dispatch($user);
-				throw new JsonException(__("apilogin.register.email.error"), 422);
+				throw new JsonException(__("register.email.error"), 422);
 			}
 		}
 	}

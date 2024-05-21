@@ -1,4 +1,4 @@
-<x-proton::email title="{{ __('apilogin.email.password.subject') }}" locale="{{ app()->getlocale() }}">
+<x-proton::email title="{{ __('email.password.subject') }}" locale="{{ app()->getlocale() }}">
 	<x-slot:style>
 		<style>
 			.proton-table tr td {
@@ -18,11 +18,11 @@
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('apilogin.password_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('password_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
 		</center>
 
-		<h2>@lang('apilogin.email.password.welcome') {{ $user?->name ?? '' }}!</h2>
-		<p>@lang('apilogin.email.password.message')</p>
+		<h2>@lang('email.password.welcome') {{ $user?->name ?? '' }}!</h2>
+		<p>@lang('email.password.message')</p>
 	</x-proton::row>
 
 	<x-proton::row>
@@ -32,16 +32,16 @@
 	</x-proton::row>
 
 	<x-proton::row>
-		<h3>@lang('apilogin.email.regards')</h3>
+		<h3>@lang('email.regards')</h3>
 		<strong>{{ $user?->name ?? '' }}</strong>
-		<p>@lang('apilogin.email.regards_text')</p>
+		<p>@lang('email.regards_text')</p>
 	</x-proton::row>
 
 	<x-proton::row>
 		<x-proton::divider />
 
 		<center>
-			<span class="proton-rights"> © @lang('apilogin.email.rights') </span>
+			<span class="proton-rights"> © @lang('email.rights') </span>
 		</center>
 
 		<br />

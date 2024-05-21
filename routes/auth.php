@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ActivateController;
+use App\Http\Controllers\Auth\ActivateController;
 
 Route::get('/activate/{id}/{code}', [ActivateController::class, 'index'])->name('activation');
 

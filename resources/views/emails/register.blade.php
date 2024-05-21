@@ -1,4 +1,4 @@
-<x-proton::email title="{{ __('apilogin.email.register.subject') }}" locale="{{ app()->getlocale() }}">
+<x-proton::email title="{{ __('email.register.subject') }}" locale="{{ app()->getlocale() }}">
 	<x-slot:style>
 		<style>
 			.proton-table tr td {
@@ -18,30 +18,30 @@
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('apilogin.register_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('register_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
 		</center>
 
-		<h2>@lang('apilogin.email.register.welcome') {{ $user?->name ?? '' }}!</h2>
-		<p>@lang('apilogin.email.register.message')</p>
+		<h2>@lang('email.register.welcome') {{ $user?->name ?? '' }}!</h2>
+		<p>@lang('email.register.message')</p>
 	</x-proton::row>
 
 	<x-proton::row>
 		<x-proton::button url="{{ request()->getSchemeAndHttpHost() }}/activate/{{ $user?->id ?? '0' }}/{{ $code ?? 'invalidcode' }}?locale={{ app()->getLocale() }}">
-			@lang('apilogin.email.register.button')
+			@lang('email.register.button')
 		</x-proton::button>
 	</x-proton::row>
 
 	<x-proton::row>
-		<h3>@lang('apilogin.email.regards')</h3>
+		<h3>@lang('email.regards')</h3>
 		<strong>{{ $user?->name ?? '' }}</strong>
-		<p>@lang('apilogin.email.regards_text')</p>
+		<p>@lang('email.regards_text')</p>
 	</x-proton::row>
 
 	<x-proton::row>
 		<x-proton::divider />
 
 		<center>
-			<span class="proton-rights"> © @lang('apilogin.email.rights') </span>
+			<span class="proton-rights"> © @lang('email.rights') </span>
 		</center>
 
 		<br />

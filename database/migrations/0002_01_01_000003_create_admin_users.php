@@ -15,7 +15,7 @@ return new class extends Migration
 		$superadmin = Admin::create([
 			'name' => 'Super Admin',
 			'email' => Config::get('atomjoy.super_admin_email', 'superadmin@example.com'),
-			'password' => Config::get('apilogin.super_admin_password', 'Password123#'),
+			'password' => Config::get('super_admin_password', 'Password123#'),
 			'username' => 'superadmin',
 		]);
 
@@ -29,7 +29,7 @@ return new class extends Migration
 		$admin = Admin::create([
 			'name' => 'Admin',
 			'email' => Config::get('atomjoy.admin_email', 'admin@example.com'),
-			'password' => Config::get('apilogin.admin_password', 'Password123#'),
+			'password' => Config::get('admin_password', 'Password123#'),
 			'username' => 'admin',
 		]);
 
@@ -43,7 +43,7 @@ return new class extends Migration
 		$worker = Admin::create([
 			'name' => 'Worker',
 			'email' => Config::get('atomjoy.worker_email', 'worker@example.com'),
-			'password' => Config::get('apilogin.worker_password', 'Password123#'),
+			'password' => Config::get('worker_password', 'Password123#'),
 			'username' => 'worker',
 		]);
 

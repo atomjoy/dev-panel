@@ -19,7 +19,7 @@ class RegisterMail extends Mailable
 
 	public function build()
 	{
-		return $this->subject(trans('apilogin.email.register.subject'))
+		return $this->subject(trans('email.register.subject'))
 			->view('emails.register');
 	}
 }

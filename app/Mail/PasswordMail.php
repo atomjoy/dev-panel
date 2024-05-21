@@ -23,7 +23,7 @@ class PasswordMail extends Mailable
 
 	public function build()
 	{
-		return $this->subject(trans('apilogin.email.password.subject'))
+		return $this->subject(trans('email.password.subject'))
 			->view('emails.password');
 	}
 }

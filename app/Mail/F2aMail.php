@@ -23,7 +23,7 @@ class F2aMail extends Mailable
 
 	public function build()
 	{
-		return $this->subject(trans('apilogin.email.f2a.subject'))
+		return $this->subject(trans('email.f2a.subject'))
 			->view('emails.f2a');
 	}
 }

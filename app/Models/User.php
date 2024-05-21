@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Laravel\Cashier\Billable;
 use App\Contracts\Spatie\HasRolesPermissions;
 use App\Contracts\HasProfilAddress;
+use Spatie\Permission\Traits\HasRoles;
+use Spatie\Permission\Traits\HasPermissions;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Spatie\Permission\Traits\HasPermissions;
-use Spatie\Permission\Traits\HasRoles;
-use Laravel\Cashier\Billable;
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 // use Illuminate\Support\Facades\Notification;
 
 class User extends Authenticatable
@@ -44,6 +44,7 @@ class User extends Authenticatable
 		'name',
 		'email',
 		'password',
+		'email_verified_at',
 	];
 
 	/**

@@ -11,13 +11,15 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
+		// line1 , line2 , city , state , postal_code , country
 		Schema::create('addresses', function (Blueprint $table) {
 			$table->id();
 			$table->unsignedBigInteger('user_id');
-			$table->string('country', 50)->nullable();
-			$table->string('state', 50)->nullable();
+			$table->string('line1', 50)->nullable();
+			$table->string('line2', 50)->nullable();
 			$table->string('city', 50)->nullable();
-			$table->string('street', 50)->nullable();
+			$table->string('state', 50)->nullable();
+			$table->string('country', 50)->nullable();
 			$table->string('postal_code', 50)->nullable();
 			$table->timestamps();
 			$table->foreign('user_id')

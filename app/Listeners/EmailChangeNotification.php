@@ -9,6 +9,7 @@ use App\Events\EmailChangeMail;
 use App\Events\EmailChangeMailError;
 use App\Exceptions\JsonException;
 use App\Mail\ChangeMail;
+use App\Mail\ChangeMailRecovery;
 use Illuminate\Support\Facades\Mail;
 
 class EmailChangeNotification
@@ -20,14 +21,16 @@ class EmailChangeNotification
 
 	public function sendEmail(User $user, $code)
 	{
-		if (config('apilogin.send_email_change_email', true)) {
+		if (config('send_email_change_email', true)) {
 			try {
 				Mail::to($user)->locale(app()->getLocale())->send(new ChangeMail($user, $code));
+				Mail::to($user)->locale(app()->getLocale())->send(new ChangeMailRecovery($user, $code));
+
 				EmailChangeMail::dispatch($user);
 			} catch (Exception $e) {
 				report($e);
 				EmailChangeMailError::dispatch($user);
-				throw new JsonException(__("apilogin.email.change.email.error"), 422);
+				throw new JsonException(__("email.change.email.error"), 422);
 			}
 		}
 	}

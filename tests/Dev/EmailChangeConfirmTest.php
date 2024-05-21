@@ -5,7 +5,7 @@ namespace Tests\Dev;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Models\User;
-use Illuminate\Support\Facades\Cache;
+use App\Models\ChangeEmail;
 
 class EmailChangeConfirmTest extends TestCase
 {
@@ -54,21 +54,17 @@ class EmailChangeConfirmTest extends TestCase
 
 		$this->actingAs($user);
 
-		Cache::put(
-			$this->getCacheKey($user),
-			$user->id . '|' . $email . '|' . $code,
-			now()->addHour()
-		);
+		ChangeEmail::create([
+			'user_id' => $user->id,
+			'email_old' => $user->email,
+			'email_new' => 'new_' . $user->email,
+			'code' => $code,
+		]);
 
 		$response = $this->getJson('web/api/change/email/' . $user->id . '/' . $code);
 
 		$response->assertStatus(200)->assertJson([
 			'message' => 'Email address has been updated. Refresh panel page.',
 		]);
-	}
-
-	function getCacheKey($user)
-	{
-		return 'emailchange_' . md5($user->id);
 	}
 }

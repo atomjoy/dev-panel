@@ -2,7 +2,7 @@
 $password = (string) $password ?? '000000';
 @endphp
 
-<x-proton::email title="{{ __('apilogin.email.f2a.subject') }}" locale="{{ app()->getlocale() }}">
+<x-proton::email title="{{ __('email.f2a.subject') }}" locale="{{ app()->getlocale() }}">
 	<x-slot:style>
 		<style>
 			.proton-table tr td {
@@ -34,11 +34,11 @@ $password = (string) $password ?? '000000';
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('apilogin.f2a_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('f2a_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
 		</center>
 
-		<h2>@lang('apilogin.email.f2a.welcome') {{ $user?->name ?? '' }}!</h2>
-		<p>@lang('apilogin.email.f2a.message')</p>
+		<h2>@lang('email.f2a.welcome') {{ $user?->name ?? '' }}!</h2>
+		<p>@lang('email.f2a.message')</p>
 	</x-proton::row>
 
 	<x-proton::row>
@@ -53,16 +53,16 @@ $password = (string) $password ?? '000000';
 	</x-proton::row>
 
 	<x-proton::row>
-		<h3>@lang('apilogin.email.regards')</h3>
+		<h3>@lang('email.regards')</h3>
 		<strong>{{ $user?->name ?? '' }}</strong>
-		<p>@lang('apilogin.email.regards_text')</p>
+		<p>@lang('email.regards_text')</p>
 	</x-proton::row>
 
 	<x-proton::row>
 		<x-proton::divider />
 
 		<center>
-			<span class="proton-rights"> © @lang('apilogin.email.rights') </span>
+			<span class="proton-rights"> © @lang('email.rights') </span>
 		</center>
 
 		<br />

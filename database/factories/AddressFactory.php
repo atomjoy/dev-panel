@@ -21,9 +21,10 @@ class AddressFactory extends Factory
 	{
 		return [
 			'country' => fake()->country(),
-			'state' => fake()->state(), // 'California',
+			'state' => fake()->state(),
 			'city' => fake()->city(),
-			'street' => fake()->streetAddress(),
+			'line1' => fake()->streetAddress(),
+			'line2' => '',
 			'postal_code' => fake()->postcode(),
 		];
 	}
