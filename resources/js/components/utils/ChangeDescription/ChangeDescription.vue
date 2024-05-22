@@ -13,16 +13,16 @@ const props = defineProps({
 })
 
 const description = props.description
-const el = document.querySelector('head meta[name="description"]');
+const el = document.querySelector('head meta[name="description"]')
 
-onMounted(() => {	
-	el.setAttribute('content', t(description));
+onMounted(() => {
+	el.setAttribute('content', t(description))
 })
 
 watch(
 	() => locale.value,
 	(lang) => {
-		el.setAttribute('content', t(description));
+		el.setAttribute('content', t(description))
 	}
 )
 </script>
