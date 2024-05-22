@@ -68,9 +68,9 @@
 	"prettier.bracketSameLine": true, // Dont break > tag end
 
 	// Line length
-	"editor.wordWrapColumn": 300, // Dont break line
-	"html.format.wrapLineLength": 300, // Dont break line
-	"prettier.printWidth": 300, // Dont break line
+	"editor.wordWrapColumn": 3000, // Dont break line
+	"html.format.wrapLineLength": 3000, // Dont break line
+	"prettier.printWidth": 3000, // Dont break line
 
 	// Laravel Blade Snippets formatter @ext:onecentlin.laravel-blade
 	"blade.format.enable": true,
