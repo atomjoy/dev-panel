@@ -3,7 +3,8 @@ import HomeView from '../views/page/HomeView.vue'
 // import { useAuthStore } from '@/stores/auth.js'
 
 const router = createRouter({
-	linkActiveClass: 'nav-router__link--active',
+	// linkActiveClass: 'nav-router__link--active',
+	linkActiveClass: 'main-header__navlink--active',
 	history: createWebHistory('/'),
 	routes: [
 		{
@@ -20,6 +21,11 @@ const router = createRouter({
 			path: '/services',
 			name: 'services',
 			component: () => import('../views/page/ServicesView.vue'),
+		},
+		{
+			path: '/support',
+			name: 'support',
+			component: () => import('../views/page/SupportView.vue'),
 		},
 		{
 			path: '/demo/input',

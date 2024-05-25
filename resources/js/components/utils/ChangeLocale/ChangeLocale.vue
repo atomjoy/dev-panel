@@ -51,7 +51,7 @@ async function changeLocale(locale) {
 }
 .change-locale .locale-select {
 	box-sizing: border-box;
-	min-width: 95px;
+	min-width: 60px;
 	height: 42px;
 	float: left;
 	border: 0px;

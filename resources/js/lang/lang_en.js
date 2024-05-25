@@ -1,8 +1,8 @@
 // import account from '../atomjoy/panel/client/lang/account_en.js'
 
 const en = {
-	en: 'English',
-	pl: 'Polish',
+	en: 'EN',
+	pl: 'PL',
 	message: {
 		back: 'Back',
 		hello: 'hello',
@@ -26,15 +26,19 @@ const en = {
 		Services: 'Services',
 		Support: 'Need support?',
 		Subscribe: 'Subscribe',
-	},	
+	},
 	'NOT FOUND': 'NOT FOUND',
-	'Home': 'Homepage',
-	'About': 'About',
-	'Services': 'Services',
+	Home: 'Homepage',
+	About: 'About',
+	Services: 'Services',
+	Support: 'Support',
 	'Authenticated.': 'Authenticated.',
 	'Unauthenticated.': 'Unauthenticated.',
 	'Ups! Invalid data.': 'Ups! Invalid data.',
 	'Laravel 11 Vue 3.4 Starter SPA with router.': 'Laravel 11 Vue 3.4 Starter SPA with router.',
+	'Sign in': 'Sign In',
+	'Sign out': 'Sign Out',
+	'Reset password': 'Reset Password',
 	// ...account,
 }
 

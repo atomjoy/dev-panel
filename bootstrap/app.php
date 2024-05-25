@@ -41,6 +41,11 @@ return Application::configure(basePath: dirname(__DIR__))
 
 		// Cors middleware
 		// $middleware->append(Cors::class);
+
+		// Cookie
+		// $middleware->encryptCookies(except: [
+		// 	'cookie_name',
+		// ]);
 	})
 	->withExceptions(function (Exceptions $exceptions) {
 		//

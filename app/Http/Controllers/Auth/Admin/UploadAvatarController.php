@@ -10,7 +10,7 @@ use App\Http\Requests\Auth\UploadAvatarRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Response;
+use Illuminate\Support\Facades\Response;
 
 class UploadAvatarController extends Controller
 {

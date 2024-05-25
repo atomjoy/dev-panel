@@ -10,7 +10,6 @@ use App\Http\Controllers\Auth\Admin\LogoutController as AdminLogoutController;
 use App\Http\Controllers\Auth\Admin\PasswordChangeController as AdminPasswordChangeController;
 use App\Http\Controllers\Auth\Admin\UploadAvatarController as AdminUploadAvatarController;
 
-
 Route::prefix('web/api/admin')->name('web.api.admin')->middleware([
 	'web', 'forcejson',
 ])->group(function () {

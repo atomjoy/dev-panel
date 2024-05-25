@@ -3,16 +3,16 @@ import TopMenu from '@/views/page/menu/TopMenu.vue'
 import ChangeTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
 
 function go1() {
-	window.location.href='/'
+	window.location.href = '/'
 }
 function go2() {
-	window.location.href='/about'
+	window.location.href = '/about'
 }
 </script>
 
 <template>
-	<ChangeTitle :title="'error404.title'" />
 	<TopMenu />
+	<ChangeTitle :title="'error404.title'" />
 
 	<h1>404</h1>
 	<h2>{{ $t('error404.title') }}</h2>
@@ -79,7 +79,7 @@ h2 {
 }
 h2::before {
 	position: absolute;
-	content:  '';
+	content: '';
 	font-weight: 900;
 	font-size: 50px;
 	color: #222;

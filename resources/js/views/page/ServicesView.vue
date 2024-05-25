@@ -3,9 +3,11 @@ import TopMenu from './menu/TopMenu.vue'
 </script>
 
 <template>
-    <TopMenu/>
-    <div class="section">
-        <h1>{{ $t('Services') }}</h1>
-        <p>{{ $t('Laravel 11 Vue 3.4 Starter SPA with router.') }}</p>
-    </div>
+	<TopMenu />
+	<div class="section">
+		<div class="section__wrapper">
+			<h1>{{ $t('Services') }}</h1>
+			<p>{{ $t('Laravel 11 Vue 3.4 Starter SPA with router.') }}</p>
+		</div>
+	</div>
 </template>

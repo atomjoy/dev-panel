@@ -11,7 +11,7 @@ use App\Models\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-use Response;
+use Illuminate\Support\Facades\Response;
 
 class UploadAvatarController extends Controller
 {

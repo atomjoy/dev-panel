@@ -62,6 +62,12 @@ class OauthLogin extends Controller
 
 		$oauthUser = Socialite::driver($driver)->stateless()->user();
 
+		if ($driver == 'google') {
+			if ($oauthUser->user['email_verified'] != true) {
+				throw new \Exception("Not confirmed email address.", 422);
+			}
+		}
+
 		$validator = Validator::make(['email' => $oauthUser->email], [
 			'email' => 'required|email:rfc,dns'
 		]);
@@ -100,6 +106,12 @@ class OauthLogin extends Controller
 			$arr = $res->json();
 			if ($arr['aud'] != $client) {
 				return redirect(config('services.google.homepage', '/'));
+			}
+
+			if ($driver == 'google') {
+				if ($arr['email_verified'] != true) {
+					throw new \Exception("Not confirmed email address.", 422);
+				}
 			}
 
 			$validator = Validator::make(['email' => $arr['email']], [
