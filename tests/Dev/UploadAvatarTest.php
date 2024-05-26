@@ -39,16 +39,26 @@ class UploadAvatarTest extends TestCase
 		]);
 
 		$response = $this->postJson('/web/api/upload/avatar', [
-			'avatar' => UploadedFile::fake()->image('avatar.png'),
+			'avatar' => UploadedFile::fake()->image('avatar.bmp', 200, 200),
 		]);
 
 		$response->assertStatus(422)->assertJson([
-			'message' => 'The avatar field must be a file of type: webp.',
+			'message' => 'The avatar field must be a file of type: webp, jpeg, jpg, png, gif.',
 		]);
 
 		$response = $this->postJson('/web/api/upload/avatar', [
 			// 'avatar' => UploadedFile::fake()->image('avatar.webp', 200, 200),
 			'avatar' => UploadedFile::fake()->createWithContent('avatar.webp', file_get_contents(base_path('tests\Dev\image\fake.webp'))),
+		]);
+
+		$response->assertStatus(200)->assertJson([
+			'message' => 'Avatar has been uploaded.',
+			'avatar' => 'avatars/' . $user->id . '.webp'
+		]);
+
+		$response = $this->postJson('/web/api/upload/avatar', [
+			// 'avatar' => UploadedFile::fake()->image('avatar.webp', 200, 200),
+			'avatar' => UploadedFile::fake()->createWithContent('avatar.png', file_get_contents(base_path('tests\Dev\image\fake.png'))),
 		]);
 
 		$response->assertStatus(200)->assertJson([

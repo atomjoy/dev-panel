@@ -30,6 +30,8 @@ class UploadAvatarController extends Controller
 
 			$filename = $user->id . '.webp';
 
+			$path = 'avatars/' . $filename;
+
 			$image = ImageManager::gd()
 				->read($request->file('avatar'))
 				->resizeDown(
@@ -37,9 +39,7 @@ class UploadAvatarController extends Controller
 					config('default.avatar_resize_pixels', 256)
 				)->toWebp();
 
-			Storage::put('avatars/' . $filename, (string) $image);
-
-			$path = 'avatars/' . $filename;
+			Storage::put($path, (string) $image);
 
 			$data = ['avatar' => $path];
 

@@ -6,7 +6,7 @@ use Exception;
 use App\Http\Controllers\Controller;
 use App\Events\UploadAvatar;
 use App\Exceptions\JsonException;
-use App\Http\Requests\Auth\UploadAvatarRequest;
+use App\Http\Requests\Auth\Admin\UploadAvatarRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
