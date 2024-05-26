@@ -17,13 +17,18 @@ class UploadAvatarController extends Controller
 	function index(UploadAvatarRequest $request)
 	{
 		try {
+			// Validate
+			// request()->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg|max:2048']);
+			// Save
+			// $path = $request->file('avatar')->storeAs('avatars/admin', $filename, 'public');
+			// Save with request
+			// $path = Storage::putFileAs('avatars/admin', $request->file('avatar'), $filename);
+
 			Auth::shouldUse('admin');
 
 			$user =  Auth::user();
 
 			$filename = $user->id . '.webp';
-
-			// $path = $request->file('avatar')->storeAs('avatars/admin', $filename, 'public');
 
 			$path = Storage::putFileAs(
 				'avatars/admin',
@@ -87,6 +92,9 @@ class UploadAvatarController extends Controller
 			$exists = Storage::exists($filename);
 
 			if ($exists) {
+
+				// Storage::url($imagePath);
+
 				$mime = Storage::mimeType($filename);
 
 				$content = Storage::get($filename);

@@ -24,13 +24,13 @@ class UploadAvatarRequest extends FormRequest
 				'required',
 				'mimes:webp',
 				Rule::dimensions()
-					->minWidth(config('avatar_min_pixels', 64))
-					->minHeight(config('avatar_min_pixels', 64)),
+					->minWidth(config('default.avatar_min_pixels', 64))
+					->minHeight(config('default.avatar_min_pixels', 64)),
 				Rule::dimensions()
-					->maxWidth(config('avatar_max_pixels', 1025))
-					->maxHeight(config('avatar_max_pixels', 1025)),
+					->maxWidth(config('default.avatar_max_pixels', 1025))
+					->maxHeight(config('default.avatar_max_pixels', 1025)),
 				Rule::file()->types(['webp'])
-					->max(config('max_upload_size_mb', 5) * 1024),
+					->max(config('default.max_upload_size_mb', 5) * 1024),
 			]
 		];
 	}

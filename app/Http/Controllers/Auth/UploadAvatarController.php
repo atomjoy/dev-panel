@@ -12,23 +12,34 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
+use Intervention\Image\ImageManager;
 
 class UploadAvatarController extends Controller
 {
 	function index(UploadAvatarRequest $request)
 	{
+		// Validate
+		// request()->validate(['avatar' => 'required|image|mimes:jpeg,png,jpg|max:2048']);
+		// Save
+		// $path = $request->file('avatar')->storeAs('avatars', $filename, 'public');
+		// Save with request
+		// $path = Storage::putFileAs('avatars', $request->file('avatar'), $filename);
+
 		try {
 			$user =  Auth::user();
 
 			$filename = $user->id . '.webp';
 
-			// $path = $request->file('avatar')->storeAs('avatars', $filename, 'public');
+			$image = ImageManager::gd()
+				->read($request->file('avatar'))
+				->resizeDown(
+					config('default.avatar_resize_pixels', 256),
+					config('default.avatar_resize_pixels', 256)
+				)->toWebp();
 
-			$path = Storage::putFileAs(
-				'avatars',
-				$request->file('avatar'),
-				$filename
-			);
+			Storage::put('avatars/' . $filename, (string) $image);
+
+			$path = 'avatars/' . $filename;
 
 			$data = ['avatar' => $path];
 
@@ -133,21 +144,19 @@ class UploadAvatarController extends Controller
 	}
 
 	/**
-	 *	Get s3 file url.
+	 *	Get storage file url.
 	 */
 	public function getUrl()
 	{
-		$path = strip_tags(stripslashes(request('path')));
+		$path = trim(strip_tags(stripslashes(request('path'))));
 
 		if (Storage::exists($path)) {
 			return Storage::url($path);
 			// return Storage::temporaryUrl($path, now()->addMinutes(60));
+			// <img src="{{ Storage::temporaryUrl($this->company->logo, '+2 minutes') }}">
 		}
 
-		return config(
-			'error_file_placeholder',
-			'https://placehold.co/256x256?font=roboto&text=Invalid\nFile'
-		);
+		return config('default.error_file_placeholder', 'https://placehold.co/128x128?font=roboto&text=INVALID\nFILE');
 		// 'https://picsum.photos/256/256.webp?grayscale&blur=2'
 	}
 }

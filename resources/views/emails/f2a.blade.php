@@ -34,7 +34,8 @@ $password = (string) $password ?? '000000';
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('f2a_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('default.f2a_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}"
+				 alt="Image">
 		</center>
 
 		<h2>@lang('email.f2a.welcome') {{ $user?->name ?? '' }}!</h2>

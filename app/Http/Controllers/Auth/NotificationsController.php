@@ -12,7 +12,7 @@ class NotificationsController extends Controller
 	function index($page)
 	{
 		try {
-			$perpage = config('notifications_perpage', 6);
+			$perpage = config('default.notifications_perpage', 6);
 			$page = (int) $page;
 			if ($page < 1) $page = 1;
 			$offset = ($page - 1) * $perpage;

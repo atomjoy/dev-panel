@@ -64,7 +64,7 @@ class LoginRequest extends FormRequest
 		if (!Auth::attempt($this->only('email', 'password'), $this->boolean('remember_me'))) {
 			RateLimiter::hit(
 				$this->throttleKey(),
-				config('ratelimit_login_time', 300)
+				config('default.ratelimit_login_time', 300)
 			);
 
 			LoginUserError::dispatch($this->only('email'));
@@ -119,7 +119,7 @@ class LoginRequest extends FormRequest
 
 	public function ensureIsNotRateLimited(): void
 	{
-		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('ratelimit_login_count', 5))) {
+		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('default.ratelimit_login_count', 5))) {
 			return;
 		}
 

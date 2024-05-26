@@ -56,7 +56,7 @@ class F2aRequest extends FormRequest
 		if (!Auth::guard('admin')->check()) {
 			RateLimiter::hit(
 				$this->throttleKey(),
-				config('ratelimit_login_time', 300)
+				config('default.ratelimit_login_time', 300)
 			);
 
 			$f2a = AdminF2acode::where($this->only('hash', 'code'))
@@ -82,7 +82,7 @@ class F2aRequest extends FormRequest
 
 	public function ensureIsNotRateLimited(): void
 	{
-		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('ratelimit_login_count', 5))) {
+		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('default.ratelimit_login_count', 5))) {
 			return;
 		}
 

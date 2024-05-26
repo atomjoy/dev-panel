@@ -13,6 +13,7 @@
 		"atomjoy/proton": "^2.2",
 		"atomjoy/smsapisms": "dev-main",
 		"atomjoy/socialites": "dev-main",
+		"intervention/image": "^3.6",
 		"laravel/cashier": "^15.3",
 		"laravel/framework": "^11.0",
 		"laravel/socialite": "^5.14",

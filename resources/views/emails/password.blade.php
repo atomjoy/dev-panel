@@ -18,7 +18,8 @@
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('password_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('default.password_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}"
+				 alt="Image">
 		</center>
 
 		<h2>@lang('email.password.welcome') {{ $user?->name ?? '' }}!</h2>

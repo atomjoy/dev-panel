@@ -18,7 +18,8 @@
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('register_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('default.register_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}"
+				 alt="Image">
 		</center>
 
 		<h2>@lang('email.register.welcome') {{ $user?->name ?? '' }}!</h2>
@@ -26,7 +27,8 @@
 	</x-proton::row>
 
 	<x-proton::row>
-		<x-proton::button url="{{ request()->getSchemeAndHttpHost() }}/activate/{{ $user?->id ?? '0' }}/{{ $code ?? 'invalidcode' }}?locale={{ app()->getLocale() }}">
+		<x-proton::button
+						  url="{{ request()->getSchemeAndHttpHost() }}/activate/{{ $user?->id ?? '0' }}/{{ $code ?? 'invalidcode' }}?locale={{ app()->getLocale() }}">
 			@lang('email.register.button')
 		</x-proton::button>
 	</x-proton::row>

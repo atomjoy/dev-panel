@@ -1,4 +1,5 @@
-<x-proton::email title="{{ __('email.change-recovery.subject') }}" locale="{{ app()->getlocale() }}">
+<x-proton::email title="{{ __('email.change-recovery.subject') }}"
+				 locale="{{ app()->getlocale() }}">
 	<x-slot:style>
 		<style>
 			.proton-table tr td {
@@ -18,7 +19,8 @@
 		<x-proton::margin />
 
 		<center>
-			<img src="{{ config('change_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}" alt="Image">
+			<img src="{{ config('default.change_image_url', 'https://raw.githubusercontent.com/atomjoy/proton/main/public/proton-default.png') }}"
+				 alt="Image">
 		</center>
 
 		<h2>@lang('email.change-recovery.welcome') {{ $user?->name ?? '' }}!</h2>
@@ -26,7 +28,8 @@
 	</x-proton::row>
 
 	<x-proton::row>
-		<x-proton::button url="{{ request()->getSchemeAndHttpHost() }}/change/email/recovery/{{ $user?->id ?? '0' }}/{{ $code ?? 'invalidcode' }}?locale={{ app()->getLocale() }}">
+		<x-proton::button
+						  url="{{ request()->getSchemeAndHttpHost() }}/change/email/recovery/{{ $user?->id ?? '0' }}/{{ $code ?? 'invalidcode' }}?locale={{ app()->getLocale() }}">
 			@lang('email.change-recovery.button')
 		</x-proton::button>
 	</x-proton::row>

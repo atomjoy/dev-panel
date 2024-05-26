@@ -56,7 +56,7 @@ class F2aRequest extends FormRequest
 		if (!Auth::check()) {
 			RateLimiter::hit(
 				$this->throttleKey(),
-				config('ratelimit_login_time', 300)
+				config('default.ratelimit_login_time', 300)
 			);
 
 			// Sqlite error !!! change to mysql
@@ -83,7 +83,7 @@ class F2aRequest extends FormRequest
 
 	public function ensureIsNotRateLimited(): void
 	{
-		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('ratelimit_login_count', 5))) {
+		if (!RateLimiter::tooManyAttempts($this->throttleKey(), config('default.ratelimit_login_count', 5))) {
 			return;
 		}
 
