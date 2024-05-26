@@ -65,6 +65,15 @@ php artisan migrate:fresh --env=testing
 php artisan storage:link
 ```
 
+### Disk .env
+
+Install packages first for **s3** or **sftp**
+
+```sh
+# public, s3, sftp
+FILESYSTEM_DISK=public
+```
+
 ### Uruchom
 
 ```sh

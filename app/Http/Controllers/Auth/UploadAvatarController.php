@@ -15,8 +15,6 @@ use Illuminate\Support\Facades\Response;
 
 class UploadAvatarController extends Controller
 {
-	protected $disk = 's3';
-
 	function index(UploadAvatarRequest $request)
 	{
 		try {
@@ -26,12 +24,11 @@ class UploadAvatarController extends Controller
 
 			// $path = $request->file('avatar')->storeAs('avatars', $filename, 'public');
 
-			$path = Storage::disk($this->disk)
-				->putFileAs(
-					'avatars',
-					$request->file('avatar'),
-					$filename
-				);
+			$path = Storage::putFileAs(
+				'avatars',
+				$request->file('avatar'),
+				$filename
+			);
 
 			$data = ['avatar' => $path];
 
@@ -67,8 +64,8 @@ class UploadAvatarController extends Controller
 
 			$filename = 'avatars/' . Auth::id() . '.webp';
 
-			if (Storage::disk($this->disk)->exists($filename)) {
-				Storage::disk($this->disk)->delete($filename);
+			if (Storage::exists($filename)) {
+				Storage::delete($filename);
 				Auth::user()->profile()->update(['avatar' => null]);
 			}
 
@@ -96,12 +93,12 @@ class UploadAvatarController extends Controller
 
 			$filename = '/avatars/' . $id . '.webp';
 
-			$exists = Storage::disk($this->disk)->exists($filename);
+			$exists = Storage::exists($filename);
 
 			if ($exists) {
-				$mime = Storage::disk($this->disk)->mimeType($filename);
+				$mime = Storage::mimeType($filename);
 
-				$content = Storage::disk($this->disk)->get($filename);
+				$content = Storage::get($filename);
 
 				$response = Response::make($content, 200);
 
@@ -142,9 +139,9 @@ class UploadAvatarController extends Controller
 	{
 		$path = strip_tags(stripslashes(request('path')));
 
-		if (Storage::disk($this->disk)->exists($path)) {
-			return Storage::disk($this->disk)->url($path);
-			// return Storage::disk($this->disk)->temporaryUrl($path, now()->addMinutes(60));
+		if (Storage::exists($path)) {
+			return Storage::url($path);
+			// return Storage::temporaryUrl($path, now()->addMinutes(60));
 		}
 
 		return config(

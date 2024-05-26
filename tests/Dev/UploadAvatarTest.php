@@ -14,7 +14,7 @@ class UploadAvatarTest extends TestCase
 
 	function test_upload_avatar()
 	{
-		$disk = 's3';
+		$disk = config('filesystems.default');
 
 		Storage::fake($disk);
 
