@@ -7,35 +7,34 @@ import { useAuthStore } from '@/stores/auth.js'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import PageTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
-import Password from '@/components/input/Password.vue'
-import Checkbox from '@/components/input/Checkbox.vue'
 import Input from '@/components/input/Input.vue'
+import Checkbox from '@/components/input/Checkbox.vue'
 import PolicyBar from './PolicyBar.vue'
 import AuthLogo from './AuthLogo.vue'
-import SocialLogin from './SocialLogin.vue'
 
-const { t, locale } = useI18n({ useScope: 'global' })
+const { locale } = useI18n({ useScope: 'global' })
 const store = useAuthStore()
-let email = ref('')
-let password = ref('')
+let code = ref('')
 let remember_me = ref(false)
+
+// Route
+const route = useRoute()
+let hash = ref(route?.params?.hash ?? null)
+// console.log('Route', route?.query, route?.params)
 
 onMounted(() => {
 	store.clearError()
 	store.changeLocale(locale.value)
-	// Route
-	// const route = useRoute()
-	// console.log('Query params', route?.query)
 })
 
 function onSubmit(e) {
 	store.scrollTop()
-	store.loginUser(new FormData(e.target))
+	store.loginUserF2a(new FormData(e.target))
 }
 </script>
 
 <template>
-	<PageTitle :title="$t('message.login_title')" />
+	<PageTitle :title="$t('message.login_f2a_title')" />
 
 	<div id="page-wraper">
 		<div class="page-auth">
@@ -47,38 +46,29 @@ function onSubmit(e) {
 			<div class="form-wraper">
 				<form @submit.prevent="onSubmit" class="form-auth">
 					<h1 class="full">
-						{{ $t('login.Sign_In') }}
+						{{ $t('login.F2a_Confirm') }}
 					</h1>
 
-					<SocialLogin />
-
 					<div
-						v-if="store.getMessage.value != null"
+						v-if="store?.getMessage?.value != null"
 						:class="[
-							store.getError.value ? 'alert-error' : 'alert-info',
+							store?.getError?.value ? 'alert-error' : 'alert-info',
 							'animate__animated animate__flipInX',
 						]">
-						{{ store.getMessage.value }}
+						{{ store?.getMessage?.value }}
 					</div>
 
 					<Input
 						:focus="'true'"
 						type="text"
-						name="email"
-						v-model="email"
-						:placeholder="$t('login.Email_address_eg')"
-						:label="$t('login.Email_address')">
+						name="code"
+						v-model="code"
+						:placeholder="$t('login.F2a_code_eg')"
+						:label="$t('login.F2a_code')">
 						<i class="far fa-envelope"></i>
 					</Input>
 
-					<Password
-						type="password"
-						name="password"
-						v-model="password"
-						:placeholder="$t('login.Password_eg')"
-						:label="$t('login.Password')">
-						<i class="fa-solid fa-key"></i>
-					</Password>
+					<input type="hidden" name="hash" v-model="hash" />
 
 					<div class="full">
 						<Checkbox

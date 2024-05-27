@@ -7,35 +7,28 @@ import { useAuthStore } from '@/stores/auth.js'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import PageTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
-import Password from '@/components/input/Password.vue'
-import Checkbox from '@/components/input/Checkbox.vue'
-import Input from '@/components/input/Input.vue'
 import PolicyBar from './PolicyBar.vue'
 import AuthLogo from './AuthLogo.vue'
-import SocialLogin from './SocialLogin.vue'
+import Password from '@/components/input/Password.vue'
 
 const { t, locale } = useI18n({ useScope: 'global' })
 const store = useAuthStore()
-let email = ref('')
 let password = ref('')
-let remember_me = ref(false)
+let password_current = ref('')
+let password_confirmation = ref('')
 
 onMounted(() => {
 	store.clearError()
-	store.changeLocale(locale.value)
-	// Route
-	// const route = useRoute()
-	// console.log('Query params', route?.query)
 })
 
 function onSubmit(e) {
 	store.scrollTop()
-	store.loginUser(new FormData(e.target))
+	store.changeUserPassword(new FormData(e.target))
 }
 </script>
 
 <template>
-	<PageTitle :title="$t('message.login_title')" />
+	<PageTitle :title="$t('message.change_password_title')" />
 
 	<div id="page-wraper">
 		<div class="page-auth">
@@ -47,10 +40,8 @@ function onSubmit(e) {
 			<div class="form-wraper">
 				<form @submit.prevent="onSubmit" class="form-auth">
 					<h1 class="full">
-						{{ $t('login.Sign_In') }}
+						{{ $t('change_password.Change_password') }}
 					</h1>
-
-					<SocialLogin />
 
 					<div
 						v-if="store.getMessage.value != null"
@@ -61,50 +52,51 @@ function onSubmit(e) {
 						{{ store.getMessage.value }}
 					</div>
 
-					<Input
+					<Password
 						:focus="'true'"
-						type="text"
-						name="email"
-						v-model="email"
-						:placeholder="$t('login.Email_address_eg')"
-						:label="$t('login.Email_address')">
-						<i class="far fa-envelope"></i>
-					</Input>
+						type="password"
+						name="password_current"
+						v-model="password_current"
+						:placeholder="$t('change_password.Current_password')"
+						:label="$t('change_password.Current_password')">
+						<i class="fa-solid fa-key"></i>
+					</Password>
 
 					<Password
 						type="password"
 						name="password"
 						v-model="password"
-						:placeholder="$t('login.Password_eg')"
-						:label="$t('login.Password')">
+						:placeholder="$t('change_password.New_password')"
+						:label="$t('change_password.New_password')">
+						<i class="fa-solid fa-key"></i>
+					</Password>
+
+					<Password
+						type="password"
+						name="password_confirmation"
+						v-model="password_confirmation"
+						:placeholder="$t('change_password.Confirm_password')"
+						:label="$t('change_password.Confirm_password')">
 						<i class="fa-solid fa-key"></i>
 					</Password>
 
 					<div class="full">
-						<Checkbox
-							:label="$t('login.Remember_me')"
-							value="1"
-							v-model="remember_me"
-							name="remember_me" />
+						<button class="button" :title="$t('change_password.Change')">
+							{{ $t('change_password.Change') }}
+						</button>
 					</div>
 
-					<button class="button" :title="$t('login.Login')" ref="button">
-						{{ $t('login.Login') }}
-					</button>
-
 					<div class="full">
-						<router-link to="/register" class="link-left">{{
-							$t('login.Dont_have_an_account')
+						<router-link to="/login" class="link-left">{{
+							$t('change_password.Have_an_account')
 						}}</router-link>
 						<router-link to="/password" class="link-right">{{
-							$t('login.Forgot_password')
+							$t('change_password.Forgot_password')
 						}}</router-link>
 					</div>
 				</form>
 			</div>
 		</div>
-
-		<PolicyBar />
 	</div>
 </template>
 

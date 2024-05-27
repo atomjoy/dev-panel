@@ -7,35 +7,26 @@ import { useAuthStore } from '@/stores/auth.js'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import PageTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
-import Password from '@/components/input/Password.vue'
-import Checkbox from '@/components/input/Checkbox.vue'
 import Input from '@/components/input/Input.vue'
 import PolicyBar from './PolicyBar.vue'
 import AuthLogo from './AuthLogo.vue'
-import SocialLogin from './SocialLogin.vue'
 
 const { t, locale } = useI18n({ useScope: 'global' })
 const store = useAuthStore()
 let email = ref('')
-let password = ref('')
-let remember_me = ref(false)
 
 onMounted(() => {
 	store.clearError()
-	store.changeLocale(locale.value)
-	// Route
-	// const route = useRoute()
-	// console.log('Query params', route?.query)
 })
 
 function onSubmit(e) {
 	store.scrollTop()
-	store.loginUser(new FormData(e.target))
+	store.resetUserPassword(new FormData(e.target))
 }
 </script>
 
 <template>
-	<PageTitle :title="$t('message.login_title')" />
+	<PageTitle :title="$t('message.password_title')" />
 
 	<div id="page-wraper">
 		<div class="page-auth">
@@ -44,13 +35,12 @@ function onSubmit(e) {
 				<ChangeLocale />
 				<ChangeTheme />
 			</div>
+
 			<div class="form-wraper">
 				<form @submit.prevent="onSubmit" class="form-auth">
 					<h1 class="full">
-						{{ $t('login.Sign_In') }}
+						{{ $t('password.Reset_password') }}
 					</h1>
-
-					<SocialLogin />
 
 					<div
 						v-if="store.getMessage.value != null"
@@ -66,38 +56,23 @@ function onSubmit(e) {
 						type="text"
 						name="email"
 						v-model="email"
-						:placeholder="$t('login.Email_address_eg')"
-						:label="$t('login.Email_address')">
+						:placeholder="$t('password.Email_address_eg')"
+						:label="$t('password.Email_address')">
 						<i class="far fa-envelope"></i>
 					</Input>
 
-					<Password
-						type="password"
-						name="password"
-						v-model="password"
-						:placeholder="$t('login.Password_eg')"
-						:label="$t('login.Password')">
-						<i class="fa-solid fa-key"></i>
-					</Password>
-
-					<div class="full">
-						<Checkbox
-							:label="$t('login.Remember_me')"
-							value="1"
-							v-model="remember_me"
-							name="remember_me" />
+					<div class="full full-margin">
+						<button class="button" :title="$t('password.Send_password')">
+							{{ $t('password.Send_password') }}
+						</button>
 					</div>
 
-					<button class="button" :title="$t('login.Login')" ref="button">
-						{{ $t('login.Login') }}
-					</button>
-
 					<div class="full">
-						<router-link to="/register" class="link-left">{{
-							$t('login.Dont_have_an_account')
+						<router-link to="/login" class="link-left">{{
+							$t('password.Have_an_account')
 						}}</router-link>
-						<router-link to="/password" class="link-right">{{
-							$t('login.Forgot_password')
+						<router-link to="/register" class="link-right">{{
+							$t('password.Dont_have_an_account')
 						}}</router-link>
 					</div>
 				</form>

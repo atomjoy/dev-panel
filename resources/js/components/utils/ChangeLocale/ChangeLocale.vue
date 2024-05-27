@@ -1,7 +1,9 @@
 <template>
 	<div class="change-locale">
 		<select v-model="locale" class="locale-select">
-			<option v-for="lang in availableLocales" :key="`locale-${lang}`" :value="lang">{{ t(lang) }}</option>
+			<option v-for="lang in availableLocales" :key="`locale-${lang}`" :value="lang">
+				{{ t(lang) }}
+			</option>
 		</select>
 	</div>
 </template>
@@ -47,7 +49,7 @@ async function changeLocale(locale) {
 	margin: 5px;
 	background: var(--bg-primary);
 	border-radius: var(--border-radius);
-	border: 1px solid var(--divider-primary);
+	border: 0px solid var(--divider-primary);
 }
 .change-locale .locale-select {
 	box-sizing: border-box;

@@ -34,7 +34,7 @@ class UploadAvatarController extends Controller
 
 			$image = ImageManager::gd()
 				->read($request->file('avatar'))
-				->resizeDown(
+				->resize(
 					config('default.avatar_resize_pixels', 256),
 					config('default.avatar_resize_pixels', 256)
 				)->toWebp();

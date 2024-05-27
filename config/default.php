@@ -46,4 +46,7 @@ return [
 
 	// Force json accept header middleware
 	// 'enable_accept_json' => true,
+
+	// Destroy user and admin session after logout
+	// 'logout_invalidate_session' => true,
 ];

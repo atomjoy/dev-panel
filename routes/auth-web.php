@@ -22,7 +22,7 @@ use App\Http\Controllers\Auth\F2aController;
 use Illuminate\Support\Facades\Route;
 
 // Activation page
-Route::get('/activate/{id}/{code}', [ActivateController::class, 'index'])->name('activation');
+// Route::get('/activate/{id}/{code}', [ActivateController::class, 'index'])->name('activation');
 
 // Login page
 Route::get('/login', function () {

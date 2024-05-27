@@ -19,12 +19,19 @@ class LogoutController extends Controller
 
 			if (Auth::check()) {
 				LogoutUser::dispatch(Auth::user());
-				Auth::logout();
+				Auth::guard('admin')->logout();
 			}
 
-			$request->session()->flush();
-			$request->session()->invalidate();
+			// Destroy user and admin session
+			if (config('default.logout_invalidate_session', false)) {
+				$request->session()->flush();
+				$request->session()->invalidate();
+			} else {
+				$request->session()->regenerate();
+			}
+
 			$request->session()->regenerateToken();
+
 			session(['locale' => config('app.locale')]);
 
 			return response()->json([

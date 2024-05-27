@@ -7,7 +7,7 @@ import lang from './lang'
 import router from './router'
 import App from './App.vue'
 
-import './assets/main.css'
+import './assets/css/main.css'
 
 const app = createApp(App)
 const i18n = createI18n(lang)

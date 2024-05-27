@@ -7,14 +7,13 @@ import { useAuthStore } from '@/stores/auth.js'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import PageTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
+import PolicyBar from '@/views/auth/PolicyBar.vue'
+import AuthLogo from '@/views/auth/AuthLogo.vue'
+import Input from '@/components/input/Input.vue'
 import Password from '@/components/input/Password.vue'
 import Checkbox from '@/components/input/Checkbox.vue'
-import Input from '@/components/input/Input.vue'
-import PolicyBar from './PolicyBar.vue'
-import AuthLogo from './AuthLogo.vue'
-import SocialLogin from './SocialLogin.vue'
 
-const { t, locale } = useI18n({ useScope: 'global' })
+const { locale } = useI18n({ useScope: 'global' })
 const store = useAuthStore()
 let email = ref('')
 let password = ref('')
@@ -30,7 +29,7 @@ onMounted(() => {
 
 function onSubmit(e) {
 	store.scrollTop()
-	store.loginUser(new FormData(e.target))
+	store.loginUserAdmin(new FormData(e.target))
 }
 </script>
 
@@ -46,11 +45,7 @@ function onSubmit(e) {
 			</div>
 			<div class="form-wraper">
 				<form @submit.prevent="onSubmit" class="form-auth">
-					<h1 class="full">
-						{{ $t('login.Sign_In') }}
-					</h1>
-
-					<SocialLogin />
+					<h1 class="full">{{ $t('login.Sign_In') }} {{ $t('login.Admin', 'Admin') }}</h1>
 
 					<div
 						v-if="store.getMessage.value != null"
@@ -93,12 +88,10 @@ function onSubmit(e) {
 					</button>
 
 					<div class="full">
-						<router-link to="/register" class="link-left">{{
-							$t('login.Dont_have_an_account')
-						}}</router-link>
-						<router-link to="/password" class="link-right">{{
+						<router-link to="/admin/password" class="link-center">{{
 							$t('login.Forgot_password')
 						}}</router-link>
+						<!-- <router-link to="/admin/register" class="link-right">{{ $t('login.Dont_have_an_account') }}</router-link> -->
 					</div>
 				</form>
 			</div>
