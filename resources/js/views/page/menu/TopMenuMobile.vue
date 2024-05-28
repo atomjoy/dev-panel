@@ -1,12 +1,11 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { ref } from 'vue'
 import { useAuthStore } from '@/stores/auth.js'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
-import SubLink from './submenu/SubLinkMobile.vue'
 import SubmenuMobile from './submenu/SubmenuMobile.vue'
+import top from '@/json/menu/TopMenu.js'
 
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
@@ -18,13 +17,6 @@ function openMenue() {
 	const el = document.querySelector('.main-mobile-header')
 	el.classList.toggle('main-mobile-header-fixed')
 }
-
-const homeItems = [
-	{ url: '/service1', title: 'Service 1', subtitle: 'Service 1 description' },
-	{ url: '/service2', title: 'Service 2', subtitle: 'Service 2 description' },
-	{ url: '/service3', title: 'Service 3', subtitle: 'Service 3 description' },
-	{ url: '/service4', title: 'Service 4', subtitle: 'Service 4 description' },
-]
 </script>
 
 <template>
@@ -53,17 +45,10 @@ const homeItems = [
 		</div>
 
 		<nav v-if="open" class="main-header__nav-mobile main-mobile-header-closed" role="menubar">
-			<RouterLink to="/" class="main-header__navlink-mobile" :title="$t('Home')" role="menuitem">{{ $t('Home') }}</RouterLink>
-			<SubmenuMobile :items="[]" />
-
-			<RouterLink to="/services" class="main-header__navlink-mobile" :title="$t('Services')" role="menuitem">{{ $t('Services') }}</RouterLink>
-			<SubmenuMobile :items="homeItems" />
-
-			<RouterLink to="/about" class="main-header__navlink-mobile" :title="$t('About')" role="menuitem">{{ $t('About') }}</RouterLink>
-			<SubmenuMobile :items="homeItems" />
-
-			<RouterLink to="/support" class="main-header__navlink-mobile" :title="$t('Support')" role="menuitem">{{ $t('Support') }}</RouterLink>
-			<SubmenuMobile :items="homeItems" />
+			<SubmenuMobile url="/" title="Home" :items="top.homeItems" />
+			<SubmenuMobile url="/services" title="Services" :items="top.servicesItems" />
+			<SubmenuMobile url="/about" title="About" :items="top.aboutItems" />
+			<SubmenuMobile url="/support" title="Support" :items="top.supportItems" />
 		</nav>
 	</div>
 </template>
@@ -88,12 +73,8 @@ const homeItems = [
 	color: var(--text-primary);
 }
 
-.main-header__navlink-mobile--small:hover {
-	color: var(--accent-primary);
-}
-
 .main-header__navlink-mobile--subtitle {
-	color: var(--text-light-primary);
+	color: var(--text-secondary);
 	font-size: 13px;
 	margin: 0px;
 }

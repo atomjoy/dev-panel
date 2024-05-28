@@ -22,8 +22,8 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		color-scheme: dark;
-		--wow-bg: #232629;
-		--wow-input-bg: #232629;
+		--wow-bg: var(--bg-primary);
+		--wow-input-bg: var(--bg-secondary);
 		--wow-accent: #ff9557;
 		--wow-accent-light: #ff955722;
 		--wow-color: #ffffff;
@@ -61,8 +61,8 @@
 
 [color-scheme='dark'] {
 	color-scheme: dark;
-	--wow-bg: #232629;
-	--wow-input-bg: #232629;
+	--wow-bg: var(--bg-primary);
+	--wow-input-bg: var(--bg-secondary);
 	--wow-accent: #ff9557;
 	--wow-accent-light: #ff955722;
 	--wow-color: #ffffff;

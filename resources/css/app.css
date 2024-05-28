@@ -16,10 +16,12 @@
 :root {
 	color-scheme: light;
 	--bg-primary: #fff;
+	--bg-secondary: #f3f3f3;
+	--bg-third: #f9f9f9;
 	--text-primary: #232629;
-	--text-light-primary: #3d3d4e;
+	--text-secondary: #3d3d4e;
 	--accent-primary: #ff9557; /* #0249fe; */
-	--accent-secondary: #f6782f;
+	--accent-secondary: #fd6e41; /* #f6782f; */
 	--placeholder: #717171;
 	--logo: url('@/assets/images/logo-light.png');
 	--divider-primary: #e7e7e9;
@@ -31,9 +33,11 @@
 @media (prefers-color-scheme: dark) {
 	:root {
 		color-scheme: dark;
-		--bg-primary: #212529; /* #1E1E1E; #212529; */
+		--bg-primary: #2f282b; /* #212529; #1E1E1E; #212529; */
+		--bg-secondary: #3a3437;
+		--bg-third: #524b4e;
 		--text-primary: #fff;
-		--text-light-primary: #3a3a3a;
+		--text-secondary: #949392;
 		--accent-primary: #ff9557; /* #0249FE; */
 		--placeholder: #717171;
 		--code-border: #717171;
@@ -48,6 +52,8 @@
 [color-scheme='light'] {
 	color-scheme: light;
 	--bg-primary: #fff;
+	--bg-secondary: #f3f3f3;
+	--bg-third: #f9f9f9;
 	--text-primary: #212329;
 	--accent-primary: #ff9557; /* #0249fe; */
 	--placeholder: #717171;
@@ -58,9 +64,11 @@
 
 [color-scheme='dark'] {
 	color-scheme: dark;
-	--bg-primary: #212529; /* #1E1E1E; #212529; */
+	--bg-primary: #2f282b; /* #212529; #1E1E1E; #212529; */
+	--bg-secondary: #3a3437;
+	--bg-third: #524b4e;
 	--text-primary: #fff;
-	--text-light-primary: #3a3a3a;
+	--text-secondary: #949392;
 	--accent-primary: #ff9557; /* #0249FE; */
 	--placeholder: #717171;
 	--code-border: #717171;

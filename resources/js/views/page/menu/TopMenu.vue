@@ -5,16 +5,11 @@ import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
 import SubmenuPopover from './submenu/SubmenuPopover.vue'
+import top from '@/json/menu/TopMenu.js'
+
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
 const user = auth.getUser
-
-const homeItems = [
-	{ url: '/service1', title: 'Service 1', subtitle: 'Service 1 description' },
-	{ url: '/service2', title: 'Service 2', subtitle: 'Service 2 description' },
-	{ url: '/service3', title: 'Service 3', subtitle: 'Service 3 description' },
-	{ url: '/service4', title: 'Service 4', subtitle: 'Service 4 description' },
-]
 </script>
 
 <template>
@@ -27,13 +22,12 @@ const homeItems = [
 			</div>
 			<div class="main-header__nav-container">
 				<nav class="main-header__nav" role="menubar">
-					<RouterLink to="/" class="main-header__navlink" :title="$t('Home')" role="menuitem">{{ $t('Home') }}</RouterLink>
-
-					<SubmenuPopover url="/services" title="Services" :items="homeItems" />
-
-					<RouterLink to="/about" class="main-header__navlink" :title="$t('About')" role="menuitem">{{ $t('About') }}</RouterLink>
-					<RouterLink to="/support" class="main-header__navlink" :title="$t('Support')" role="menuitem">{{ $t('Support') }}</RouterLink>
+					<SubmenuPopover url="/" title="Home" :items="top.homeItems" />
+					<SubmenuPopover url="/services" title="Services" :items="top.servicesItems" />
+					<SubmenuPopover url="/about" title="About" :items="top.aboutItems" />
+					<SubmenuPopover url="/support" title="Support" :items="top.supportItems" />
 				</nav>
+
 				<div class="main-header__nav-right" role="presentation">
 					<ChangeTheme />
 					<ChangeLocale />
@@ -45,50 +39,6 @@ const homeItems = [
 </template>
 
 <style>
-.popover__menu {
-	position: relative;
-	display: inline-block;
-}
-
-.popover__submenu {
-	display: none;
-	position: absolute;
-	top: 50px;
-	left: 0px;
-	padding: 20px;
-	width: auto;
-	min-width: 250px;
-	background: var(--bg-primary);
-	border-radius: var(--border-radius);
-	z-index: var(--z-index-menu);
-	box-shadow: 0px 5px 10px #0001;
-}
-
-.popover__menu:hover .popover__submenu {
-	display: inherit;
-}
-
-.popover__menu:hover .main-header__navlink {
-	color: #555;
-}
-
-.rotate__chevron {
-	padding: 5px;
-	transition: all 0.6s;
-}
-
-.popover__menu:hover .rotate__chevron {
-	transform: rotate(180deg);
-}
-
-.submenu__sublink {
-	padding: 10px;
-}
-
-.submenu__sublink:hover {
-	background: var(--btn-gray);
-}
-
 .main-header {
 	float: left;
 	width: 100%;
@@ -127,13 +77,12 @@ const homeItems = [
 }
 
 .main-header__navlink:hover {
-	color: #555;
+	color: var(--accent-primary);
 }
 
 .main-header__navlink--active {
-	font-weight: 500;
+	font-weight: 600;
 	color: var(--accent-primary);
-	/* border-bottom: 1px solid var(--accent-primary); */
 }
 
 .main-header__navlink--active:hover {
@@ -141,11 +90,11 @@ const homeItems = [
 }
 
 .main-header__navlink--small {
-	color: #0d0c22;
-	background: #f9f9f9;
-	font-size: 14px;
-	font-weight: 500;
+	color: var(--text-primary);
+	background: var(--bg-secondary);
 	border-radius: var(--btn-border-radius);
+	font-weight: 500;
+	font-size: 14px;
 	margin: 5px;
 }
 
@@ -156,7 +105,7 @@ const homeItems = [
 }
 
 .main-header__subtitle {
-	color: var(--text-light-primary);
+	color: var(--text-secondary);
 	font-size: 14px;
 	font-weight: 400;
 	padding: 0px;
@@ -191,10 +140,50 @@ const homeItems = [
 }
 
 .main-header__navlink--subtitle {
-	color: var(--text-light-primary);
+	color: var(--text-secondary);
 	font-size: 13px;
 	margin: 0px;
 	padding: 0px 5px;
+}
+
+.popover__menu {
+	position: relative;
+	display: inline-block;
+}
+
+.popover__submenu {
+	display: none;
+	position: absolute;
+	top: 50px;
+	left: 0px;
+	padding: 20px;
+	width: auto;
+	min-width: 250px;
+	background: var(--bg-primary);
+	border-radius: var(--border-radius);
+	z-index: var(--z-index-menu);
+	box-shadow: 0px 5px 10px #0001;
+}
+
+.popover__menu:hover .popover__submenu {
+	display: inherit;
+}
+
+.rotate__chevron {
+	padding: 5px;
+	transition: all 0.6s;
+}
+
+.popover__menu:hover .rotate__chevron {
+	transform: rotate(180deg);
+}
+
+.submenu__sublink {
+	padding: 10px;
+}
+
+.submenu__sublink:hover {
+	background: var(--bg-secondary);
 }
 
 @media all and (min-width: 1460px) {
