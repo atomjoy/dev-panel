@@ -110,7 +110,7 @@ function onSubmit(e) {
 							value="1"
 							v-model="confirm_services"
 							name="confirm_services" />
-						<RouterLink to="/pdf/services" class="link-policy" target="_blank">{{
+						<RouterLink to="/docs/services" class="link-policy" target="_blank">{{
 							$t('register.Policy')
 						}}</RouterLink>
 					</div>

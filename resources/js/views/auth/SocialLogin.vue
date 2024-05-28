@@ -1,6 +1,6 @@
 <template>
 	<div class="social-login-buttons">
-		<a href="/oauth/google/redirect" title="{{ $t('login.Sign_In_Google') }}">
+		<a href="/oauth/google/redirect" :title="$t('login.Sign_In_Google')">
 			<div class="social-login-btn social-google-btn">
 				<!-- <i class="fa-brands fa-google"></i> -->
 				<svg
@@ -35,7 +35,7 @@
 				<span> {{ $t('login.Sign_In_Google') }} </span>
 			</div>
 		</a>
-		<a href="/oauth/github/redirect" title="{{ $t('login.Sign_In_Github') }}">
+		<a href="/oauth/github/redirect" :title="$t('login.Sign_In_Github')">
 			<div class="social-login-btn social-github-btn">
 				<i class="fa-brands fa-github"></i>
 				<span> {{ $t('login.Sign_In_Github') }} </span>

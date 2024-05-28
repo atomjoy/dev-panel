@@ -1,9 +1,11 @@
 <script setup>
 import TopMenu from './menu/TopMenu.vue'
+import TopMenuMobile from './menu/TopMenuMobile.vue'
 </script>
 
 <template>
 	<TopMenu />
+	<TopMenuMobile />
 	<div class="section">
 		<div class="section__wrapper">
 			<h1 class="animate__animated animate__flipInX">
