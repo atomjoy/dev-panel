@@ -1,0 +1,3 @@
+Sitemap: https://atomjoy.pl/sitemap.xml
+User-agent: *
+Disallow:

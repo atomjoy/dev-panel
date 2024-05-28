@@ -1,0 +1,5 @@
+Sitemap: https://atomjoy.pl/sitemap.xml
+User-agent: Googlebot
+User-agent: AdsBot-Google
+User-agent: Googlebot-Image
+Disallow: /

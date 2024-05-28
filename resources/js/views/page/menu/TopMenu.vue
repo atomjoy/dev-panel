@@ -159,7 +159,7 @@ const links = menu.links
 	background: var(--bg-primary);
 	border-radius: var(--border-radius);
 	z-index: var(--z-index-menu);
-	box-shadow: 0px 5px 10px #0001;
+	box-shadow: 0px 5px 10px #0003;
 }
 
 .popover__menu:hover .popover__submenu {
