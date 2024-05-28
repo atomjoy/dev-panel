@@ -5,11 +5,12 @@ import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
 import SubmenuPopover from './submenu/SubmenuPopover.vue'
-import top from '@/json/menu/TopMenu.js'
+import menu from '@/json/menu/TopMenu.js'
 
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
 const user = auth.getUser
+const links = menu.links
 </script>
 
 <template>
@@ -22,12 +23,8 @@ const user = auth.getUser
 			</div>
 			<div class="main-header__nav-container">
 				<nav class="main-header__nav" role="menubar">
-					<SubmenuPopover url="/" title="Home" :items="top.homeItems" />
-					<SubmenuPopover url="/services" title="Services" :items="top.servicesItems" />
-					<SubmenuPopover url="/about" title="About" :items="top.aboutItems" />
-					<SubmenuPopover url="/support" title="Support" :items="top.supportItems" />
+					<SubmenuPopover v-for="link in links" :url="link.url" :title="link.title" :items="link.sublinks" />
 				</nav>
-
 				<div class="main-header__nav-right" role="presentation">
 					<ChangeTheme />
 					<ChangeLocale />

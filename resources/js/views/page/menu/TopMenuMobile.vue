@@ -5,12 +5,13 @@ import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
 import SubmenuMobile from './submenu/SubmenuMobile.vue'
-import top from '@/json/menu/TopMenu.js'
+import menu from '@/json/menu/TopMenu.js'
 
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
 const user = auth.getUser
 const open = ref(false)
+const links = menu.links
 
 function openMenue() {
 	open.value = !open.value
@@ -45,10 +46,7 @@ function openMenue() {
 		</div>
 
 		<nav v-if="open" class="main-header__nav-mobile main-mobile-header-closed" role="menubar">
-			<SubmenuMobile url="/" title="Home" :items="top.homeItems" />
-			<SubmenuMobile url="/services" title="Services" :items="top.servicesItems" />
-			<SubmenuMobile url="/about" title="About" :items="top.aboutItems" />
-			<SubmenuMobile url="/support" title="Support" :items="top.supportItems" />
+			<SubmenuMobile v-for="link in links" :url="link.url" :title="link.title" :items="link.sublinks" />
 		</nav>
 	</div>
 </template>
