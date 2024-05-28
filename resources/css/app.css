@@ -10,12 +10,14 @@
 	--scrollbar-thumb: #e6e6e6;
 	--btn-border-radius: 50px;
 	--z-index-menu: 9000;
+	--scrollbar-width: 10px;
 }
 
 :root {
 	color-scheme: light;
 	--bg-primary: #fff;
 	--text-primary: #232629;
+	--text-light-primary: #3d3d4e;
 	--accent-primary: #ff9557; /* #0249fe; */
 	--accent-secondary: #f6782f;
 	--placeholder: #717171;
@@ -31,6 +33,7 @@
 		color-scheme: dark;
 		--bg-primary: #212529; /* #1E1E1E; #212529; */
 		--text-primary: #fff;
+		--text-light-primary: #3a3a3a;
 		--accent-primary: #ff9557; /* #0249FE; */
 		--placeholder: #717171;
 		--code-border: #717171;
@@ -57,6 +60,7 @@
 	color-scheme: dark;
 	--bg-primary: #212529; /* #1E1E1E; #212529; */
 	--text-primary: #fff;
+	--text-light-primary: #3a3a3a;
 	--accent-primary: #ff9557; /* #0249FE; */
 	--placeholder: #717171;
 	--code-border: #717171;
@@ -131,7 +135,7 @@ iframe {
 }
 
 .scrollbar-thin::-webkit-scrollbar {
-	width: 8px;
+	width: var(--scrollbar-width);
 	background: var(--scrollbar-bg);
 }
 

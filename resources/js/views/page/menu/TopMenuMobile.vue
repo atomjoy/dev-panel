@@ -1,10 +1,13 @@
 <script setup>
 import { RouterLink } from 'vue-router'
+import { ref } from 'vue'
+import { useAuthStore } from '@/stores/auth.js'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
-import { useAuthStore } from '@/stores/auth.js'
-import { ref } from 'vue'
+import SubLink from './submenu/SubLinkMobile.vue'
+import SubmenuMobile from './submenu/SubmenuMobile.vue'
+
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
 const user = auth.getUser
@@ -15,6 +18,13 @@ function openMenue() {
 	const el = document.querySelector('.main-mobile-header')
 	el.classList.toggle('main-mobile-header-fixed')
 }
+
+const homeItems = [
+	{ url: '/service1', title: 'Service 1', subtitle: 'Service 1 description' },
+	{ url: '/service2', title: 'Service 2', subtitle: 'Service 2 description' },
+	{ url: '/service3', title: 'Service 3', subtitle: 'Service 3 description' },
+	{ url: '/service4', title: 'Service 4', subtitle: 'Service 4 description' },
+]
 </script>
 
 <template>
@@ -37,41 +47,23 @@ function openMenue() {
 				<div class="main-header__nav-right" role="presentation">
 					<ChangeTheme />
 					<ChangeLocale />
-					<ProfilMenu
-						:logged="logged"
-						:profil="true"
-						:name="user?.profile?.name"
-						:email="user?.email"
-						:avatar="user?.profile?.avatar" />
+					<ProfilMenu :logged="logged" :profil="true" :name="user?.profile?.name" :email="user?.email" :avatar="user?.profile?.avatar" />
 				</div>
 			</div>
 		</div>
 
 		<nav v-if="open" class="main-header__nav-mobile main-mobile-header-closed" role="menubar">
-			<RouterLink to="/" class="main-header__navlink-mobile" :title="$t('Home')" role="menuitem">{{
-				$t('Home')
-			}}</RouterLink>
-			<RouterLink
-				to="/services"
-				class="main-header__navlink-mobile"
-				:title="$t('Services')"
-				role="menuitem"
-				>{{ $t('Services') }}</RouterLink
-			>
-			<RouterLink
-				to="/about"
-				class="main-header__navlink-mobile"
-				:title="$t('About')"
-				role="menuitem"
-				>{{ $t('About') }}</RouterLink
-			>
-			<RouterLink
-				to="/support"
-				class="main-header__navlink-mobile"
-				:title="$t('Support')"
-				role="menuitem"
-				>{{ $t('Support') }}</RouterLink
-			>
+			<RouterLink to="/" class="main-header__navlink-mobile" :title="$t('Home')" role="menuitem">{{ $t('Home') }}</RouterLink>
+			<SubmenuMobile :items="[]" />
+
+			<RouterLink to="/services" class="main-header__navlink-mobile" :title="$t('Services')" role="menuitem">{{ $t('Services') }}</RouterLink>
+			<SubmenuMobile :items="homeItems" />
+
+			<RouterLink to="/about" class="main-header__navlink-mobile" :title="$t('About')" role="menuitem">{{ $t('About') }}</RouterLink>
+			<SubmenuMobile :items="homeItems" />
+
+			<RouterLink to="/support" class="main-header__navlink-mobile" :title="$t('Support')" role="menuitem">{{ $t('Support') }}</RouterLink>
+			<SubmenuMobile :items="homeItems" />
 		</nav>
 	</div>
 </template>
@@ -80,6 +72,30 @@ function openMenue() {
 #open-mobile-menu {
 	cursor: pointer;
 	font-size: 25px;
+}
+
+.mobile-submenu-menu {
+	float: left;
+	width: 90%;
+	margin: 0px 5%;
+	padding: 0px 30px;
+	border-left: 1px solid var(--divider-primary);
+}
+
+.main-header__navlink-mobile--small {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--text-primary);
+}
+
+.main-header__navlink-mobile--small:hover {
+	color: var(--accent-primary);
+}
+
+.main-header__navlink-mobile--subtitle {
+	color: var(--text-light-primary);
+	font-size: 13px;
+	margin: 0px;
 }
 
 .main-mobile-header {
@@ -125,9 +141,14 @@ function openMenue() {
 }
 
 .main-header__nav-mobile {
+	float: left;
+	width: calc(100% - var(--scrollbar-width, 10px));
 	border-top: 1px solid var(--divider-primary);
 	transition: all 0.5s;
 	padding-top: 20px;
+	padding-bottom: 100px;
+	overflow-y: scroll;
+	scrollbar-width: thin;
 }
 
 .main-mobile-header-fixed {
