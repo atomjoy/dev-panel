@@ -43,13 +43,7 @@ onMounted(() => {})
 </script>
 <template>
 	<div class="user-login-btn">
-		<RouterLink
-			v-if="!props.logged"
-			to="/login"
-			role="menuitem"
-			rel="nofollow"
-			class="main-header__navlink main-header__navlink--small"
-			:title="$t('Sign in')">
+		<RouterLink v-if="!props.logged" to="/login" role="menuitem" rel="nofollow" class="main-header__navlink main-header__navlink--small" :title="$t('Sign in')">
 			{{ $t('Sign in') }}
 		</RouterLink>
 
@@ -74,12 +68,12 @@ onMounted(() => {})
 				<div class="name">
 					<strong>{{ props.name ?? 'Unknown' }}</strong>
 				</div>
-				<router-link to="/panel/profil" class="link-mini">
+				<router-link to="/panel/profil" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
 					<ProfilIcon />
 					{{ t('Profile') }}
 				</router-link>
 
-				<router-link to="/panel/account" class="link-mini">
+				<router-link to="/panel/account" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
 					<AccountIcon />
 					{{ t('Account') }}
 				</router-link>
@@ -168,12 +162,13 @@ onMounted(() => {})
 	position: relative;
 	box-sizing: border-box;
 	float: right;
-	width: 52px;
-	height: 52px;
-	padding: 2px;
+	width: 53px;
+	height: 53px;
+	padding: 4px;
 	cursor: pointer;
 	border-radius: 50%;
-	border: 2px solid var(--accent-primary);
+	background: var(--bg-secondary);
+	border: 1px solid var(--bg-secondary);
 }
 .user-image img {
 	display: inline;
@@ -184,13 +179,13 @@ onMounted(() => {})
 }
 .open-icon {
 	position: absolute;
-	bottom: -5px;
-	right: -5px;
+	bottom: -11px;
+	right: -11px;
 	padding: 2px;
-	width: 24px;
-	height: 24px;
-	background: var(--accent-primary);
-	border: 3px solid var(--bg-primary);
+	width: 30px;
+	height: 30px;
+	border: 5px solid var(--bg-primary);
+	background: var(--text-primary);
 	overflow: hidden;
 	border-radius: 50%;
 	transition: all 0.6s;
@@ -199,11 +194,11 @@ onMounted(() => {})
 .open-icon svg {
 	width: 17px;
 	height: 17px;
-	stroke: #fff;
+	stroke: var(--bg-primary);
 	border-radius: 50%;
 }
 .user-image:hover .open-icon {
-	background: #55cc55;
+	background: var(--accent-primary);
 }
 
 .close-icon {

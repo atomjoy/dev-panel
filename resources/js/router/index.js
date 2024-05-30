@@ -52,9 +52,13 @@ const router = createRouter({
 			component: () => import('../views/error/404.vue'),
 		},
 	],
-	// always scroll to top
+	// Scroll to top
 	scrollBehavior(to, from, savedPosition) {
-		return { top: 0 }
+		if (savedPosition) {
+			return savedPosition
+		} else {
+			return { top: 0 }
+		}
 	},
 })
 

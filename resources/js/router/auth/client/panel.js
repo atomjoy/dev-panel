@@ -41,12 +41,6 @@ const routes = [
 	// 	meta: { requiresAuth: true },
 	// },
 	// {
-	// 	path: '/panel/notifications',
-	// 	name: 'panel.notifications',
-	// 	component: () => import('@/views/panel/client/OrdersView.vue'),
-	// 	meta: { requiresAuth: true },
-	// },
-	// {
 	// 	path: '/panel/account',
 	// 	name: 'panel.account',
 	// 	component: () => import('@/views/panel/client/AccountView.vue'),
@@ -63,6 +57,12 @@ const routes = [
 	// 	path: '/panel/password',
 	// 	name: 'panel.password',
 	// 	component: () => import('@/views/panel/client/PasswordView.vue'),
+	// 	meta: { requiresAuth: true },
+	// },
+	// {
+	// 	path: '/panel/notifications',
+	// 	name: 'panel.notifications',
+	// 	component: () => import('@/views/panel/client/OrdersView.vue'),
 	// 	meta: { requiresAuth: true },
 	// },
 ]

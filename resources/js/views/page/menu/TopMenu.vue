@@ -95,6 +95,10 @@ const links = menu.links
 	margin: 5px;
 }
 
+.main-header__navlink--small:hover {
+	color: var(--text-primary) !important;
+}
+
 .main-header__sublink {
 	color: var(--text-primary);
 	font-size: 14px;

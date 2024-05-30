@@ -66,6 +66,10 @@ option {
 	background: var(--wow-bg);
 }
 
+option:hover {
+	background: var(--bg-third) !important;
+}
+
 .input-group {
 	position: relative;
 	float: left;
