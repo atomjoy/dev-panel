@@ -1,9 +1,9 @@
 <script setup>
-const props = defineProps(['url', 'title', 'description', 'icon'])
+const props = defineProps(['url', 'title', 'description'])
 </script>
 <template>
 	<router-link :to="props.url" class="page__link" activeClass="page__link-active">
-		<i :class="props.icon"></i>
+		<slot></slot>
 		<div class="page-link__text">
 			<div class="page-link__title">{{ $t(props.title) }} <i class="fas fa-chevron-right"></i></div>
 			<div class="page-link__description">{{ $t(props.description) }}</div>
@@ -39,13 +39,12 @@ const props = defineProps(['url', 'title', 'description', 'icon'])
 .page__link-active * {
 	color: var(--text-primary) !important;
 }
-.page__link-active:hover .page__link {
-	background: var(--bg-primary) !important;
-	cursor: default;
+.page__link-active:hover * {
+	color: var(--accent-primary) !important;
 }
 .page-link__title {
 	font-size: 16px;
-	font-weight: 600;
+	font-weight: 500;
 	padding: 10px 20px 10px 0px;
 	color: var(--text-secondary);
 }
@@ -60,7 +59,7 @@ const props = defineProps(['url', 'title', 'description', 'icon'])
 	font-size: 15px;
 	font-weight: 400;
 	padding: 0px 20px 20px 0px;
-	color: var(--text-secondary);
+	color: var(--text-third);
 	border-bottom: 1px solid var(--divider-primary);
 }
 .page-link__text {
@@ -69,5 +68,8 @@ const props = defineProps(['url', 'title', 'description', 'icon'])
 }
 .page__link:last-child .page-link__description {
 	border-bottom: none;
+}
+.page__link-active .page-link__title {
+	font-weight: 700;
 }
 </style>

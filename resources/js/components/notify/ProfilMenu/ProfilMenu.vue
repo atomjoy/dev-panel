@@ -59,7 +59,7 @@ onMounted(() => {})
 				</div> -->
 
 				<div class="user-image">
-					<img :src="avatar_path" @error="defImage" />
+					<img :src="avatar_path" @error="defImage" id="refresh-user-image" />
 					<div :class="{ 'open-icon': true, 'close-icon': open }"><ChevronIcon /></div>
 				</div>
 			</div>

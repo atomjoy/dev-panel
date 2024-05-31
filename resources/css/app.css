@@ -2,11 +2,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
+	--c-navyblue: #1746a2;
+	--c-lightblue: #609df6;
+	--c-brick: #ff731c;
+	--c-green: #a5fe34;
+	--c-cream: #fff7ea;
+	--c-yellow: #ffbb54;
+	--c-pink: #ff7784;
+	--c-violet: #717eee;
+	--c-blue: #46bfff;
+
 	--font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	--font-family-text: 'Open Sans', Arial, Helvetica, sans-serif;
 	--font-size: 16px;
 	--border-radius: 10px;
-	--scrollbar-bg: #ff9557;
+	--scrollbar-bg: #ff9557; /* Green #BBFD38; Orange #ff9557; #fa8618 */
 	--scrollbar-thumb: #e6e6e6;
 	--btn-border-radius: 50px;
 	--z-index-menu: 9000;
@@ -16,10 +26,11 @@
 :root {
 	color-scheme: light;
 	--bg-primary: #fff;
-	--bg-secondary: #f3f3f3;
+	--bg-secondary: #f5f6fa;
 	--bg-third: #fbfbfb;
-	--text-primary: #232629;
-	--text-secondary: #666;
+	--text-primary: #0d0d0d;
+	--text-secondary: #454850;
+	--text-third: #b3b3b3;
 	--accent-primary: #ff9557; /* #0249fe; */
 	--accent-secondary: #fd6e41; /* #fd6e41; #ff3000; #FC4409; #f6782f; */
 	--placeholder: #717171;
@@ -38,11 +49,12 @@
 		--bg-third: #3b3538;
 		--text-primary: #fff;
 		--text-secondary: #949392;
+		--text-third: #a4a4a4;
 		--accent-primary: #ff9557; /* #0249FE; */
 		--placeholder: #717171;
 		--code-border: #717171;
 		--logo: url('@/assets/images/logo-dark.png');
-		--divider-primary: #717171;
+		--divider-primary: #3b3538;
 		--text-disabled: #999;
 		--btn-gray: #717171;
 	}
@@ -52,10 +64,11 @@
 [color-scheme='light'] {
 	color-scheme: light;
 	--bg-primary: #fff;
-	--bg-secondary: #f3f3f3;
+	--bg-secondary: #f5f6fa;
 	--bg-third: #fbfbfb;
-	--text-primary: #212329;
-	--text-secondary: #666;
+	--text-primary: #0d0d0d;
+	--text-secondary: #454850;
+	--text-third: #b3b3b3;
 	--accent-primary: #ff9557; /* #0249fe; */
 	--placeholder: #717171;
 	--logo: url('@/assets/images/logo-light.png');
@@ -70,11 +83,12 @@
 	--bg-third: #3b3538;
 	--text-primary: #fff;
 	--text-secondary: #949392;
+	--text-third: #a4a4a4;
 	--accent-primary: #ff9557; /* #0249FE; */
 	--placeholder: #717171;
 	--code-border: #717171;
 	--logo: url('@/assets/images/logo-dark.png');
-	--divider-primary: #717171;
+	--divider-primary: #3b3538;
 	--text-disabled: #999;
 	--btn-gray: #717171;
 }
