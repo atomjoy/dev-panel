@@ -2,16 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
-	--c-navyblue: #1746a2;
-	--c-lightblue: #609df6;
-	--c-brick: #ff731c;
-	--c-green: #a5fe34;
-	--c-cream: #fff7ea;
-	--c-yellow: #ffbb54;
-	--c-pink: #ff7784;
-	--c-violet: #717eee;
-	--c-blue: #46bfff;
-
 	--font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	--font-family-text: 'Open Sans', Arial, Helvetica, sans-serif;
 	--font-size: 16px;

@@ -6,6 +6,7 @@ import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
 import menu from '@/json/menu/TopMenu.js'
 import { ref } from 'vue'
+import PageFooter from '../page/PageFooter.vue'
 
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
@@ -56,6 +57,11 @@ function openMenu() {
 	<div class="panel__slot">
 		<div class="panel__slot-wrapper">
 			<slot></slot>
+		</div>
+	</div>
+	<div class="panel__footer">
+		<div class="panel__footer-wrapper">
+			<PageFooter />
 		</div>
 	</div>
 </template>

@@ -132,7 +132,7 @@
 		"editor.defaultFormatter": "DotJoshJohnson.xml"
 	},
 	"[json]": {
-		"editor.formatOnSave": false,
+		"editor.formatOnSave": true,
 		"editor.defaultFormatter": "vscode.json-language-features"
 	},
 

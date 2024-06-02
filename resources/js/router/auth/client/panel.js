@@ -13,7 +13,25 @@ const routes = [
 	{
 		path: '/panel/profil',
 		name: 'panel.profil',
-		component: () => import('@/views/panel/client/PanelProfilView.vue'),
+		component: () => import('@/views/panel/client/PanelProfilAvatarView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/profil/details',
+		name: 'panel.profil.details',
+		component: () => import('@/views/panel/client/PanelProfilDetailsView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/profil/images',
+		name: 'panel.profil.images',
+		component: () => import('@/views/panel/client/PanelProfilImagesView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/profil/social',
+		name: 'panel.profil.social',
+		component: () => import('@/views/panel/client/PanelProfilSocialView.vue'),
 		meta: { requiresAuth: true },
 	},
 	// {

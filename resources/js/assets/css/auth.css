@@ -23,13 +23,12 @@ label i {
 
 button {
 	float: right;
-	padding: 1rem 3rem;
-	margin-top: 20px;
-	margin-bottom: 20px;
+	padding: 15px 35px;
+	margin: 20px 0px;
 	font-size: 1rem;
 	font-weight: 600;
-	color: #fff;
 	text-align: center;
+	color: var(--bg-primary);
 	background: var(--accent-primary);
 	border: 1px solid var(--accent-primary);
 	border-radius: var(--btn-border-radius);

@@ -16,6 +16,7 @@ use App\Http\Controllers\Auth\EmailChangeController;
 use App\Http\Controllers\Auth\EmailChangeConfirmController;
 use App\Http\Controllers\Auth\EmailChangeRecoverController;
 use App\Http\Controllers\Auth\UploadAvatarController;
+use App\Http\Controllers\Auth\UploadBannerController;
 use App\Http\Controllers\Auth\AccountDeleteController;
 use App\Http\Controllers\Auth\NotificationsController;
 use App\Http\Controllers\Auth\F2aController;
@@ -72,5 +73,10 @@ Route::prefix('web/api')->name('web.api.')->middleware([
 		Route::post('/remove/avatar', [UploadAvatarController::class, 'remove'])->name('remove.avatar');
 		// Show image
 		Route::get('/show/avatar', [UploadAvatarController::class, 'show'])->name('show.avatar')->withoutMiddleware('forcejson');
+		// Banner
+		Route::post('/upload/banner', [UploadBannerController::class, 'index'])->name('upload.banner');
+		Route::post('/remove/banner', [UploadBannerController::class, 'remove'])->name('remove.banner');
+		// Show image
+		Route::get('/show/banner', [UploadBannerController::class, 'show'])->name('show.banner')->withoutMiddleware('forcejson');
 	});
 });

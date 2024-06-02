@@ -1,49 +1,46 @@
 <script setup>
 import axios from 'axios'
 import Label from '@/components/input/Label.vue'
-import avatar_default from './profil/avatar.png'
+import profile_default from './profil/banner.png'
 import { toRefs, ref } from 'vue'
 
 const props = defineProps({
-	avatar: { default: avatar_default },
+	profile: { default: profile_default },
 	label: { default: 'Select image' },
-	remove_avatar_url: { default: '/web/api/remove/avatar' },
-	remove_success: { default: 'Avatar removed.' },
-	remove_error: { default: 'Avatar not removed.' },
+	remove_profile_url: { default: '/web/api/remove/banner' },
+	remove_success: { default: 'Profil banner removed.' },
+	remove_error: { default: 'Profil banner not removed.' },
 })
 
-const avatar_path = ref(null)
+const profile_path = ref(null)
 
-if (props.avatar) {
-	avatar_path.value = '/storage/' + props.avatar
+if (props.profile) {
+	profile_path.value = '/storage/' + props.profile
 
-	if (props.avatar.toLowerCase().startsWith('http://')) {
-		avatar_path.value = props.avatar
+	console.log(profile_path.value, props.profile)
+
+	if (props.profile.toLowerCase().startsWith('http://')) {
+		profile_path.value = props.profile
 	}
 
-	if (props.avatar.toLowerCase().startsWith('https://')) {
-		avatar_path.value = props.avatar
+	if (props.profile.toLowerCase().startsWith('https://')) {
+		profile_path.value = props.profile
 	}
 } else {
-	avatar_path.value = avatar_default
+	profile_path.value = profile_default
 }
 
 function getImagePath(e) {
 	const path = URL.createObjectURL(e.target.files[0])
 	if (path) {
-		avatar_path.value = path
-	}
-
-	const el = document.querySelector('#refresh-user-image')
-	if (el) {
-		el.src = path
+		profile_path.value = path
 	}
 }
 
-async function removeAvatar() {
+async function removeImage() {
 	try {
-		await axios.post(props.remove_avatar_url, [])
-		avatar_path.value = avatar_default
+		await axios.post(props.remove_profile_url, [])
+		profile_path.value = profile_default
 		alert(props.remove_success)
 	} catch (err) {
 		alert(props.remove_error)
@@ -51,28 +48,26 @@ async function removeAvatar() {
 }
 
 function openFile() {
-	let el = document.querySelector('#avatar-input')
+	let el = document.querySelector('#profile-input')
 	el.click()
 }
 </script>
 
 <template>
 	<div class="input-group">
-		<div class="avatar-input">
-			<div @click="removeAvatar" class="delete-avatar" :title="$t('Remove avatar')">
+		<div class="profile-input">
+			<div @click="removeImage" class="delete-profile" :title="$t('Remove profile image')">
 				<i class="fa-solid fa-trash"></i>
 			</div>
-			<img :src="avatar_path" class="avatar-image" />
+			<img :src="profile_path" class="profile-image" />
 
-			<Label name="avatar" text="Select image" />
+			<Label name="profile" text="Select image" />
 
 			<div id="choose-file" @click="openFile">
-				<span class="choose-info">{{ $t('Select image with .webp, .png or .jpg extension (min. 256x256 px).') }}</span>
+				<span class="choose-info">{{ $t('Select image with .webp, .png or .jpg extension (min. 1920x540 px).') }}</span>
 				<span id="upload-button"><i class="fa-solid fa-upload"></i> {{ $t('Choose Image') }}</span>
 			</div>
-			<input id="avatar-input" @change="getImagePath" type="file" name="avatar" hidden="true" />
-
-			<!-- <Input @change="getImagePath" :label="props.label" name="avatar" type="file" id="avatar-input" /> -->
+			<input id="profile-input" @change="getImagePath" type="file" name="banner" hidden="true" />
 		</div>
 	</div>
 </template>
@@ -106,14 +101,14 @@ function openFile() {
 	padding: 10px;
 	color: var(--text-secondary);
 }
-.avatar-input {
+.profile-input {
 	position: relative;
 	display: flex;
 	display: block;
 	float: left;
 	width: 100%;
 }
-.delete-avatar {
+.delete-profile {
 	position: absolute;
 	top: 0px;
 	left: -5px;
@@ -128,23 +123,22 @@ function openFile() {
 	background: var(--wow-accent);
 	transition: all 0.6s;
 }
-.delete-avatar:hover {
+.delete-profile:hover {
 	background: #f23;
 }
-.avatar-image {
+.profile-image {
 	float: left;
-	min-width: 80px;
-	max-width: 80px;
-	min-height: 80px;
-	max-height: 80px;
+	width: 100%;
+	height: auto;
+	max-height: 256px;
 	padding: 5px;
 	margin-right: 30px;
 	margin-top: 10px;
-	border-radius: 50%;
-	object-fit: cover;
+	border-radius: var(--border-radius);
 	background: var(--bg-secondary);
-	/* border: 2px solid var(--wow-accent); */
+	object-fit: cover;
+	object-position: top center;
 }
 </style>
 
-<!-- Avatars https://i.pravatar.cc/128 -->
+<!-- Avatars https://i.prprofile.cc/128 -->

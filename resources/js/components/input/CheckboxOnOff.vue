@@ -1,7 +1,7 @@
 <template>
 	<div class="input-group">
 		<div class="checkbox-line">
-			<label v-if="props.label" :for="props.name">{{ props.label }} <slot></slot></label>
+			<Label v-if="props.label" :name="props.name" :text="props.label"><slot></slot></Label>
 			<input class="checkbox checkbox-checkmark-onoff" type="checkbox" :value="props.value" :name="props.name" v-model="props.modelValue" @change="emits('update:modelValue', props.modelValue)" />
 			<div :class="{ 'checkmark-onoff': true, 'checkmark-onoff-checked': checked }">
 				<div class="dot"></div>
@@ -12,6 +12,7 @@
 
 <script setup>
 import { computed } from 'vue'
+import Label from './Label.vue'
 
 const emits = defineEmits(['update:modelValue', 'change'])
 const props = defineProps({

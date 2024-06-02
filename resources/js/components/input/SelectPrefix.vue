@@ -1,6 +1,6 @@
 <template>
 	<div class="input-group">
-		<label v-if="label" :for="name">{{ label }} <slot></slot></label>
+		<Label v-if="props.label" :name="props.name" :text="props.label"><slot></slot></Label>
 		<div :class="{ 'custom-select': true, 'custom-select-open': open }" :data-uid="uid" @blur="open = false" @click.stop="openSelect">
 			<div class="selected" :class="{ open: open, inactive: inactive }">{{ selected }} <IconChevronDown class="selected-icon" /></div>
 			<div class="rounded">
@@ -20,6 +20,7 @@ import { ref, onMounted, toRefs } from 'vue'
 import options from './json/country.json'
 import IconChevronDown from './icons/IconChevronDown.vue'
 import IconCheckmark from './icons/IconCheckmark.vue'
+import Label from './Label.vue'
 
 const emit = defineEmits(['update:modelValue', 'change', 'click', 'blur'])
 const props = defineProps({

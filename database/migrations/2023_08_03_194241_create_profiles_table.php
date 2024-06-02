@@ -18,6 +18,7 @@ return new class extends Migration
 			$table->string('name', 50)->nullable();
 			$table->string('location', 50)->nullable();
 			$table->string('avatar')->nullable();
+			$table->string('banner')->nullable();
 			$table->text('bio')->nullable();
 			$table->timestamps();
 			$table->softDeletes();

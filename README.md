@@ -54,6 +54,8 @@ return [
 ### Uruchom
 
 ```sh
+php artisan key:generate
+php artisan config:clear
 php artisan storage:link
 php artisan migrate:fresh
 

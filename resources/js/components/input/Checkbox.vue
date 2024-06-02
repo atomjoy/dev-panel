@@ -5,7 +5,7 @@
 			<div class="checkmark">
 				<IconCheckmark v-if="checked" />
 			</div>
-			<label v-if="props.label" :for="props.name">{{ props.label }} <slot></slot></label>
+			<Label v-if="props.label" :name="props.name" :text="props.label"><slot></slot></Label>
 		</div>
 	</div>
 </template>
@@ -13,6 +13,7 @@
 <script setup>
 import { computed } from 'vue'
 import IconCheckmark from './icons/IconCheckmark.vue'
+import Label from './Label.vue'
 
 const emits = defineEmits(['update:modelValue', 'change'])
 const props = defineProps({

@@ -24,7 +24,8 @@ class ProfileFactory extends Factory
 			'name' => fake()->name(),
 			'location' => fake()->city(),
 			'bio' => fake()->sentence(10),
-			'avatar' => 'https://source.unsplash.com/random/256x256'
+			'avatar' => 'https://source.unsplash.com/random/256x256',
+			'banner' => 'https://source.unsplash.com/random/1920x540'
 			// 'avatar' => $this->faker->imageUrl(256, 256, 'animals', true),
 		];
 	}

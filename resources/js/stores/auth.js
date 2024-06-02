@@ -255,6 +255,17 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
+	async function changeUserBanner(data) {
+		try {
+			let res = await axios.post('/web/api/upload/banner', data)
+			setMessage(res)
+			isAuthenticated()
+		} catch (err) {
+			setError(err)
+			logError(err)
+		}
+	}
+
 	async function changeUserProfil(data) {
 		try {
 			data.append('_method', 'PATCH')
@@ -388,5 +399,6 @@ export const useAuthStore = defineStore('auth', () => {
 		disableF2a,
 		enableF2aAdmin,
 		disableF2aAdmin,
+		changeUserBanner,
 	}
 })

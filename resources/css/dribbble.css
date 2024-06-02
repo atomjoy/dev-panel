@@ -2,6 +2,15 @@
 :host,
 .sl-theme-light {
 	color-scheme: light;
+	--c-navyblue: #1746a2;
+	--c-lightblue: #609df6;
+	--c-brick: #ff731c;
+	--c-green: #a5fe34;
+	--c-cream: #fff7ea;
+	--c-yellow: #ffbb54;
+	--c-pink: #ff7784;
+	--c-violet: #717eee;
+	--c-blue: #46bfff;
 	--sl-color-primary-50: rgb(254 248 250);
 	--sl-color-primary-100: rgb(252 231 239);
 	--sl-color-primary-200: rgb(250 212 227);
@@ -295,8 +304,7 @@
 	--sl-transition-fast: 0.15s;
 	--sl-transition-x-fast: 50ms;
 	--sl-font-mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
-	--sl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--sl-font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	--sl-font-serif: Georgia, 'Times New Roman', serif;
 	--sl-font-size-2x-small: 0.625rem;
 	--sl-font-size-x-small: 0.75rem;

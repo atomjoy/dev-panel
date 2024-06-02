@@ -1,22 +1,25 @@
 :root {
 	color-scheme: light;
 	--wow-font-size: 18px;
-	--wow-bg: #fff;
-	--wow-input-bg: #fcfcfc;
+	--wow-bg: var(--bg-primary);
+	--wow-input-bg: var(--bg-third);
 	--wow-checkbox-shadow: #23262915;
-	--wow-accent: #ff9557;
+	--wow-accent: var(--accent-primary);
+	--wow-accent-secondary: var(--accent-secondary);
 	--wow-accent-light: #ff955722;
-	--wow-color: #232629;
-	--wow-label: #232629; /* #79848f; #1d1d27; */
+	--wow-color: var(--text-primary);
+	--wow-label: var(--text-secondary); /* #232629; #79848f; #1d1d27; */
+	--wow-label-font-size: 14px;
 	--wow-placeholder: #7e7e90; /* #dfe0ea; #7e7e90; */
 	--wow-border: #e2e3ee;
 	--wow-padding: 1em 1.3em;
-	--wow-border-radius: 10px;
-	--wow-border-hover: #ff9557;
+	--wow-border-radius: var(--btn-border-radius);
+	--wow-border-hover: var(--accent-primary);
 	--wow-option-hover: #f4f4f4;
 	--wow-scroll-thumb: #cdcdcd;
 	--wow-scroll-bg: #f0f0f0;
 	--wow-icon: #98a5bd;
+	--wow-btn-color: #fff;
 }
 
 @media (prefers-color-scheme: dark) {

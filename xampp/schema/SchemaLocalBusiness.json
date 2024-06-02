@@ -1,0 +1,47 @@
+{
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "logo": "https://falcobtp.fr/logo/falco-btp.webp",
+    "image": "https://falcobtp.fr/logo/falco-btp-instagram.png",
+    "name": "Falco BTP Paris",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "31 Rue de Constantinopole",
+        "addressLocality": "Paris",
+        "addressRegion": "Élysée",
+        "postalCode": "75008",
+        "addressCountry": "FR"
+    },
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5",
+        "reviewCount": "1"
+    },
+    "review": [
+        {
+            "@type": "Review",
+            "reviewRating": {
+                "@type": "Rating",
+                "ratingValue": "5",
+                "bestRating": "5"
+            },
+            "author": {
+                "@type": "Person",
+                "name": "Marcello Banas"
+            }
+        }
+    ],
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 48.880490,
+        "longitude": 2.318570
+    },
+    "description": "Services de rénovation Paris. Nous proposons des services de rénovation d'appartements, peinture, carrelage, revêtement de sol, plomberie, rénovations, électricité et menuiserie à Paris.",
+    "url": "https://falcobtp.fr/",
+    "telephone": "+33-669-031-859",
+    "email": "falco.btp@gmail.com",
+    "priceRange": "$$$",
+    "openingHours": [
+        "Mo-Sa 08:00-17:00"
+    ]
+}
