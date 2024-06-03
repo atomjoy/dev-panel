@@ -66,6 +66,7 @@ Route::prefix('web/api')->name('web.api.')->middleware([
 		Route::singleton('/account/delete', AccountDeleteController::class, ['except' => ['edit', 'show']]);
 		Route::singleton('/social', SocialController::class, ['except' => ['edit']]);
 		Route::get('/social/delete', [SocialController::class, 'delete']);
+		Route::get('/social/sort', [SocialController::class, 'sort']);
 		// Notifications
 		Route::get('/notifications/page/{page}', [NotificationsController::class, 'index'])->name('notifications.page');
 		Route::get('/notifications/toggle/{id}', [NotificationsController::class, 'toggle'])->name('notifications.toggle');

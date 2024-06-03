@@ -20,7 +20,8 @@ class F2aController extends Controller
 			return response()->json([
 				'message' => __('login.authenticated'),
 				'user' => Auth::user()->fresh([
-					'profile', 'address', 'roles', 'roles_permissions', 'social'
+					'profile', 'address', 'roles',
+					'roles_permissions', 'social', 'social_sorted'
 				])
 			], 200);
 		} else {

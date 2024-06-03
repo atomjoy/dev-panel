@@ -7,7 +7,7 @@
 				<IconChevronDown class="selected-icon" />
 			</div>
 			<div class="rounded">
-				<input type="text" placeholder="Search" @click.stop="" @keyup="filterOptions" />
+				<input v-if="search" type="text" placeholder="Search" @click.stop="" @keyup="filterOptions" />
 				<div ref="items" class="items" :tabindex="tabindex">
 					<div v-if="search_check" class="select-search-error">{{ searchError }}</div>
 					<div v-if="!search_check" :key="0" @click.stop="updateClick(null)">{{ placeholder }}</div>
@@ -36,6 +36,7 @@ const props = defineProps({
 	modelValue: { type: String },
 	tabindex: { type: Number, default: 0 },
 	placeholder: { type: String, default: 'Choose' },
+	search: { type: Boolean, default: true },
 	searchError: { type: String, default: 'Option does not exists.' },
 })
 const { label, name, options, modelValue, tabindex, placeholder } = toRefs(props)

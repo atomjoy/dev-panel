@@ -18,9 +18,10 @@
 	float: left;
 	width: 100%;
 	height: auto;
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	border: 1px solid var(--divider-primary);
 	border-radius: var(--border-radius);
+	overflow: hidden;
 }
 .social-link__top,
 .social-link__bottom {
@@ -54,6 +55,22 @@
 .social-link__delete:hover {
 	color: #fff;
 	background: #f23;
+}
+.social-link__up,
+.social-link__down {
+	float: right;
+	padding: 10px;
+	margin-right: 5px;
+	color: var(--text-secondary);
+	background: var(--bg-secondary);
+	border-radius: var(--border-radius);
+	transition: all 0.6s;
+	cursor: pointer;
+}
+.social-link__up:hover,
+.social-link__down:hover {
+	color: #fff;
+	background: #0066fa;
 }
 .empty__list {
 	float: left;

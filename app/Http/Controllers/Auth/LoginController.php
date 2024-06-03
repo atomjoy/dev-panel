@@ -32,7 +32,7 @@ class LoginController extends Controller
 				'message' => __('login.authenticated'),
 				'user' => Auth::user()->fresh([
 					'profile', 'address', 'roles',
-					'roles_permissions', 'social'
+					'roles_permissions', 'social', 'social_sorted'
 				]),
 				'redirect' => null,
 			], 200);

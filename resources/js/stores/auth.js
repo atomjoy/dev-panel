@@ -248,7 +248,7 @@ export const useAuthStore = defineStore('auth', () => {
 		try {
 			let res = await axios.post('/web/api/upload/avatar', data)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -259,7 +259,7 @@ export const useAuthStore = defineStore('auth', () => {
 		try {
 			let res = await axios.post('/web/api/upload/banner', data)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -271,7 +271,7 @@ export const useAuthStore = defineStore('auth', () => {
 			data.append('_method', 'PATCH')
 			let res = await axios.post('/web/api/profile', data)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -283,7 +283,7 @@ export const useAuthStore = defineStore('auth', () => {
 			data.append('_method', 'PATCH')
 			let res = await axios.post('/web/api/social', data)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -294,7 +294,18 @@ export const useAuthStore = defineStore('auth', () => {
 		try {
 			let res = await axios.get('/web/api/social/delete?id=' + id)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
+		} catch (err) {
+			setError(err)
+			logError(err)
+		}
+	}
+
+	async function changeUserSocialSort(id, index) {
+		try {
+			let res = await axios.get('/web/api/social/sort?id=' + id + '&position=' + index)
+			setMessage(res)
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -306,7 +317,7 @@ export const useAuthStore = defineStore('auth', () => {
 			data.append('_method', 'PATCH')
 			let res = await axios.post('/web/api/address', data)
 			setMessage(res)
-			isAuthenticated()
+			await isAuthenticated()
 		} catch (err) {
 			setError(err)
 			logError(err)
@@ -425,5 +436,6 @@ export const useAuthStore = defineStore('auth', () => {
 		changeUserBanner,
 		changeUserSocial,
 		changeUserSocialDelete,
+		changeUserSocialSort,
 	}
 })

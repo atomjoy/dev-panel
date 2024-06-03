@@ -22,20 +22,22 @@ let options = []
 let option_list = ['artstation', 'btc', 'ethereum', 'xbox', 'playstation', 'patreon', 'earlybirds', 'digg', 'mailchimp', 'skype', 'linux', 'viber', 'threads', 'upwork', 'qq', 'optin-monster', 'weebly', 'unity', 'rebel', 'galactic-republic', 'old-republic', 'jedi-order', 'steam', 'bluesky', 'gitlab', 'weibo', 'youtube', 'facebook', 'x-twitter', 'instagram', 'pinterest', 'dribbble', 'tiktok', 'twitch', 'discord', 'linkedin', 'kickstarter', 'vimeo', 'behance', 'soundcloud', 'napster', 'spotify', 'tumblr', 'medium', 'dev', 'snapchat', 'whatsapp', 'phoenix-squadron']
 
 option_list.sort((a, b) => a.localeCompare(b))
+
+options.push({
+	key: 'fa-solid fa-link',
+	value: '<i class="fa-solid fa-link"></i> Website',
+})
+
+options.push({
+	key: 'fa-solid fa-store',
+	value: '<i class="fa-solid fa-store"></i> Store',
+})
+
 option_list.forEach((item) => {
 	options.push({
 		key: 'fa-brands fa-' + item,
 		value: '<i class="fa-brands fa-' + item + '"></i> ' + item,
 	})
-})
-// Link icon
-options.push({
-	key: 'fa-solid fa-store',
-	value: '<i class="fa-solid fa-store"></i> Store',
-})
-options.push({
-	key: 'fa-solid fa-link',
-	value: '<i class="fa-solid fa-link"></i> Website',
 })
 
 onBeforeMount(() => {
@@ -55,6 +57,31 @@ async function onSubmitDetails(e) {
 async function deleteLink(id) {
 	await auth.changeUserSocialDelete(id)
 	social.value = user.value.social.filter((x) => x.id != id)
+}
+
+function moveUp(index) {
+	let newIndex = move(user.value.social, index, -1)
+	social.value = user.value.social
+	console.log('Up', social.value[newIndex], social.value[index])
+
+	social.value.forEach((item, index) => {
+		auth.changeUserSocialSort(item.id, index)
+	})
+}
+
+function moveDown(index) {
+	move(user.value.social, index, 1)
+	social.value = user.value.social
+	social.value.forEach((item, index) => {
+		auth.changeUserSocialSort(item.id, index)
+	})
+}
+
+function move(array, index, delta) {
+	let newIndex = index + delta
+	if (newIndex < 0 || newIndex == array.length) return
+	let indexes = [index, newIndex].sort((a, b) => a - b)
+	array.splice(indexes[0], 2, array[indexes[1]], array[indexes[0]])
 }
 
 console.log('Social', social)
@@ -87,7 +114,7 @@ console.log('Social', social)
 					<h4 class="h4-title">{{ $t('Update link by name') }}</h4>
 					<form id="form" @submit.prevent="onSubmitDetails" method="post" class="label-color">
 						<Input name="name" :label="$t('Name')" v-model="name" :placeholder="$t('Enter name')" />
-						<Select v-model="icon" :placeholder="$t('Choose')" label="Icon" name="icon" :options="options" />
+						<Select v-model="icon" :search="false" :placeholder="$t('No icon')" label="Icon" name="icon" :options="options" />
 						<Input name="url" :label="$t('Url')" v-model="url" :placeholder="$t('Enter url')" />
 						<Button :text="$t('Update')" />
 					</form>
@@ -95,9 +122,12 @@ console.log('Social', social)
 					<h4 class="h4-title">{{ $t('Social links') }}</h4>
 					<div class="social__links">
 						<div class="empty__list" v-if="social.length == 0">{{ $t('Add more links.') }}</div>
-						<div class="social-link__box" v-for="i in social" :id="'link' + i.id">
+						<div class="social-link__box" v-for="(i, index) in social" :id="'link' + i.id">
 							<div class="social-link__top">
 								<a :href="i.url" :title="i.url" class="social-link__href" target="_blank"><i v-if="i.icon" :class="i.icon"></i> {{ i.name }}</a>
+
+								<i class="fas fa-chevron-up social-link__up" @click="moveUp(index)"></i>
+								<i class="fas fa-chevron-down social-link__down" @click="moveDown(index)"></i>
 								<i class="fa-regular fa-circle-xmark social-link__delete" @click="deleteLink(i.id)"></i>
 							</div>
 							<div class="social-link__bottom">{{ i.url }}</div>

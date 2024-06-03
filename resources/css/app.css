@@ -17,10 +17,10 @@
 	color-scheme: light;
 	--bg-primary: #fff;
 	--bg-secondary: #f5f6fa;
-	--bg-third: #fafafb;
+	--bg-third: #fafafb; /* #fafafb; #f6f9fc; */
 	--text-primary: #0d0d0d;
 	--text-secondary: #454850;
-	--text-third: #b3b3b3;
+	--text-third: #b3b3b3; /* #b3b3b3; */
 	--accent-primary: #ff9557; /* #0249fe; */
 	--accent-secondary: #fd6e41; /* #fd6e41; #ff3000; #FC4409; #f6782f; */
 	--placeholder: #ddd;
@@ -55,7 +55,7 @@
 	color-scheme: light;
 	--bg-primary: #fff;
 	--bg-secondary: #f5f6fa;
-	--bg-third: #fafafb;
+	--bg-third: #fafafb; /* #fafafb; #f6f9fc; */
 	--text-primary: #0d0d0d;
 	--text-secondary: #454850;
 	--text-third: #b3b3b3;

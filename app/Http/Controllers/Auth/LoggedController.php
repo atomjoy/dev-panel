@@ -19,7 +19,7 @@ class LoggedController extends Controller
 				'message' => __('logged.authenticated'),
 				'user' => Auth::user()->fresh([
 					'profile', 'address', 'roles',
-					'roles_permissions', 'social'
+					'roles_permissions', 'social', 'social_sorted'
 				]),
 			], 200);
 		} else {
