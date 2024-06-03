@@ -278,6 +278,29 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
+	async function changeUserSocial(data) {
+		try {
+			data.append('_method', 'PATCH')
+			let res = await axios.post('/web/api/social', data)
+			setMessage(res)
+			isAuthenticated()
+		} catch (err) {
+			setError(err)
+			logError(err)
+		}
+	}
+
+	async function changeUserSocialDelete(id) {
+		try {
+			let res = await axios.get('/web/api/social/delete?id=' + id)
+			setMessage(res)
+			isAuthenticated()
+		} catch (err) {
+			setError(err)
+			logError(err)
+		}
+	}
+
 	async function changeUserAddress(data) {
 		try {
 			data.append('_method', 'PATCH')
@@ -400,5 +423,7 @@ export const useAuthStore = defineStore('auth', () => {
 		enableF2aAdmin,
 		disableF2aAdmin,
 		changeUserBanner,
+		changeUserSocial,
+		changeUserSocialDelete,
 	}
 })

@@ -56,6 +56,8 @@
     "change.invalid.current.password": "Niepoprawne aktualne hasło.",
     "logout.success": "Wylogowany.",
     "logout.error": "Nie wylogowany.",
+    "social.success": "Link został zaktualizowany.",
+    "social.error": "Link nie został zaktualizowany.",
     "middleware.not.acceptable": "Not Acceptable.",
     "middleware.invalid.is_admin": "Użytkownik nie ma odpowiednich uprawnień (is_admin).",
     "middleware.invalid.role": "Użytkownik nie ma odpowiednich uprawnień.",

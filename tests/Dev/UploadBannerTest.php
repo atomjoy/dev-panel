@@ -47,8 +47,7 @@ class UploadBannerTest extends TestCase
 		]);
 
 		$response = $this->postJson('/web/api/upload/banner', [
-			// 'banner' => UploadedFile::fake()->image('banner.webp', 200, 200),
-			'banner' => UploadedFile::fake()->createWithContent('banner.webp', file_get_contents(base_path('tests\Dev\image\fake_banner.webp'))),
+			'banner' => UploadedFile::fake()->image('banner.webp', 1920, 540),
 		]);
 
 		$response->assertStatus(200)->assertJson([
@@ -57,7 +56,6 @@ class UploadBannerTest extends TestCase
 		]);
 
 		$response = $this->postJson('/web/api/upload/banner', [
-			// 'banner' => UploadedFile::fake()->image('banner.webp', 200, 200),
 			'banner' => UploadedFile::fake()->createWithContent('banner.png', file_get_contents(base_path('tests\Dev\image\fake_banner.png'))),
 		]);
 

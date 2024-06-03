@@ -1,28 +1,63 @@
 <script setup>
 import ClientMenu from './menu/ClientMenu.vue'
 import ErrorMessage from './page/ErrorMessage.vue'
+import Input from '@/components/input/Input.vue'
+import Select from '@/components/input/Select.vue'
 import Button from '@/components/input/Button.vue'
-import AvatarInput from '@/components/input/AvatarInput.vue'
 import { useAuthStore } from '@/stores/auth.js'
-import { onBeforeMount, computed, ref } from 'vue'
+import { onBeforeMount, ref } from 'vue'
 import LinksMobile from './page/LinksMobile.vue'
 import LinksPage from './page/LinksPage.vue'
-const auth = useAuthStore()
-const user = auth.getUser
 
-let userAvatar = computed({
-	get() {
-		return user.value?.profile?.avatar ?? ''
-	},
-	set(val) {
-		avatar.value = val
-	},
+const auth = useAuthStore()
+let user = auth.getUser
+
+const social = ref(user.value.social ?? [])
+let icon = ref(null)
+let name = ref('')
+let url = ref('')
+let options = []
+
+// let options = ['fa-brands fa-youtube', 'fa-brands fa-facebook', 'fa-brands fa-x-twitter', 'fa-brands fa-instagram', 'fa-brands fa-pinterest', 'fa-brands fa-dribbble', 'fa-brands fa-tiktok', 'fa-brands fa-twitch', 'fa-brands fa-discord', 'fa-brands fa-linkedin', 'fa-brands fa-kickstarter', 'fa-brands fa-vimeo', 'fa-brands fa-behance', 'fa-brands fa-soundcloud', 'fa-brands fa-napster', 'fa-brands fa-spotify', 'fa-brands fa-tumblr', 'fa-brands fa-medium', 'fa-brands fa-dev', 'fa-brands fa-snapchat', 'fa-brands fa-whatsapp']
+let option_list = ['artstation', 'btc', 'ethereum', 'xbox', 'playstation', 'patreon', 'earlybirds', 'digg', 'mailchimp', 'skype', 'linux', 'viber', 'threads', 'upwork', 'qq', 'optin-monster', 'weebly', 'unity', 'rebel', 'galactic-republic', 'old-republic', 'jedi-order', 'steam', 'bluesky', 'gitlab', 'weibo', 'youtube', 'facebook', 'x-twitter', 'instagram', 'pinterest', 'dribbble', 'tiktok', 'twitch', 'discord', 'linkedin', 'kickstarter', 'vimeo', 'behance', 'soundcloud', 'napster', 'spotify', 'tumblr', 'medium', 'dev', 'snapchat', 'whatsapp', 'phoenix-squadron']
+
+option_list.sort((a, b) => a.localeCompare(b))
+option_list.forEach((item) => {
+	options.push({
+		key: 'fa-brands fa-' + item,
+		value: '<i class="fa-brands fa-' + item + '"></i> ' + item,
+	})
+})
+// Link icon
+options.push({
+	key: 'fa-solid fa-store',
+	value: '<i class="fa-solid fa-store"></i> Store',
+})
+options.push({
+	key: 'fa-solid fa-link',
+	value: '<i class="fa-solid fa-link"></i> Website',
 })
 
-function onSubmitAvatar(e) {
-	auth.changeUserAvatar(new FormData(e.target))
+onBeforeMount(() => {
+	auth.clearError()
+})
+
+async function onSubmitDetails(e) {
+	let data = new FormData(e.target)
+	// for (var pair of data.entries()) { console.log('Input key:', pair[0], 'Value:', pair[1]) }
+	await auth.changeUserSocial(data)
+	await auth.isAuthenticated()
+	social.value = user.value.social
 	auth.scrollTop()
+	document.getElementById('form').reset()
 }
+
+async function deleteLink(id) {
+	await auth.changeUserSocialDelete(id)
+	social.value = user.value.social.filter((x) => x.id != id)
+}
+
+console.log('Social', social)
 </script>
 <template>
 	<ClientMenu>
@@ -42,18 +77,32 @@ function onSubmitAvatar(e) {
 				</div>
 				<div class="page__content">
 					<div class="page-content__title">
-						<i class="fa-regular fa-user"></i>
-						<span class="submenu__title">{{ $t('Avatar settings') }}</span>
+						<i class="fa-solid fa-circle-info"></i>
+						<span class="submenu__title">{{ $t('Social settings') }}</span>
 					</div>
-					<p class="page-content__desc">{{ $t('Upload your avatar image here.') }}</p>
+					<p class="page-content__desc">{{ $t('Update social links here.') }}</p>
 
 					<ErrorMessage />
 
-					<h4 class="h4-title">Upload avatar</h4>
-					<form @submit.prevent="onSubmitAvatar" method="post" enctype="multipart/form-data" class="label-color">
-						<AvatarInput :label="$t('Select image')" :avatar="userAvatar" />
+					<h4 class="h4-title">{{ $t('Update link by name') }}</h4>
+					<form id="form" @submit.prevent="onSubmitDetails" method="post" class="label-color">
+						<Input name="name" :label="$t('Name')" v-model="name" :placeholder="$t('Enter name')" />
+						<Select v-model="icon" :placeholder="$t('Choose')" label="Icon" name="icon" :options="options" />
+						<Input name="url" :label="$t('Url')" v-model="url" :placeholder="$t('Enter url')" />
 						<Button :text="$t('Update')" />
 					</form>
+
+					<h4 class="h4-title">{{ $t('Social links') }}</h4>
+					<div class="social__links">
+						<div class="empty__list" v-if="social.length == 0">{{ $t('Add more links.') }}</div>
+						<div class="social-link__box" v-for="i in social" :id="'link' + i.id">
+							<div class="social-link__top">
+								<a :href="i.url" :title="i.url" class="social-link__href" target="_blank"><i v-if="i.icon" :class="i.icon"></i> {{ i.name }}</a>
+								<i class="fa-regular fa-circle-xmark social-link__delete" @click="deleteLink(i.id)"></i>
+							</div>
+							<div class="social-link__bottom">{{ i.url }}</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

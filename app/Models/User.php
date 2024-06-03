@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Laravel\Cashier\Billable;
 use App\Contracts\Spatie\HasRolesPermissions;
+use App\Contracts\HasSocial;
 use App\Contracts\HasProfilAddress;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Permission\Traits\HasPermissions;
@@ -17,7 +18,7 @@ class User extends Authenticatable
 {
 	use HasFactory, Notifiable;
 	use HasRoles, HasPermissions;
-	use HasRolesPermissions, HasProfilAddress;
+	use HasRolesPermissions, HasProfilAddress, HasSocial;
 	use Billable;
 
 	/**

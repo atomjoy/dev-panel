@@ -2,13 +2,19 @@
 	<div class="input-group">
 		<Label v-if="props.label" :name="props.name" :text="props.label"><slot></slot></Label>
 		<div :class="{ 'custom-select': true, 'custom-select-open': open }" :data-uid="uid" @blur="open = false" @click.stop="openSelect">
-			<div class="selected" :class="{ open: open, inactive: inactive }">{{ selected }} <IconChevronDown class="selected-icon" /></div>
+			<div class="selected" :class="{ open: open, inactive: inactive }">
+				<span v-html="selected"></span>
+				<IconChevronDown class="selected-icon" />
+			</div>
 			<div class="rounded">
 				<input type="text" placeholder="Search" @click.stop="" @keyup="filterOptions" />
 				<div ref="items" class="items" :tabindex="tabindex">
 					<div v-if="search_check" class="select-search-error">{{ searchError }}</div>
 					<div v-if="!search_check" :key="0" @click.stop="updateClick(null)">{{ placeholder }}</div>
-					<div v-for="(option, i) of filtered_options" :key="i" @click.stop="updateClick(option)" :class="{ highlight: check(option, modelValue) }">{{ option.value ?? option }} <IconCheckmark v-if="check(option, modelValue)" class="checkmark" /></div>
+					<div v-for="(option, i) of filtered_options" :key="i" @click.stop="updateClick(option)" :class="{ select_option: true, highlight: check(option, modelValue) }">
+						<span v-html="option.value ?? option"></span>
+						<IconCheckmark v-if="check(option, modelValue)" class="checkmark" />
+					</div>
 				</div>
 			</div>
 			<input ref="input" type="hidden" v-model="modelValue" :name="name" />

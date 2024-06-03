@@ -1,9 +1,3 @@
-::placeholder {
-	font-weight: 500;
-	font-size: var(--wow-font-size);
-	color: var(--wow-placeholder);
-}
-
 *,
 *::before,
 *::after {
@@ -214,13 +208,15 @@ option:hover {
 
 .custom-select .selected {
 	font-size: var(--wow-font-size);
-	font-weight: 600;
 	padding: var(--wow-padding);
 	box-sizing: border-box;
 	background: var(--wow-input-bg);
 	border-radius: var(--wow-border-radius);
 	border: 1px solid var(--wow-border);
 	cursor: pointer;
+	line-height: 20px;
+	color: var(--wow-color);
+	text-transform: capitalize;
 }
 
 .custom-select .selected:hover {
@@ -238,9 +234,7 @@ option:hover {
 }
 
 .custom-select .selected.inactive {
-	font-weight: 500;
 	font-size: var(--wow-font-size);
-	color: var(--wow-placeholder);
 }
 .custom-select .selected .selected-icon {
 	color: var(--wow-icon);
@@ -300,8 +294,9 @@ option:hover {
 	padding: var(--wow-padding);
 	cursor: pointer;
 	user-select: none;
-	font-size: 1em;
+	font-size: 0.9rem;
 	font-weight: 400;
+	text-transform: capitalize;
 }
 
 .custom-select .items div:hover {

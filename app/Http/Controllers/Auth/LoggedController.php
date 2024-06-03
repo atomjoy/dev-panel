@@ -18,7 +18,8 @@ class LoggedController extends Controller
 			return response()->json([
 				'message' => __('logged.authenticated'),
 				'user' => Auth::user()->fresh([
-					'profile', 'address', 'roles', 'roles_permissions',
+					'profile', 'address', 'roles',
+					'roles_permissions', 'social'
 				]),
 			], 200);
 		} else {

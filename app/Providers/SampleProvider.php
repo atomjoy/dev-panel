@@ -13,6 +13,17 @@ class SampleProvider extends ServiceProvider
 	 */
 	public function register(): void
 	{
+		// Rewrite public dir
+		// app()->usePublicPath(app()->basePath('public_html'));
+		// app()->bind('path.public', function () {
+		// 	return base_path() . '/public_html';
+		// });
+
+		// Rewrite public dir
+		// $this->app->bind('path.public', function () {
+		// 	return base_path() . '/public_html';
+		// });
+
 		// Binding
 		// $this->app->singleton(Connection::class, function (Application $app) {
 		// 	return new Connection(config('riak'));

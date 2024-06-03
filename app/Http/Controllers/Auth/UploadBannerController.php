@@ -35,13 +35,7 @@ class UploadBannerController extends Controller
 			$image = ImageManager::gd()
 				->read($request->file('banner'))
 				// ->scale(config('default.banner_scale_pixels', 1920))
-				->crop(
-					config('default.banner_resize_width', 1920),
-					config('default.banner_resize_height', 540),
-					0,
-					0,
-					position: 'center-center'
-				)
+				->crop(config('default.banner_resize_width', 1920), config('default.banner_resize_height', 540), 0, 0, position: 'center-center')
 				->toWebp();
 
 			Storage::put($path, (string) $image);

@@ -26,6 +26,7 @@ class AddressFactory extends Factory
 			'line1' => fake()->streetAddress(),
 			'line2' => '',
 			'postal_code' => fake()->postcode(),
+			'private' => true,
 		];
 	}
 }

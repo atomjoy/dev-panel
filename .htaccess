@@ -1,0 +1,20 @@
+# SetEnv PHP_VER 8_2
+# SetEnv REGISTER_GLOBALS 0
+
+DirectoryIndex index.php
+# Options -Indexes -MultiViews +FollowSymlinks
+Options -Indexes -MultiViews +SymLinksIfOwnerMatch
+
+# Disable directory browsing
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !^public_html
+# Show server error (dont create error.php)
+RewriteRule ^(.*)$ error.php [L]
+# Or redirect to dir
+# RewriteRule ^(.*)$ public_html/$1 [L]
+
+# Hide files
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

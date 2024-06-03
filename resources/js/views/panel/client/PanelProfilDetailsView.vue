@@ -1,28 +1,70 @@
 <script setup>
 import ClientMenu from './menu/ClientMenu.vue'
 import ErrorMessage from './page/ErrorMessage.vue'
+import Input from '@/components/input/Input.vue'
 import Button from '@/components/input/Button.vue'
-import AvatarInput from '@/components/input/AvatarInput.vue'
+import Textarea from '@/components/input/Textarea.vue'
 import { useAuthStore } from '@/stores/auth.js'
 import { onBeforeMount, computed, ref } from 'vue'
 import LinksMobile from './page/LinksMobile.vue'
 import LinksPage from './page/LinksPage.vue'
+
 const auth = useAuthStore()
 const user = auth.getUser
 
-let userAvatar = computed({
+let name = ref('')
+let username = ref('')
+let location = ref('')
+let bio = ref('')
+
+onBeforeMount(() => {
+	auth.clearError()
+})
+
+let userName = computed({
 	get() {
-		return user.value?.profile?.avatar ?? ''
+		return user.value?.profile?.name ?? ''
 	},
 	set(val) {
-		avatar.value = val
+		name.value = val
 	},
 })
 
-function onSubmitAvatar(e) {
-	auth.changeUserAvatar(new FormData(e.target))
+let userUsername = computed({
+	get() {
+		return user.value?.profile?.username ?? ''
+	},
+	set(val) {
+		username.value = val
+	},
+})
+
+let userLocation = computed({
+	get() {
+		return user.value?.profile?.location ?? ''
+	},
+	set(val) {
+		location.value = val
+	},
+})
+
+let userBio = computed({
+	get() {
+		return user.value?.profile?.bio ?? ''
+	},
+	set(val) {
+		bio.value = val
+	},
+})
+
+function onSubmitDetails(e) {
+	let data = new FormData(e.target)
+	// for (var pair of data.entries()) { console.log('Input key:', pair[0], 'Value:', pair[1]) }
+	auth.changeUserProfil(data)
 	auth.scrollTop()
 }
+
+console.log(user.value?.profile)
 </script>
 <template>
 	<ClientMenu>
@@ -42,16 +84,19 @@ function onSubmitAvatar(e) {
 				</div>
 				<div class="page__content">
 					<div class="page-content__title">
-						<i class="fa-regular fa-user"></i>
-						<span class="submenu__title">{{ $t('Avatar settings') }}</span>
+						<i class="fa-solid fa-circle-info"></i>
+						<span class="submenu__title">{{ $t('Detail settings') }}</span>
 					</div>
-					<p class="page-content__desc">{{ $t('Upload your avatar image here.') }}</p>
+					<p class="page-content__desc">{{ $t('Update your profile details here.') }}</p>
 
 					<ErrorMessage />
 
-					<h4 class="h4-title">Upload avatar</h4>
-					<form @submit.prevent="onSubmitAvatar" method="post" enctype="multipart/form-data" class="label-color">
-						<AvatarInput :label="$t('Select image')" :avatar="userAvatar" />
+					<h4 class="h4-title">{{ $t('Profil details') }}</h4>
+					<form @submit.prevent="onSubmitDetails" method="post" class="label-color">
+						<Input name="name" :label="$t('Name')" v-model="userName" :placeholder="$t('Enter name')" />
+						<Input name="username" :label="$t('Username')" v-model="userUsername" :placeholder="$t('Enter username')" />
+						<Input name="location" :label="$t('Location')" v-model="userLocation" :placeholder="$t('Enter location')" />
+						<Textarea name="bio" :label="$t('Bio')" v-model="userBio" :placeholder="$t('Enter bio')" />
 						<Button :text="$t('Update')" />
 					</form>
 				</div>

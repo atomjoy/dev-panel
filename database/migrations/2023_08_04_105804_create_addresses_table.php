@@ -21,6 +21,7 @@ return new class extends Migration
 			$table->string('state', 50)->nullable();
 			$table->string('country', 50)->nullable();
 			$table->string('postal_code', 50)->nullable();
+			$table->boolean('private')->nullable()->default(true);
 			$table->timestamps();
 			$table->foreign('user_id')
 				->references('id')

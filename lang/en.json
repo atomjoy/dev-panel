@@ -56,6 +56,8 @@
     "change.invalid.current.password": "Invalid current password.",
     "logout.success": "Logged out.",
     "logout.error": "Logged out error.",
+    "social.success": "Social has been updated.",
+    "social.error": "Social has not been updated.",
     "middleware.not.acceptable": "Not Acceptable.",
     "middleware.invalid.is_admin": "User does not have the right roles (is_admin).",
     "middleware.invalid.role": "User does not have the right roles.",

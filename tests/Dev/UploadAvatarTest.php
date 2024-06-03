@@ -47,8 +47,7 @@ class UploadAvatarTest extends TestCase
 		]);
 
 		$response = $this->postJson('/web/api/upload/avatar', [
-			// 'avatar' => UploadedFile::fake()->image('avatar.webp', 200, 200),
-			'avatar' => UploadedFile::fake()->createWithContent('avatar.webp', file_get_contents(base_path('tests\Dev\image\fake.webp'))),
+			'avatar' => UploadedFile::fake()->image('avatar.webp', 256, 256),
 		]);
 
 		$response->assertStatus(200)->assertJson([
@@ -57,7 +56,6 @@ class UploadAvatarTest extends TestCase
 		]);
 
 		$response = $this->postJson('/web/api/upload/avatar', [
-			// 'avatar' => UploadedFile::fake()->image('avatar.webp', 200, 200),
 			'avatar' => UploadedFile::fake()->createWithContent('avatar.png', file_get_contents(base_path('tests\Dev\image\fake.png'))),
 		]);
 

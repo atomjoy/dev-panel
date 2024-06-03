@@ -49,4 +49,7 @@ return [
 
 	// Destroy user and admin session after logout
 	// 'logout_invalidate_session' => true,
+
+	// Profil social links (default 50)
+	// 'max_social_links' => 100,
 ];

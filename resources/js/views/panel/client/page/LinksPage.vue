@@ -12,7 +12,7 @@ import PageLink from './PageLink.vue'
 	<PageLink url="/panel/profil/images" :title="$t('Images')" :description="$t('Add or update your images.')">
 		<i class="fa-regular fa-image"></i>
 	</PageLink>
-	<PageLink url="/panel/profil/social" :title="$t('Social links')" :description="$t('Add or update your social links.')">
+	<PageLink url="/panel/profil/social" :title="$t('Social')" :description="$t('Add or update your social links.')">
 		<i class="fa-regular fa-thumbs-up"></i>
 	</PageLink>
 </template>

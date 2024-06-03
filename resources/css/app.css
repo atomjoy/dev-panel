@@ -17,13 +17,13 @@
 	color-scheme: light;
 	--bg-primary: #fff;
 	--bg-secondary: #f5f6fa;
-	--bg-third: #fbfbfb;
+	--bg-third: #fafafb;
 	--text-primary: #0d0d0d;
 	--text-secondary: #454850;
 	--text-third: #b3b3b3;
 	--accent-primary: #ff9557; /* #0249fe; */
 	--accent-secondary: #fd6e41; /* #fd6e41; #ff3000; #FC4409; #f6782f; */
-	--placeholder: #717171;
+	--placeholder: #ddd;
 	--logo: url('@/assets/images/logo-light.png');
 	--divider-primary: #e7e7e9;
 	--text-disabled: #999;
@@ -55,12 +55,12 @@
 	color-scheme: light;
 	--bg-primary: #fff;
 	--bg-secondary: #f5f6fa;
-	--bg-third: #fbfbfb;
+	--bg-third: #fafafb;
 	--text-primary: #0d0d0d;
 	--text-secondary: #454850;
 	--text-third: #b3b3b3;
 	--accent-primary: #ff9557; /* #0249fe; */
-	--placeholder: #717171;
+	--placeholder: #ddd;
 	--logo: url('@/assets/images/logo-light.png');
 	--divider-primary: #e7e7e9;
 	--text-disabled: #999;
@@ -132,9 +132,8 @@ iframe {
 }
 
 ::placeholder {
-	color: #aaa;
-	font-size: 1rem;
-	font-weight: 500;
+	color: var(--placeholder);
+	opacity: 1;
 }
 
 ::selection {

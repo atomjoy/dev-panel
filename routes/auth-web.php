@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\AddressController;
 use App\Http\Controllers\Auth\ProfileController;
+use App\Http\Controllers\Auth\SocialController;
 use App\Http\Controllers\Auth\ActivateController;
 use App\Http\Controllers\Auth\CsrfController;
 use App\Http\Controllers\Auth\LocaleController;
@@ -60,9 +61,11 @@ Route::prefix('web/api')->name('web.api.')->middleware([
 		Route::post('/change/email', [EmailChangeController::class, 'index'])->name('change.email');
 		Route::get('/change/email/{id}/{code}', [EmailChangeConfirmController::class, 'index'])->name('change.email.confirm');
 		// Resource
-		Route::singleton('address', AddressController::class, ['except' => ['edit']]);
-		Route::singleton('profile', ProfileController::class, ['except' => ['edit']]);
-		Route::singleton('account/delete', AccountDeleteController::class, ['except' => ['edit', 'show']]);
+		Route::singleton('/address', AddressController::class, ['except' => ['edit']]);
+		Route::singleton('/profile', ProfileController::class, ['except' => ['edit']]);
+		Route::singleton('/account/delete', AccountDeleteController::class, ['except' => ['edit', 'show']]);
+		Route::singleton('/social', SocialController::class, ['except' => ['edit']]);
+		Route::get('/social/delete', [SocialController::class, 'delete']);
 		// Notifications
 		Route::get('/notifications/page/{page}', [NotificationsController::class, 'index'])->name('notifications.page');
 		Route::get('/notifications/toggle/{id}', [NotificationsController::class, 'toggle'])->name('notifications.toggle');

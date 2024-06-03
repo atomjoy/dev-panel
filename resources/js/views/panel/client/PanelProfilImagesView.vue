@@ -42,8 +42,8 @@ function onSubmitImage(e) {
 				</div>
 				<div class="page__content">
 					<div class="page-content__title">
-						<i class="fa-regular fa-user"></i>
-						<span class="submenu__title">{{ $t('Banner settings') }}</span>
+						<i class="fa-regular fa-image"></i>
+						<span class="submenu__title">{{ $t('Image settings') }}</span>
 					</div>
 					<p class="page-content__desc">{{ $t('Upload your banner image here.') }}</p>
 
