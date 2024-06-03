@@ -1,0 +1,1 @@
+import{c as r,a,b as e,t,F as c,o,_ as n,d as _}from"./app-DKuduxfg.js";const i={class:"section"},l={class:"section__wrapper"},m={__name:"ServicesView",setup(p){return(s,u)=>(o(),r(c,null,[a(n),a(_),e("div",i,[e("div",l,[e("h1",null,t(s.$t("Services")),1),e("p",null,t(s.$t("Laravel 11 Vue 3.4 Starter SPA with router.")),1)])])],64))}};export{m as default};

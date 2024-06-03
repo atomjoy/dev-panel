@@ -301,9 +301,9 @@ export const useAuthStore = defineStore('auth', () => {
 		}
 	}
 
-	async function changeUserSocialSort(id, index) {
+	async function changeUserSocialSort(array) {
 		try {
-			let res = await axios.get('/web/api/social/sort?id=' + id + '&position=' + index)
+			let res = await axios.post('/web/api/social/sort', { list: array })
 			setMessage(res)
 			await isAuthenticated()
 		} catch (err) {

@@ -64,17 +64,20 @@ function moveUp(index) {
 	social.value = user.value.social
 	console.log('Up', social.value[newIndex], social.value[index])
 
-	social.value.forEach((item, index) => {
-		auth.changeUserSocialSort(item.id, index)
-	})
+	// social.value.forEach((item, index) => {
+	// 	auth.changeUserSocialSort(item.id, index)
+	// })
+
+	auth.changeUserSocialSort(social.value)
 }
 
 function moveDown(index) {
 	move(user.value.social, index, 1)
 	social.value = user.value.social
-	social.value.forEach((item, index) => {
-		auth.changeUserSocialSort(item.id, index)
-	})
+	// social.value.forEach((item, index) => {
+	// 	auth.changeUserSocialSort(item.id, index)
+	// })
+	auth.changeUserSocialSort(social.value)
 }
 
 function move(array, index, delta) {
