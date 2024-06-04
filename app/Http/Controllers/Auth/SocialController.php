@@ -91,35 +91,13 @@ class SocialController extends Controller
 	public function sort()
 	{
 		try {
-			$i = 0;
+			$i = 1;
 			foreach (request()->json('list') as $item) {
 				$link = Social::find((int) $item['id']);
 				if ($link instanceof Social && $link->user_id == Auth::id()) {
 					$link->sort = $i++;
 					$link->save();
 				}
-			}
-
-			return response()->json([
-				'message' => __("social.success"),
-			], 200);
-		} catch (Exception $e) {
-			report($e);
-			throw new JsonException(__("social.error"), 422);
-		}
-	}
-
-	/**
-	 * Sort social link.
-	 */
-	public function sort_get()
-	{
-		try {
-			$link = Social::find((int) request('id'));
-
-			if ($link instanceof Social && $link->user_id == Auth::id()) {
-				$link->sort = (int) request('position');
-				$link->save();
 			}
 
 			return response()->json([

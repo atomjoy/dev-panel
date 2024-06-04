@@ -2,8 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 :root {
+	--font-mono: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+	--font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+	--font-serif: Georgia, 'Times New Roman', serif;
 	--font-family: 'Poppins', Arial, Helvetica, sans-serif;
 	--font-family-text: 'Open Sans', Arial, Helvetica, sans-serif;
+	--font-family-mono: 'VT323', 'JetBrains Mono', 'Fira Code', monospace;
+	--font-family-jet: 'JetBrains Mono', 'Fira Code', monospace;
+	--font-family-fira: 'Fira Code', monospace;
+	--font-family-terminal: 'VT323', monospace;
 	--font-size: 16px;
 	--border-radius: 10px;
 	--scrollbar-bg: #ff9557; /* Green #BBFD38; Orange #ff9557; #fa8618 */

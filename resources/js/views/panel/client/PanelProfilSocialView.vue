@@ -48,7 +48,6 @@ async function onSubmitDetails(e) {
 	let data = new FormData(e.target)
 	// for (var pair of data.entries()) { console.log('Input key:', pair[0], 'Value:', pair[1]) }
 	await auth.changeUserSocial(data)
-	await auth.isAuthenticated()
 	social.value = user.value.social
 	auth.scrollTop()
 	document.getElementById('form').reset()
@@ -60,23 +59,14 @@ async function deleteLink(id) {
 }
 
 function moveUp(index) {
-	let newIndex = move(user.value.social, index, -1)
+	move(user.value.social, index, -1)
 	social.value = user.value.social
-	console.log('Up', social.value[newIndex], social.value[index])
-
-	// social.value.forEach((item, index) => {
-	// 	auth.changeUserSocialSort(item.id, index)
-	// })
-
 	auth.changeUserSocialSort(social.value)
 }
 
 function moveDown(index) {
 	move(user.value.social, index, 1)
 	social.value = user.value.social
-	// social.value.forEach((item, index) => {
-	// 	auth.changeUserSocialSort(item.id, index)
-	// })
 	auth.changeUserSocialSort(social.value)
 }
 
