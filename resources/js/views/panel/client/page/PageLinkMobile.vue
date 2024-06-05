@@ -20,7 +20,9 @@ const props = defineProps(['url', 'title', 'description'])
 	color: var(--text-secondary);
 	background: var(--bg-primary);
 	border: 1px solid var(--bg-primary);
-	min-width: fit-content;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .page__link-mobile i {
 	float: left;

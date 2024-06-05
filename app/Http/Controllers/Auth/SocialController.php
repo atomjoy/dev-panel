@@ -36,7 +36,7 @@ class SocialController extends Controller
 		try {
 			$user = User::with('social')->findOrFail(Auth::id());
 
-			if ($user->social()->count() > config('default.max_social_links', 50)) {
+			if ($user->social()->count() > config('default.max_social_links', 30)) {
 				return response()->json(['message' => __("Too many links."),], 422);
 			}
 

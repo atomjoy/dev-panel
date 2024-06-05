@@ -68,19 +68,24 @@ onMounted(() => {})
 				<div class="name">
 					<strong>{{ props.name ?? 'Unknown' }}</strong>
 				</div>
+				<router-link to="/panel/pulpit" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
+					<i class="fa-solid fa-desktop"></i>
+					{{ t('Pulpit') }}
+				</router-link>
+
 				<router-link to="/panel/profil" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
-					<ProfilIcon />
+					<i class="fa-regular fa-circle-user"></i>
 					{{ t('Profile') }}
 				</router-link>
 
-				<router-link to="/panel/account" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
-					<AccountIcon />
-					{{ t('Account') }}
+				<router-link to="/panel/settings" class="link-mini" activeClass="disable-active-class" exactActiveClass="disable-active-class">
+					<i class="fa-solid fa-gear"></i>
+					{{ t('Settings') }}
 				</router-link>
 
 				<div class="footer">
 					<router-link to="/logout" class="link-mini">
-						<ExitIcon />
+						<i class="fa-solid fa-right-from-bracket"></i>
 						{{ t('Logout') }}
 					</router-link>
 				</div>
@@ -148,10 +153,9 @@ onMounted(() => {})
 	border-radius: var(--border-radius);
 }
 
-.user-menu a.link-mini svg {
-	margin-right: 10px;
-	fill: var(--accent-primary);
-	/* stroke: var(--accent-primary); */
+.user-menu a.link-mini i {
+	margin: 5px 10px 5px 5px;
+	color: var(--accent-primary);
 }
 
 .user-menu a.link-mini:hover {

@@ -21,7 +21,7 @@ class EmailChangeRecoverRequest extends FormRequest
 	{
 		return [
 			'id' => 'required|numeric|min:1',
-			'code' => 'required|string|min:6|max:50',
+			'code' => 'required|string|min:6|max:500',
 		];
 	}
 

@@ -11,6 +11,9 @@ require 'stripe.php';
 // Sms
 require 'sms.php';
 
+// Notify demo seed (remove)
+require 'notify.php';
+
 // Main page
 Route::get('/', function () {
 	return view('welcome');

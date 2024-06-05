@@ -29,7 +29,6 @@ function onSubmitImage(e) {
 		<div class="page">
 			<div class="page__menu">
 				<span>{{ $t('Profil') }}</span>
-				<!-- <i class="fas fa-chevron-down"></i> -->
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -50,7 +49,7 @@ function onSubmitImage(e) {
 					<ErrorMessage />
 
 					<h4 class="h4-title">{{ $t('Upload profil banner') }}</h4>
-					<form @submit.prevent="onSubmitImage" method="post" enctype="multipart/form-data" class="label-color">
+					<form @submit.prevent="onSubmitImage" method="post" enctype="multipart/form-data" class="label-color client-panel-form">
 						<ProfilInput :label="$t('Select image')" :profile="userImage" />
 						<Button :text="$t('Update')" />
 					</form>

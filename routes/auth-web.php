@@ -23,7 +23,7 @@ use App\Http\Controllers\Auth\NotificationsController;
 use App\Http\Controllers\Auth\F2aController;
 use Illuminate\Support\Facades\Route;
 
-// Activation page
+// Activation page (sample)
 // Route::get('/activate/{id}/{code}', [ActivateController::class, 'index'])->name('activation');
 
 // Login page
@@ -31,8 +31,11 @@ Route::get('/login', function () {
 	return view('welcome');
 })->name('login');
 
-// Show s3 image url <img src="img/url?path=image/path/here.webp" />
-Route::get('img/url', [UploadAvatarController::class, 'getUrl'])->name('img.url');
+// Show s3 image url <img src="/img/url?path=image/path/here.webp" />
+Route::get('/img/url', [UploadAvatarController::class, 'getUrl'])->name('img.url');
+
+// Recover email
+Route::get('/change/email/recovery/{id}/{code}', [EmailChangeRecoverController::class, 'index'])->name('change.email.recover');
 
 // User routes
 Route::prefix('web/api')->name('web.api.')->middleware([
@@ -48,7 +51,6 @@ Route::prefix('web/api')->name('web.api.')->middleware([
 	Route::get('/csrf', [CsrfController::class, 'index'])->name('csrf');
 	Route::get('/locale/{locale}', [LocaleController::class, 'index'])->name('locale');
 	Route::post('/f2a', [F2aController::class, 'index'])->name('f2a');
-	Route::get('/change/email/recover/{id}/{code}', [EmailChangeRecoverController::class, 'index'])->name('change.email.recover');
 
 	// Private routes
 	Route::middleware(['auth', 'forcejson'])->group(function () {

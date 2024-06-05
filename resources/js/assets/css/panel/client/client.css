@@ -1,3 +1,7 @@
+textarea {
+	font-family: var(--font-family);
+}
+
 .h4-title {
 	float: left;
 	width: 100%;
@@ -150,6 +154,59 @@
 
 .page-content__title i {
 	margin-right: 20px;
+}
+
+.pulpit__wrapper {
+	float: left;
+	width: 100%;
+	padding: 30px;
+}
+
+.pulpit__title {
+	float: left;
+	width: 100%;
+	font-size: 21px;
+	font-weight: 700;
+}
+
+.f2a-enabled {
+	float: left;
+	width: 100%;
+	color: #5c5;
+	border-left: 1px solid #5c5;
+	font-weight: 500;
+	padding: 5px 20px;
+	margin: 10px 0px;
+	font-size: 14px;
+}
+.f2a-disabled {
+	float: left;
+	width: 100%;
+	color: #f23;
+	border-left: 1px solid #f23;
+	font-weight: 500;
+	padding: 5px 20px;
+	margin: 10px 0px;
+	font-size: 14px;
+}
+
+.client-panel-form {
+	display: inline-block;
+	width: 100%;
+	max-width: 100% !important;
+	padding-bottom: 40px;
+	border-bottom: 1px dashed var(--divider-primary);
+}
+
+.delete-button {
+	font-weight: 700;
+	color: #fff !important;
+	background: #f41a2c !important;
+	border-color: #f41a2c !important;
+}
+
+.delete-button:hover {
+	box-shadow: 0px 5px 10px #f41a2c33;
 }
 
 @media all and (max-width: 1024px) {

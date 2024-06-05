@@ -1,0 +1,1 @@
+import{G as a,H as u}from"./app-DryvI0XL.js";const _={__name:"LogoutView",setup(l){const{t:s,locale:e,fallbackLocale:o}=a({useScope:"global"}),t=u();return e.value=o.value,t.logoutUser(),(c,r)=>null}};export{_ as default};

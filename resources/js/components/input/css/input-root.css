@@ -1,6 +1,6 @@
 :root {
 	color-scheme: light;
-	--wow-font-size: 18px;
+	--wow-font-size: 17px;
 	--wow-bg: var(--bg-primary);
 	--wow-input-bg: var(--bg-third);
 	--wow-checkbox-shadow: #23262915;
@@ -92,19 +92,19 @@
 
 @media (max-width: 1600px) {
 	:root {
-		--wow-font-size: 17px;
+		--wow-font-size: 16px;
 	}
 }
 
 @media (max-width: 1280px) {
 	:root {
-		--wow-font-size: 16px;
+		--wow-font-size: 15px;
 	}
 }
 
 @media (max-width: 1024px) {
 	:root {
-		--wow-font-size: 16px;
+		--wow-font-size: 15px;
 	}
 }
 

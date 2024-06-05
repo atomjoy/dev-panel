@@ -4,7 +4,7 @@ import PageLinkMobile from './PageLinkMobile.vue'
 
 <template>
 	<PageLinkMobile url="/panel/profil" :title="$t('Avatar')" :description="$t('Add or update your avatar.')">
-		<i class="fa-regular fa-user"></i>
+		<i class="fa-regular fa-circle-user"></i>
 	</PageLinkMobile>
 	<PageLinkMobile url="/panel/profil/details" :title="$t('Details')" :description="$t('Add or update your details.')">
 		<i class="fa-solid fa-circle-info"></i>

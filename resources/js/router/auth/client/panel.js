@@ -3,12 +3,18 @@ const routes = [
 	{
 		path: '/panel',
 		name: 'panel',
-		redirect: { name: 'panel.profil' },
+		redirect: { name: 'panel.pulpit' },
 	},
 	{
 		path: '/client/panel',
 		name: 'client.panel',
-		redirect: { name: 'panel.profil' },
+		redirect: { name: 'panel.pulpit' },
+	},
+	{
+		path: '/panel/pulpit',
+		name: 'panel.pulpit',
+		component: () => import('@/views/panel/client/DashboardView.vue'),
+		meta: { requiresAuth: true },
 	},
 	{
 		path: '/panel/profil',
@@ -34,10 +40,34 @@ const routes = [
 		component: () => import('@/views/panel/client/PanelProfilSocialView.vue'),
 		meta: { requiresAuth: true },
 	},
+	{
+		path: '/panel/settings',
+		name: 'panel.settings',
+		component: () => import('@/views/panel/client/SettingsAccountView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/settings/address',
+		name: 'panel.settings.address',
+		component: () => import('@/views/panel/client/SettingsAddressView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/settings/password',
+		name: 'panel.settings.password',
+		component: () => import('@/views/panel/client/SettingsPasswordView.vue'),
+		meta: { requiresAuth: true },
+	},
+	{
+		path: '/panel/settings/account-delete',
+		name: 'panel.settings.account-delete',
+		component: () => import('@/views/panel/client/SettingsAccountDeleteView.vue'),
+		meta: { requiresAuth: true },
+	},
 	// {
-	// 	path: '/panel/address',
-	// 	name: 'panel.address',
-	// 	component: () => import('@/views/panel/client/AddressView.vue'),
+	// 	path: '/panel/notifications',
+	// 	name: 'panel.notifications',
+	// 	component: () => import('@/views/panel/client/OrdersView.vue'),
 	// 	meta: { requiresAuth: true },
 	// },
 	// {
@@ -55,31 +85,6 @@ const routes = [
 	// {
 	// 	path: '/panel/messages',
 	// 	name: 'panel.messages',
-	// 	component: () => import('@/views/panel/client/OrdersView.vue'),
-	// 	meta: { requiresAuth: true },
-	// },
-	// {
-	// 	path: '/panel/account',
-	// 	name: 'panel.account',
-	// 	component: () => import('@/views/panel/client/AccountView.vue'),
-	// 	meta: { requiresAuth: true },
-	// },
-	// {
-	// 	path: '/panel/account/delete',
-	// 	name: 'panel.account.delete',
-	// 	component: () => import('@/views/panel/client/AccountDeleteView.vue'),
-	// 	meta: { requiresAuth: true },
-	// },
-	// // Logged only
-	// {
-	// 	path: '/panel/password',
-	// 	name: 'panel.password',
-	// 	component: () => import('@/views/panel/client/PasswordView.vue'),
-	// 	meta: { requiresAuth: true },
-	// },
-	// {
-	// 	path: '/panel/notifications',
-	// 	name: 'panel.notifications',
 	// 	component: () => import('@/views/panel/client/OrdersView.vue'),
 	// 	meta: { requiresAuth: true },
 	// },

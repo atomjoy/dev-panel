@@ -71,7 +71,6 @@ console.log(user.value?.profile)
 		<div class="page">
 			<div class="page__menu">
 				<span>{{ $t('Profil') }}</span>
-				<!-- <i class="fas fa-chevron-down"></i> -->
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -92,7 +91,7 @@ console.log(user.value?.profile)
 					<ErrorMessage />
 
 					<h4 class="h4-title">{{ $t('Profil details') }}</h4>
-					<form @submit.prevent="onSubmitDetails" method="post" class="label-color">
+					<form @submit.prevent="onSubmitDetails" method="post" class="label-color client-panel-form">
 						<Input name="name" :label="$t('Name')" v-model="userName" :placeholder="$t('Enter name')" />
 						<Input name="username" :label="$t('Username')" v-model="userUsername" :placeholder="$t('Enter username')" />
 						<Input name="location" :label="$t('Location')" v-model="userLocation" :placeholder="$t('Enter location')" />

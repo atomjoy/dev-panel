@@ -29,7 +29,6 @@ function onSubmitAvatar(e) {
 		<div class="page">
 			<div class="page__menu">
 				<span>{{ $t('Profil') }}</span>
-				<!-- <i class="fas fa-chevron-down"></i> -->
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -42,7 +41,7 @@ function onSubmitAvatar(e) {
 				</div>
 				<div class="page__content">
 					<div class="page-content__title">
-						<i class="fa-regular fa-user"></i>
+						<i class="fa-regular fa-circle-user"></i>
 						<span class="submenu__title">{{ $t('Avatar settings') }}</span>
 					</div>
 					<p class="page-content__desc">{{ $t('Upload your avatar image here.') }}</p>
@@ -50,7 +49,7 @@ function onSubmitAvatar(e) {
 					<ErrorMessage />
 
 					<h4 class="h4-title">{{ $t('Upload avatar') }}</h4>
-					<form @submit.prevent="onSubmitAvatar" method="post" enctype="multipart/form-data" class="label-color">
+					<form @submit.prevent="onSubmitAvatar" method="post" enctype="multipart/form-data" class="label-color client-panel-form">
 						<AvatarInput :label="$t('Select image')" :avatar="userAvatar" />
 						<Button :text="$t('Update')" />
 					</form>

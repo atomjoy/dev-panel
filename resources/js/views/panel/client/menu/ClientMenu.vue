@@ -1,17 +1,22 @@
 <script setup>
+import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useAuthStore } from '@/stores/auth.js'
+import PageFooter from '../page/PageFooter.vue'
 import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
+import ChangeTitle from '@/components/utils/ChangeTitle/ChangeTitle.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
-import menu from '@/json/menu/TopMenu.js'
-import { ref } from 'vue'
-import PageFooter from '../page/PageFooter.vue'
+import Notifications from './Notifications.vue'
+import { useAuthStore } from '@/stores/auth.js'
+
+const props = defineProps({
+	title: { default: 'Profile' },
+	icon: { default: 'fa-regular fa-user' },
+})
 
 const auth = useAuthStore()
 const logged = auth.isLoggedIn.value
 const user = auth.getUser
-const links = menu.links
 let opened = ref(false)
 
 function openMenu() {
@@ -20,6 +25,7 @@ function openMenu() {
 </script>
 
 <template>
+	<ChangeTitle :title="$t(props.title)" />
 	<div class="client-header">
 		<div class="client-header__container">
 			<div class="client-header__logo">
@@ -32,6 +38,7 @@ function openMenu() {
 					<!-- Links -->
 				</nav>
 				<div class="client-header__nav-right" role="presentation">
+					<Notifications />
 					<ChangeTheme />
 					<ChangeLocale />
 					<ProfilMenu :logged="logged" :profil="true" :name="user?.profile?.name" :email="user?.email" :avatar="user?.profile?.avatar" />
@@ -40,15 +47,16 @@ function openMenu() {
 		</div>
 		<div class="client-header__navbar">
 			<div class="client-header__navbar-wrapper">
-				<div class="client-header__title" @click="openMenu"><i class="fa-regular fa-user"></i> {{ $t('Profile') }}</div>
+				<div class="client-header__title" @click="openMenu"><i :class="props.icon"></i> {{ $t(props.title) }}</div>
 				<div :class="{ 'client-header__menu-btn': true, 'client-header__menu-btn-open': opened }" @click="openMenu"><i class="fas fa-chevron-down"></i></div>
 
 				<div class="client-header__menu animate__animated animate__flipInX" v-if="opened">
+					<RouterLink to="/panel/pulpit" class="client__link"><i class="fa-solid fa-laptop"></i> {{ $t('Pulpit') }}</RouterLink>
 					<RouterLink to="/panel/profil" class="client__link"><i class="fa-regular fa-user"></i> {{ $t('Profile') }}</RouterLink>
 					<RouterLink to="/panel/settings" class="client__link"><i class="fa-solid fa-gear"></i> {{ $t('Settings') }}</RouterLink>
 					<RouterLink to="/panel/messages" class="client__link"><i class="fa-regular fa-message"></i> {{ $t('Messages') }}</RouterLink>
-					<RouterLink to="/panel/payments" class="client__link"><i class="fa-regular fa-credit-card"></i> {{ $t('Payments') }}</RouterLink>
-					<RouterLink to="/panel/orders" class="client__link"><i class="fa-solid fa-box"></i> {{ $t('Orders') }}</RouterLink>
+					<!-- <RouterLink to="/panel/orders" class="client__link"><i class="fa-solid fa-box"></i> {{ $t('Orders') }}</RouterLink> -->
+					<!-- <RouterLink to="/panel/payments" class="client__link"><i class="fa-regular fa-credit-card"></i> {{ $t('Payments') }}</RouterLink> -->
 					<!-- <RouterLink v-for="index in 3" :key="index" to="/panel/account" class="client__link">{{ $t('Account') }}</RouterLink> -->
 				</div>
 			</div>
@@ -149,9 +157,10 @@ function openMenu() {
 .client-header__menu-btn i {
 	color: var(--text-primary);
 	background: var(--bg-primary);
-	width: 30px;
-	height: 30px;
-	padding: 7px;
+	width: 35px;
+	height: 35px;
+	line-height: 35px;
+	padding: 0px 9px;
 	margin-right: 20px;
 	border-radius: 50px;
 	text-align: center;

@@ -24,6 +24,11 @@ function nextPage() {
 	store.loadPage()
 }
 
+async function toggleNotify(id) {
+	await store.toggleNotification(id)
+	document.querySelector('#item-' + id)?.classList.toggle('notify-item-read')
+}
+
 function deleteNotify(id) {
 	store.deleteNotification(id)
 	document.querySelector('#item-' + id).remove()
@@ -53,7 +58,7 @@ function deleteNotify(id) {
 					}">
 					<div class="notify-item-dot"></div>
 					<div class="item-top">
-						<div class="notify-icon">
+						<div class="notify-icon" @click="toggleNotify(item.id)">
 							<BellIcon />
 						</div>
 
@@ -70,7 +75,7 @@ function deleteNotify(id) {
 					<div class="item-msg">{{ item.data.message }}</div>
 
 					<div class="item-links" v-if="item.data.links.length > 0">
-						<a v-for="link of item.data.links" :href="link.href" class="link-empty" target="_blank">{{ link.text }}</a>
+						<a v-for="link of item.data.links" :href="link.href" :title="link.href" class="notify_link" target="_blank">{{ link.text }}</a>
 					</div>
 				</div>
 			</div>
@@ -204,14 +209,22 @@ function deleteNotify(id) {
 	border: 1px solid var(--accent-primary);
 }
 
-.item-links .link-empty {
-	padding: 9px 15px;
+.item-links .notify_link {
+	float: left;
+	width: auto;
+	padding: 5px 10px;
 	margin-right: 5px;
+	margin-bottom: 5px;
 	font-size: 12px;
+	font-weight: 500;
 	color: var(--accent-primary);
 	border-radius: var(--border-radius);
-	background: var(--accent-primary-alpha);
+	background: var(--bg-primary);
 	border: 1px solid var(--accent-primary);
+}
+
+.item-links .notify_link:hover {
+	color: var(--accent-secondary);
 }
 
 .item-bot {

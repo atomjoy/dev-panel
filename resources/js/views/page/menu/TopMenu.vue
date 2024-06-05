@@ -5,6 +5,7 @@ import ChangeLocale from '@/components/utils/ChangeLocale/ChangeLocale.vue'
 import ChangeTheme from '@/components/utils/ChangeTheme/ChangeTheme.vue'
 import ProfilMenu from '@/components/notify/ProfilMenu/ProfilMenu.vue'
 import SubmenuPopover from './submenu/SubmenuPopover.vue'
+import Notifications from '@/views/panel/client/menu/Notifications.vue'
 import menu from '@/json/menu/TopMenu.js'
 
 const auth = useAuthStore()
@@ -26,6 +27,7 @@ const links = menu.links
 					<SubmenuPopover v-for="link in links" :url="link.url" :title="link.title" :items="link.sublinks" />
 				</nav>
 				<div class="main-header__nav-right" role="presentation">
+					<Notifications v-if="logged" />
 					<ChangeTheme />
 					<ChangeLocale />
 					<ProfilMenu :logged="logged" :profil="true" :name="user?.profile?.name" :email="user?.email" :avatar="user?.profile?.avatar" />

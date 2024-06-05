@@ -1,0 +1,1 @@
+import{G as a,H as u}from"./app-DryvI0XL.js";const _={__name:"AdminLogoutView",setup(l){const{t:s,locale:e,fallbackLocale:o}=a({useScope:"global"}),t=u();return e.value=o.value,t.logoutUserAdmin(),(c,n)=>null}};export{_ as default};

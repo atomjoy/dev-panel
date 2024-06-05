@@ -25,11 +25,12 @@ class UpdateAddressRequest extends FormRequest
 	public function rules(): array
 	{
 		return [
-			'country' => 'sometimes|max:50',
-			'state' => 'sometimes|max:50',
+			'line1' => 'sometimes|max:50',
+			'line2' => 'sometimes|max:50',
 			'city' => 'sometimes|max:50',
-			'street' => 'sometimes|max:50',
 			'postal_code' => 'sometimes|max:50',
+			'state' => 'sometimes|max:50',
+			'country' => 'sometimes|max:50',
 			'private' => 'sometimes|boolean',
 		];
 	}
@@ -45,7 +46,7 @@ class UpdateAddressRequest extends FormRequest
 	{
 		$this->merge([
 			collect(request()->json()->all())->only([
-				'country', 'state', 'city', 'street', 'postal_code', 'private'
+				'country', 'state', 'city', 'line1', 'line2', 'postal_code', 'private'
 			])->toArray()
 		]);
 	}

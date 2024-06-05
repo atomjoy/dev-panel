@@ -19,7 +19,7 @@ let url = ref('')
 let options = []
 
 // let options = ['fa-brands fa-youtube', 'fa-brands fa-facebook', 'fa-brands fa-x-twitter', 'fa-brands fa-instagram', 'fa-brands fa-pinterest', 'fa-brands fa-dribbble', 'fa-brands fa-tiktok', 'fa-brands fa-twitch', 'fa-brands fa-discord', 'fa-brands fa-linkedin', 'fa-brands fa-kickstarter', 'fa-brands fa-vimeo', 'fa-brands fa-behance', 'fa-brands fa-soundcloud', 'fa-brands fa-napster', 'fa-brands fa-spotify', 'fa-brands fa-tumblr', 'fa-brands fa-medium', 'fa-brands fa-dev', 'fa-brands fa-snapchat', 'fa-brands fa-whatsapp']
-let option_list = ['artstation', 'btc', 'ethereum', 'xbox', 'playstation', 'patreon', 'earlybirds', 'digg', 'mailchimp', 'skype', 'linux', 'viber', 'threads', 'upwork', 'qq', 'optin-monster', 'weebly', 'unity', 'rebel', 'galactic-republic', 'old-republic', 'jedi-order', 'steam', 'bluesky', 'gitlab', 'weibo', 'youtube', 'facebook', 'x-twitter', 'instagram', 'pinterest', 'dribbble', 'tiktok', 'twitch', 'discord', 'linkedin', 'kickstarter', 'vimeo', 'behance', 'soundcloud', 'napster', 'spotify', 'tumblr', 'medium', 'dev', 'snapchat', 'whatsapp', 'phoenix-squadron']
+let option_list = ['artstation', 'btc', 'ethereum', 'xbox', 'playstation', 'patreon', 'earlybirds', 'digg', 'shopify', 'mailchimp', 'skype', 'linux', 'viber', 'threads', 'upwork', 'qq', 'optin-monster', 'weebly', 'unity', 'rebel', 'galactic-republic', 'old-republic', 'jedi-order', 'steam', 'bluesky', 'gitlab', 'weibo', 'youtube', 'facebook', 'x-twitter', 'instagram', 'pinterest', 'dribbble', 'tiktok', 'twitch', 'discord', 'linkedin', 'kickstarter', 'vimeo', 'behance', 'soundcloud', 'napster', 'spotify', 'tumblr', 'medium', 'dev', 'snapchat', 'whatsapp', 'phoenix-squadron']
 
 option_list.sort((a, b) => a.localeCompare(b))
 
@@ -84,7 +84,6 @@ console.log('Social', social)
 		<div class="page">
 			<div class="page__menu">
 				<span>{{ $t('Profil') }}</span>
-				<!-- <i class="fas fa-chevron-down"></i> -->
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -97,7 +96,7 @@ console.log('Social', social)
 				</div>
 				<div class="page__content">
 					<div class="page-content__title">
-						<i class="fa-solid fa-circle-info"></i>
+						<i class="fa-regular fa-thumbs-up"></i>
 						<span class="submenu__title">{{ $t('Social settings') }}</span>
 					</div>
 					<p class="page-content__desc">{{ $t('Update social links here.') }}</p>
@@ -105,7 +104,7 @@ console.log('Social', social)
 					<ErrorMessage />
 
 					<h4 class="h4-title">{{ $t('Update link by name') }}</h4>
-					<form id="form" @submit.prevent="onSubmitDetails" method="post" class="label-color">
+					<form id="form" @submit.prevent="onSubmitDetails" method="post" class="label-color client-panel-form">
 						<Input name="name" :label="$t('Name')" v-model="name" :placeholder="$t('Enter name')" />
 						<Select v-model="icon" :search="false" :placeholder="$t('No icon')" label="Icon" name="icon" :options="options" />
 						<Input name="url" :label="$t('Url')" v-model="url" :placeholder="$t('Enter url')" />
