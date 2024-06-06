@@ -1,4 +1,4 @@
-// import account from '../atomjoy/panel/client/lang/account_en.js'
+// import account from '@/lang/account/en.js'
 
 const en = {
 	// ...account,
@@ -119,98 +119,6 @@ const en = {
 		Forgot_password: 'Forgot password?',
 		Have_an_account: 'Have an account?',
 	},
-	menu: {
-		left: {
-			profil: 'Profil',
-			account: 'Account',
-			orders: 'Orders',
-			password: 'Password',
-			account_delete: 'Delete account',
-		},
-	},
-	panel: {
-		no: 'No',
-		yes: 'Yes',
-		update: 'Update',
-		delete: 'Delete',
-		dashboard: 'Dashboard',
-		orders: {
-			title: 'Orders',
-		},
-		orders: {
-			hello: 'Orders',
-		},
-		account: {
-			hello: 'Account',
-			delete: 'Delete account',
-			delete_account: 'Your account',
-			username: 'Username',
-			change_username: 'Change username',
-			email: 'Email address',
-			email_confirmation: 'Confirm email address',
-			change_email: 'Change email address',
-		},
-		account_delete: {
-			title: 'Your account',
-			delete_account: 'Delete account',
-			email: 'Your email address',
-			email_placeholder: 'Email address',
-			confirm: 'Confirm deletion',
-		},
-		profil: {
-			account: 'Konto',
-			account_delete: 'Delete account',
-			title: 'Profil',
-			hello: 'Hello',
-			avatar: 'Avatar',
-			image: 'Image',
-			about: 'About',
-			name: 'Name',
-			mobile: 'Mobile',
-			bio: 'Description',
-			settings: 'Settings',
-			locale: 'Locale',
-			newsletter: 'Send newsletter',
-		},
-		password: {
-			title: 'Change password',
-		},
-	},
-	panel_admin: {
-		dashboard: {
-			title: 'Dashboard',
-		},
-	},
-	staff: {
-		link: {
-			panel: 'Panel',
-			orders: 'Orders',
-			logout: 'Logout',
-		},
-	},
-	'Account settings': 'Account settings',
-	'Delete Account': 'Delete Account',
-	Address: 'Address',
-	Password: 'Password',
-	Profile: 'Profile',
-	Settings: 'Settings',
-	Account: 'Account',
-	Logout: 'Logout',
-	SignIn: 'SignIn',
-	SignUp: 'SignUp',
-	Home: 'Homepage',
-	About: 'About',
-	Services: 'Services',
-	Support: 'Support',
-	Home_title: 'Homepage',
-	'NOT FOUND': 'NOT FOUND',
-	'Authenticated.': 'Authenticated.',
-	'Unauthenticated.': 'Unauthenticated.',
-	'Ups! Invalid data.': 'Ups! Invalid data.',
-	'Laravel 11 Vue 3.4 Starter SPA with router.': 'Laravel 11 Vue 3.4 Starter SPA with router.',
-	'Sign in': 'Sign In',
-	'Sign out': 'Sign Out',
-	'Reset password': 'Reset Password',
 }
 
 export default en

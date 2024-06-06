@@ -2,6 +2,7 @@
 	--font-family: Poppins, sans-serif;
 	--scrollbar: #d6d6d6;
 	--scrollbar-1: #dcdcdc;
+	--scrollbar-2: #ebebeb;
 	--scrollbar-thumb: #f7f7f5;
 	--scrollbar-thumb-1: #a1a1a1;
 	--input-border: #e0e0e0;
@@ -35,5 +36,7 @@
 	--color-orange-2: #fd3903;
 	--color-green: #41c207;
 	--color-green-mate: #3dd37a;
+	--color-green-1: #13a538;
+	--color-green-1-hover: #0f802c;
 	--color-lime: #a3ed00;
 }

@@ -1,4 +1,4 @@
-// import account from '../atomjoy/panel/client/lang/account_pl.js'
+// import account from '@/lang/account/pl.js'
 
 const pl = {
 	// ...account,
@@ -118,75 +118,6 @@ const pl = {
 		Description: 'Podaj kod aktywacyjny. Jeżeli coś poszło nie tak zresetuj hasło.',
 		Forgot_password: 'Nie pamietasz hasła?',
 		Have_an_account: 'Masz już konto?',
-	},
-	menu: {
-		left: {
-			profil: 'Profil',
-			account: 'Konto',
-			orders: 'Zamówienia',
-			password: 'Zmiana hasła',
-			account_delete: 'Usuń konto',
-		},
-	},
-	panel: {
-		no: 'Nie',
-		yes: 'Tak',
-		update: 'Aktualizuj',
-		delete: 'Usuń',
-		dashboard: 'Dashboard',
-		orders: {
-			title: 'Orders',
-		},
-		orders: {
-			hello: 'Zamówienia',
-		},
-		account: {
-			hello: 'Konto',
-			delete: 'Usuń konto',
-			delete_account: 'Twoje konto',
-			username: 'Nazwa użytkownika',
-			change_username: 'Zmień nazwę użytkownika',
-			email: 'Address email',
-			email_confirmation: 'Powtórz address email',
-			change_email: 'Zmień adres email',
-		},
-		account_delete: {
-			title: 'Twoje konto',
-			delete_account: 'Usuń konto',
-			email: 'Twój adres email',
-			email_placeholder: 'Adres email',
-			confirm: 'Potwierdź usuwanie',
-		},
-		profil: {
-			account: 'Konto',
-			account_delete: 'Usuń konto',
-			title: 'Profil',
-			hello: 'Witaj',
-			avatar: 'Avatar',
-			image: 'Zmień zdjęcie',
-			about: 'Profil',
-			name: 'Imię i nazwisko',
-			mobile: 'Numer telefonu',
-			bio: 'Opis',
-			settings: 'Ustawienia',
-			locale: 'Język',
-			newsletter: 'Wysyłaj newsletter',
-		},
-		password: {
-			title: 'Change password',
-		},
-	},
-	panel_admin: {
-		dashboard: {
-			title: 'Dashboard',
-		},
-	},
-	staff: {
-		link: {
-			panel: 'Panel',
-			orders: 'Orders',
-			logout: 'Logout',
-		},
 	},
 	'All rights reserved 2024': 'Wszystkie prawa zastrzeżone 2024',
 	Avatar: 'Avatar',

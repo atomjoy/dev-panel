@@ -1,0 +1,1 @@
+import{G as a,g as r,C as s}from"./app-CWJsVgBr.js";const i={__name:"ChangeTitle",props:{title:{type:String,default:"error404.title"}},setup(l){const{t,locale:n}=a({useScope:"global"}),e=l;return r(()=>{document.title=t(e.title)}),s(()=>n.value,o=>{document.title=t(e.title)}),(o,c)=>null}};export{i as _};
