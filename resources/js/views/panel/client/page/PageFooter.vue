@@ -1,5 +1,5 @@
 <template>
-	<div class="panel__footer-rights">All rights reserved 2024</div>
+	<div class="panel__footer-rights">{{ $t('All rights reserved 2024') }}</div>
 </template>
 
 <style>

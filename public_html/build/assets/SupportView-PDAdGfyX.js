@@ -1,1 +1,0 @@
-import{c as r,a as t,b as e,t as s,F as o,o as n,_ as c,d as _}from"./app-DryvI0XL.js";const i={class:"section"},l={class:"section__wrapper"},m={__name:"SupportView",setup(p){return(a,u)=>(n(),r(o,null,[t(c),t(_),e("div",i,[e("div",l,[e("h1",null,s(a.$t("Support")),1),e("p",null,s(a.$t("Laravel 11 Vue 3.4 Starter SPA with router.")),1)])])],64))}};export{m as default};

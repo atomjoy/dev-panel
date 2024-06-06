@@ -83,7 +83,7 @@ console.log('Social', social)
 	<ClientMenu>
 		<div class="page">
 			<div class="page__menu">
-				<span>{{ $t('Profil') }}</span>
+				<span>{{ $t('Profile') }}</span>
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -91,7 +91,7 @@ console.log('Social', social)
 
 			<div class="page__wrapper">
 				<div class="page__menu-left">
-					<div class="page-menu__title">{{ $t('Profil') }}</div>
+					<div class="page-menu__title">{{ $t('Profile') }}</div>
 					<LinksPage />
 				</div>
 				<div class="page__content">

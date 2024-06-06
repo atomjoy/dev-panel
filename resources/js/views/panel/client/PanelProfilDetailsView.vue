@@ -70,7 +70,7 @@ console.log(user.value?.profile)
 	<ClientMenu>
 		<div class="page">
 			<div class="page__menu">
-				<span>{{ $t('Profil') }}</span>
+				<span>{{ $t('Profile') }}</span>
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -78,7 +78,7 @@ console.log(user.value?.profile)
 
 			<div class="page__wrapper">
 				<div class="page__menu-left">
-					<div class="page-menu__title">{{ $t('Profil') }}</div>
+					<div class="page-menu__title">{{ $t('Profile') }}</div>
 					<LinksPage />
 				</div>
 				<div class="page__content">
@@ -90,7 +90,7 @@ console.log(user.value?.profile)
 
 					<ErrorMessage />
 
-					<h4 class="h4-title">{{ $t('Profil details') }}</h4>
+					<h4 class="h4-title">{{ $t('Profile details') }}</h4>
 					<form @submit.prevent="onSubmitDetails" method="post" class="label-color client-panel-form">
 						<Input name="name" :label="$t('Name')" v-model="userName" :placeholder="$t('Enter name')" />
 						<Input name="username" :label="$t('Username')" v-model="userUsername" :placeholder="$t('Enter username')" />

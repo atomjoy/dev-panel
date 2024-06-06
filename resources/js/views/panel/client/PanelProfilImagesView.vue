@@ -28,7 +28,7 @@ function onSubmitImage(e) {
 	<ClientMenu>
 		<div class="page">
 			<div class="page__menu">
-				<span>{{ $t('Profil') }}</span>
+				<span>{{ $t('Profile') }}</span>
 				<div class="page-menu__nav">
 					<LinksMobile />
 				</div>
@@ -36,7 +36,7 @@ function onSubmitImage(e) {
 
 			<div class="page__wrapper">
 				<div class="page__menu-left">
-					<div class="page-menu__title">{{ $t('Profil') }}</div>
+					<div class="page-menu__title">{{ $t('Profile') }}</div>
 					<LinksPage />
 				</div>
 				<div class="page__content">
@@ -48,7 +48,7 @@ function onSubmitImage(e) {
 
 					<ErrorMessage />
 
-					<h4 class="h4-title">{{ $t('Upload profil banner') }}</h4>
+					<h4 class="h4-title">{{ $t('Upload profile banner') }}</h4>
 					<form @submit.prevent="onSubmitImage" method="post" enctype="multipart/form-data" class="label-color client-panel-form">
 						<ProfilInput :label="$t('Select image')" :profile="userImage" />
 						<Button :text="$t('Update')" />
