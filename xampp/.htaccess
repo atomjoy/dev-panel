@@ -1,0 +1,25 @@
+# HTID:20800909: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+# php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:20800909:
+# DirectoryIndex index.html index.php
+
+# PHP 8.2
+AddType application/x-httpd-php82 .php
+
+# Options -Indexes -MultiViews +SymLinksIfOwnerMatch
+Options -Indexes -MultiViews +FollowSymlinks
+
+RewriteEngine On
+RewriteBase /
+
+# Non-www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Https to http
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Https to http
+# RewriteCond %{HTTPS} on
+# RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]

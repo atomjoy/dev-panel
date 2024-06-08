@@ -34,16 +34,16 @@ const props = defineProps({
 
 const highlightjs = hljsVuePlugin.component
 
-function debugCode(code, language = 'php') {
-	hljs.getLanguage(language)
-	const result = hljs.highlight(props.code, { language: language })
-	console.log(result)
-}
-
 const theme = ref(props.theme)
 
 function toggleTheme() {
 	theme.value == '' ? (theme.value = 'dark-theme') : (theme.value = '')
+}
+
+function debugCode(code, language = 'php') {
+	hljs.getLanguage(language)
+	const result = hljs.highlight(props.code, { language: language })
+	console.log(result)
 }
 </script>
 

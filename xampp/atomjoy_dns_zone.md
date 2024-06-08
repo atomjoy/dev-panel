@@ -3,8 +3,53 @@
 ## PHP 8.3
 
 ```sh
-# .htaccess
+# php_value display_errors 1
+# DirectoryIndex index.html index.php
+
+# PHP 8.x
+AddType application/x-httpd-php82 .php
 AddType application/x-httpd-php83 .php
+
+# Options -Indexes -MultiViews +SymLinksIfOwnerMatch
+# Options -Indexes -MultiViews +FollowSymlinks
+Options -Indexes -MultiViews
+
+RewriteEngine On
+RewriteBase /
+
+# Non-www
+RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+RewriteRule ^(.*)$ http://%1/$1 [R=301,L]
+
+# Https to http
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Https to http
+# RewriteCond %{HTTPS} on
+# RewriteRule (.*) http://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+```
+
+## SPF
+
+```txt
+So the advice to SPF publishers is this: you should add an SPF record
+for each subdomain or hostname that has an A or MX record. Sites with
+wildcard A or MX records should also have a wildcard SPF record, of the
+form: * IN TXT "v=spf1 -all" but use your subdomain not asterix!!!
+```
+
+## SPF subdomains
+
+Spf checker <https://dmarcly.com/tools/spf-record-checker>
+
+```sh
+# Always for records A and MX
+dev.atomjoy.pl IN TXT    "v=spf1 mx a include:mail2.small.pl -all"
+# Works
+subdomain IN TXT    "v=spf1 mx include:_spf.google.com ip4:111.13.109.12 -all"
+# Doesn't work
+* IN TXT    "v=spf1 mx include:_spf.google.com ip4:111.13.109.12 -all"
 ```
 
 ## Strefa DNS na small.pl
