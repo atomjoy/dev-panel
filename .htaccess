@@ -1,21 +1,56 @@
+# Php 8.2 Ovh
 # SetEnv PHP_VER 8_2
 # SetEnv REGISTER_GLOBALS 0
 
-# Hide files
+# Php 8.2 Small.pl hosting
+AddType application/x-httpd-php82 .php
+
+DirectoryIndex index.php
+Options -Indexes -MultiViews +SymLinksIfOwnerMatch
+# Options -Indexes -MultiViews +FollowSymlinks
+
+# That was ONLY to protect you from 500 errors if your server did not have mod_rewrite enabled
+#<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Root to public
+    RewriteRule ^$ public/index.php [L]
+    RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+    RewriteRule (^\.|/\.) - [F]
+
+    # SSL without www (copy to public .htaccess)
+    #RewriteEngine On
+    #RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+    #RewriteRule ^(.*)$ http://%1/$1 [L,R=301,NC]
+
+    # SSL http to https (copy to public .htaccess)
+    #RewriteEngine On
+    #RewriteCond %{SERVER_PORT} 80
+    #RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NC]
+
+    # Trailing slash (copy to public .htaccess)
+    #RewriteEngine On
+    #RewriteCond %{REQUEST_FILENAME} !-d
+    #RewriteRule ^(.*)/$ /$1 [R=301,L,NC]
+#</IfModule>
+
+#<IfModule mod_rewrite.c>
+    # Directory deny access
+    RewriteEngine on
+    RewriteRule ^(logs|storage|backup) - [F]
+#</IfModule>
+
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+
 <FilesMatch "^\.">
     Order allow,deny
     Deny from all
 </FilesMatch>
 
-DirectoryIndex index.php
-# Options -Indexes -MultiViews +FollowSymlinks
-Options -Indexes -MultiViews +SymLinksIfOwnerMatch
-
-# Disable directory browsing
-RewriteEngine on
-# If not public dir
-RewriteCond %{REQUEST_URI} !^public_html
-# Redirect to dir
-RewriteRule ^(.*)$ public_html/$1 [L]
-# Show server error (dont create error.php)
-RewriteRule ^(.*)$ error.php [L]
+<FilesMatch ".(jpg|jpeg|png|gif|ico|webp)$">
+    Header set Cache-Control "max-age=86400, public"
+</FilesMatch>

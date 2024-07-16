@@ -13,11 +13,13 @@
 	--font-family-terminal: 'VT323', monospace;
 	--font-size: 16px;
 	--border-radius: 10px;
-	--scrollbar-bg: #ff9557; /* Green #BBFD38; Orange #ff9557; #fa8618 */
-	--scrollbar-thumb: #e6e6e6;
 	--btn-border-radius: 50px;
 	--z-index-menu: 9000;
 	--scrollbar-width: 10px;
+	--scrollbar-thumb-page: #999;
+	--scrollbar-bg-page: #e6e6e6;
+	--scrollbar-thumb-panel: #ff9557; /* Green #BBFD38; Orange #ff9557; #fa8618 */
+	--scrollbar-bg-panel: #e6e6e6;
 }
 
 :root {
@@ -99,6 +101,7 @@ html {
 	padding: 0px;
 	height: 100vh;
 	overflow-y: scroll;
+	overflow: hidden;
 }
 
 body {
@@ -110,6 +113,7 @@ body {
 	background: var(--bg-primary);
 	transition: color 0.5s, background-color 0.5s;
 	position: relative;
+	overflow: hidden;
 }
 
 p {
@@ -148,27 +152,55 @@ iframe {
 	color: #fff;
 }
 
+#app {
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100vh;
+	padding: 0px;
+	margin: 0px;
+	overflow: hidden;
+}
+
+#app__scrollbar {
+	position: relative;
+	float: left;
+	width: 100vw;
+	padding: 0px;
+	margin: 0px;
+	height: 100vh;
+	overflow: hidden;
+	overflow-y: scroll !important;
+}
+
+/* Panel scrollbar */
 .scrollbar-thin {
 	scrollbar-width: thin;
-	scrollbar-color: var(--scrollbar-bg) var(--scrollbar-thumb);
+	scrollbar-color: var(--scrollbar-thumb-panel) var(--scrollbar-bg-panel);
 }
 
 .scrollbar-thin::-webkit-scrollbar {
 	width: var(--scrollbar-width);
-	background: var(--scrollbar-bg);
+	background: var(--scrollbar-thumb-panel);
 }
 
 .scrollbar-thin::-webkit-scrollbar-thumb {
-	background: var(--scrollbar-thumb);
+	background: var(--scrollbar-bg-panel);
 }
 
-#app {
-	float: left;
-	width: 100%;
-	position: relative;
-	min-height: 100vh;
-	padding: 0px;
-	margin: 0px;
+/* Page scrollbar */
+.scrollbar-page {
+	scrollbar-width: thin;
+	scrollbar-color: var(--scrollbar-thumb-page) var(--scrollbar-bg-page);
+}
+
+.scrollbar-page::-webkit-scrollbar {
+	width: 8px;
+	background: var(--scrollbar-thumb-page);
+}
+
+.scrollbar-page::-webkit-scrollbar-thumb {
+	background: var(--scrollbar-bg-page);
 }
 
 .section {

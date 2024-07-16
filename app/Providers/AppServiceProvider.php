@@ -13,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
 	public function register(): void
 	{
 		// Rewrite public dir to public_html shared hosting
-		$this->app->usePublicPath(app()->basePath('public_html'));
+		// $this->app->usePublicPath(app()->basePath('public_html'));
 
 		// $this->app->bind('path.public', function () {
 		// 	return base_path() . '/public_html';

@@ -11,12 +11,14 @@ let name = ref(user.value?.name ?? '')
 </script>
 
 <template>
-	<PageTitle title="Dashboard" />
+	<div id="app__scrollbar" class="scrollbar-thin">
+		<PageTitle title="Dashboard" />
 
-	<h1>Admin Dashboard</h1>
-	<h2>{{ name }}</h2>
-	<RouterLink to="/admin/orders" class="link">Admin Orders</RouterLink>
-	<RouterLink to="/admin/logout" class="link">Logout Admin</RouterLink>
+		<h1>Admin Dashboard</h1>
+		<h2>{{ name }}</h2>
+		<RouterLink to="/admin/orders" class="link">Admin Orders</RouterLink>
+		<RouterLink to="/admin/logout" class="link">Logout Admin</RouterLink>
+	</div>
 </template>
 
 <style scoped>

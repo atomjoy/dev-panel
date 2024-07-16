@@ -55,9 +55,9 @@ return [
 
 ```sh
 php artisan key:generate
+php artisan migrate:fresh
 php artisan config:clear
 php artisan storage:link
-php artisan migrate:fresh
 
 php artisan serve
 php artisan serve --host=localhost --port=8000

@@ -26,50 +26,52 @@ function openMenu() {
 
 <template>
 	<ChangeTitle :title="$t(props.title)" />
-	<div class="client-header">
-		<div class="client-header__container">
-			<div class="client-header__logo">
-				<a href="/" class="client-header__logo-link" aria-label="homepage">
-					<img class="client-header__logo-image" alt="Logo" src="/logo/logo-light.png" />
-				</a>
-			</div>
-			<div class="client-header__nav-container">
-				<nav class="client-header__nav" role="menubar">
-					<!-- Links -->
-				</nav>
-				<div class="client-header__nav-right" role="presentation">
-					<Notifications />
-					<ChangeTheme />
-					<ChangeLocale />
-					<ProfilMenu :logged="logged" :profil="true" :name="user?.profile?.name" :email="user?.email" :avatar="user?.profile?.avatar" />
+	<div id="app__scrollbar" class="scrollbar-thin">
+		<div class="client-header">
+			<div class="client-header__container">
+				<div class="client-header__logo">
+					<a href="/" class="client-header__logo-link" aria-label="homepage">
+						<img class="client-header__logo-image" alt="Logo" src="/logo/logo-light.png" />
+					</a>
+				</div>
+				<div class="client-header__nav-container">
+					<nav class="client-header__nav" role="menubar">
+						<!-- Links -->
+					</nav>
+					<div class="client-header__nav-right" role="presentation">
+						<Notifications />
+						<ChangeTheme />
+						<ChangeLocale />
+						<ProfilMenu :logged="logged" :profil="true" :name="user?.profile?.name" :email="user?.email" :avatar="user?.profile?.avatar" />
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="client-header__navbar">
-			<div class="client-header__navbar-wrapper">
-				<div class="client-header__title" @click="openMenu"><i :class="props.icon"></i> {{ $t(props.title) }}</div>
-				<div :class="{ 'client-header__menu-btn': true, 'client-header__menu-btn-open': opened }" @click="openMenu"><i class="fas fa-chevron-down"></i></div>
+			<div class="client-header__navbar">
+				<div class="client-header__navbar-wrapper">
+					<div class="client-header__title" @click="openMenu"><i :class="props.icon"></i> {{ $t(props.title) }}</div>
+					<div :class="{ 'client-header__menu-btn': true, 'client-header__menu-btn-open': opened }" @click="openMenu"><i class="fas fa-chevron-down"></i></div>
 
-				<div class="client-header__menu animate__animated animate__flipInX" v-if="opened">
-					<RouterLink to="/panel/pulpit" class="client__link"><i class="fa-solid fa-laptop"></i> {{ $t('Pulpit') }}</RouterLink>
-					<RouterLink to="/panel/profil" class="client__link"><i class="fa-regular fa-user"></i> {{ $t('Profile') }}</RouterLink>
-					<RouterLink to="/panel/settings" class="client__link"><i class="fa-solid fa-gear"></i> {{ $t('Settings') }}</RouterLink>
-					<RouterLink to="/panel/messages" class="client__link"><i class="fa-regular fa-message"></i> {{ $t('Messages') }}</RouterLink>
-					<!-- <RouterLink to="/panel/orders" class="client__link"><i class="fa-solid fa-box"></i> {{ $t('Orders') }}</RouterLink> -->
-					<!-- <RouterLink to="/panel/payments" class="client__link"><i class="fa-regular fa-credit-card"></i> {{ $t('Payments') }}</RouterLink> -->
-					<!-- <RouterLink v-for="index in 3" :key="index" to="/panel/account" class="client__link">{{ $t('Account') }}</RouterLink> -->
+					<div class="client-header__menu animate__animated animate__flipInX" v-if="opened">
+						<RouterLink to="/panel/pulpit" class="client__link"><i class="fa-solid fa-laptop"></i> {{ $t('Pulpit') }}</RouterLink>
+						<RouterLink to="/panel/profil" class="client__link"><i class="fa-regular fa-user"></i> {{ $t('Profile') }}</RouterLink>
+						<RouterLink to="/panel/settings" class="client__link"><i class="fa-solid fa-gear"></i> {{ $t('Settings') }}</RouterLink>
+						<RouterLink to="/panel/messages" class="client__link"><i class="fa-regular fa-message"></i> {{ $t('Messages') }}</RouterLink>
+						<!-- <RouterLink to="/panel/orders" class="client__link"><i class="fa-solid fa-box"></i> {{ $t('Orders') }}</RouterLink> -->
+						<!-- <RouterLink to="/panel/payments" class="client__link"><i class="fa-regular fa-credit-card"></i> {{ $t('Payments') }}</RouterLink> -->
+						<!-- <RouterLink v-for="index in 3" :key="index" to="/panel/account" class="client__link">{{ $t('Account') }}</RouterLink> -->
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<div class="panel__slot">
-		<div class="panel__slot-wrapper">
-			<slot></slot>
+		<div class="panel__slot">
+			<div class="panel__slot-wrapper">
+				<slot></slot>
+			</div>
 		</div>
-	</div>
-	<div class="panel__footer">
-		<div class="panel__footer-wrapper">
-			<PageFooter />
+		<div class="panel__footer">
+			<div class="panel__footer-wrapper">
+				<PageFooter />
+			</div>
 		</div>
 	</div>
 </template>

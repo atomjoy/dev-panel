@@ -11,47 +11,53 @@ return new class extends Migration
 	 */
 	public function up(): void
 	{
-		// Super Admin
-		$superadmin = Admin::create([
-			'name' => 'Super Admin',
-			'email' => Config::get('default.super_admin_email', 'superadmin@example.com'),
-			'password' => Config::get('default.super_admin_password', 'Password123#'),
-			'username' => 'superadmin',
-		]);
+		if (Config::get('default.super_admin_email') != false) {
+			// Super Admin
+			$superadmin = Admin::create([
+				'name' => 'Super Admin',
+				'email' => Config::get('default.super_admin_email', 'superadmin@example.com'),
+				'password' => Config::get('default.super_admin_password', 'Password123#'),
+				'username' => 'superadmin',
+			]);
 
-		$superadmin->email_verified_at = now();
-		$superadmin->is_admin = 1;
-		$superadmin->save();
+			$superadmin->email_verified_at = now();
+			$superadmin->is_admin = 1;
+			$superadmin->save();
 
-		$superadmin->assignRole('super_admin');
+			$superadmin->assignRole('super_admin');
+		}
 
-		// Admin
-		$admin = Admin::create([
-			'name' => 'Admin',
-			'email' => Config::get('default.admin_email', 'admin@example.com'),
-			'password' => Config::get('default.admin_password', 'Password123#'),
-			'username' => 'admin',
-		]);
+		if (Config::get('default.admin_email') != false) {
+			// Admin
+			$admin = Admin::create([
+				'name' => 'Admin',
+				'email' => Config::get('default.admin_email', 'admin@example.com'),
+				'password' => Config::get('default.admin_password', 'Password123#'),
+				'username' => 'admin',
+			]);
 
-		$admin->email_verified_at = now();
-		$admin->is_admin = 1;
-		$admin->save();
+			$admin->email_verified_at = now();
+			$admin->is_admin = 1;
+			$admin->save();
 
-		$admin->assignRole('admin');
+			$admin->assignRole('admin');
+		}
 
-		// Worker
-		$worker = Admin::create([
-			'name' => 'Worker',
-			'email' => Config::get('default.worker_email', 'worker@example.com'),
-			'password' => Config::get('default.worker_password', 'Password123#'),
-			'username' => 'worker',
-		]);
+		if (Config::get('default.worker_email') != false) {
+			// Worker
+			$worker = Admin::create([
+				'name' => 'Worker',
+				'email' => Config::get('default.worker_email', 'worker@example.com'),
+				'password' => Config::get('default.worker_password', 'Password123#'),
+				'username' => 'worker',
+			]);
 
-		$worker->email_verified_at = now();
-		$worker->is_admin = 1;
-		$worker->save();
+			$worker->email_verified_at = now();
+			$worker->is_admin = 1;
+			$worker->save();
 
-		$worker->assignRole('worker');
+			$worker->assignRole('worker');
+		}
 	}
 
 	/**
