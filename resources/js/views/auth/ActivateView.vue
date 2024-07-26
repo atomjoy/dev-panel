@@ -27,45 +27,38 @@ onMounted(() => {
 <template>
 	<PageTitle :title="$t('message.activate_title')" />
 
-	<div id="page-wraper">
-		<div class="page-auth">
-			<div class="top-bar">
-				<AuthLogo />
-				<ChangeLocale />
-				<ChangeTheme />
+	<div id="app__scrollbar" class="scrollbar-thin">
+		<div id="page-wraper">
+			<div class="page-auth">
+				<div class="top-bar">
+					<AuthLogo />
+					<ChangeLocale />
+					<ChangeTheme />
+				</div>
+				<div class="form-wraper">
+					<form class="form-auth">
+						<h1 class="full">
+							{{ $t('activate.Activation') }}
+						</h1>
+
+						<div v-if="store.getMessage.value != null" :class="[store.getError.value ? 'alert-error' : 'alert-info', 'animate__animated animate__flipInX']">
+							{{ store.getMessage.value }}
+						</div>
+
+						<div class="full">
+							<p class="alert-default">{{ $t('activate.Description') }}</p>
+						</div>
+
+						<div class="full mb">
+							<router-link to="/login" class="link-left">{{ $t('activate.Have_an_account') }}</router-link>
+							<router-link to="/password" class="link-right">{{ $t('activate.Forgot_password') }}</router-link>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="form-wraper">
-				<form class="form-auth">
-					<h1 class="full">
-						{{ $t('activate.Activation') }}
-					</h1>
 
-					<div
-						v-if="store.getMessage.value != null"
-						:class="[
-							store.getError.value ? 'alert-error' : 'alert-info',
-							'animate__animated animate__flipInX',
-						]">
-						{{ store.getMessage.value }}
-					</div>
-
-					<div class="full">
-						<p class="alert-default">{{ $t('activate.Description') }}</p>
-					</div>
-
-					<div class="full mb">
-						<router-link to="/login" class="link-left">{{
-							$t('activate.Have_an_account')
-						}}</router-link>
-						<router-link to="/password" class="link-right">{{
-							$t('activate.Forgot_password')
-						}}</router-link>
-					</div>
-				</form>
-			</div>
+			<PolicyBar />
 		</div>
-
-		<PolicyBar />
 	</div>
 </template>
 

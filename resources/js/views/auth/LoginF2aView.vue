@@ -36,65 +36,48 @@ function onSubmit(e) {
 <template>
 	<PageTitle :title="$t('message.login_f2a_title')" />
 
-	<div id="page-wraper">
-		<div class="page-auth">
-			<div class="top-bar">
-				<AuthLogo />
-				<ChangeLocale />
-				<ChangeTheme />
+	<div id="app__scrollbar" class="scrollbar-thin">
+		<div id="page-wraper">
+			<div class="page-auth">
+				<div class="top-bar">
+					<AuthLogo />
+					<ChangeLocale />
+					<ChangeTheme />
+				</div>
+				<div class="form-wraper">
+					<form @submit.prevent="onSubmit" class="form-auth">
+						<h1 class="full">
+							{{ $t('login.F2a_Confirm') }}
+						</h1>
+
+						<div v-if="store?.getMessage?.value != null" :class="[store?.getError?.value ? 'alert-error' : 'alert-info', 'animate__animated animate__flipInX']">
+							{{ store?.getMessage?.value }}
+						</div>
+
+						<Input :focus="'true'" type="text" name="code" v-model="code" :placeholder="$t('login.F2a_code_eg')" :label="$t('login.F2a_code')">
+							<i class="far fa-envelope"></i>
+						</Input>
+
+						<input type="hidden" name="hash" v-model="hash" />
+
+						<div class="full">
+							<Checkbox :label="$t('login.Remember_me')" value="1" v-model="remember_me" name="remember_me" />
+						</div>
+
+						<button class="button" :title="$t('login.Login')" ref="button">
+							{{ $t('login.Login') }}
+						</button>
+
+						<div class="full">
+							<router-link to="/register" class="link-left">{{ $t('login.Dont_have_an_account') }}</router-link>
+							<router-link to="/password" class="link-right">{{ $t('login.Forgot_password') }}</router-link>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div class="form-wraper">
-				<form @submit.prevent="onSubmit" class="form-auth">
-					<h1 class="full">
-						{{ $t('login.F2a_Confirm') }}
-					</h1>
 
-					<div
-						v-if="store?.getMessage?.value != null"
-						:class="[
-							store?.getError?.value ? 'alert-error' : 'alert-info',
-							'animate__animated animate__flipInX',
-						]">
-						{{ store?.getMessage?.value }}
-					</div>
-
-					<Input
-						:focus="'true'"
-						type="text"
-						name="code"
-						v-model="code"
-						:placeholder="$t('login.F2a_code_eg')"
-						:label="$t('login.F2a_code')">
-						<i class="far fa-envelope"></i>
-					</Input>
-
-					<input type="hidden" name="hash" v-model="hash" />
-
-					<div class="full">
-						<Checkbox
-							:label="$t('login.Remember_me')"
-							value="1"
-							v-model="remember_me"
-							name="remember_me" />
-					</div>
-
-					<button class="button" :title="$t('login.Login')" ref="button">
-						{{ $t('login.Login') }}
-					</button>
-
-					<div class="full">
-						<router-link to="/register" class="link-left">{{
-							$t('login.Dont_have_an_account')
-						}}</router-link>
-						<router-link to="/password" class="link-right">{{
-							$t('login.Forgot_password')
-						}}</router-link>
-					</div>
-				</form>
-			</div>
+			<PolicyBar />
 		</div>
-
-		<PolicyBar />
 	</div>
 </template>
 

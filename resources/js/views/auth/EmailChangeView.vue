@@ -27,36 +27,33 @@ onMounted(() => {
 <template>
 	<PageTitle :title="$t('message.change_email_title')" />
 
-	<div id="page-wraper">
-		<div class="page-auth">
-			<div class="top-bar">
-				<AuthLogo />
-				<ChangeLocale />
-				<ChangeTheme />
-			</div>
-			<div class="form-wraper">
-				<form class="form-auth">
-					<h1 class="full">
-						{{ $t('change_email.Confirm') }}
-					</h1>
+	<div id="app__scrollbar" class="scrollbar-thin">
+		<div id="page-wraper">
+			<div class="page-auth">
+				<div class="top-bar">
+					<AuthLogo />
+					<ChangeLocale />
+					<ChangeTheme />
+				</div>
+				<div class="form-wraper">
+					<form class="form-auth">
+						<h1 class="full">
+							{{ $t('change_email.Confirm') }}
+						</h1>
 
-					<div
-						v-if="store.getMessage.value != null"
-						:class="[
-							store.getError.value ? 'alert-error' : 'alert-info',
-							'animate__animated animate__flipInX',
-						]">
-						{{ store.getMessage.value }}
-					</div>
+						<div v-if="store.getMessage.value != null" :class="[store.getError.value ? 'alert-error' : 'alert-info', 'animate__animated animate__flipInX']">
+							{{ store.getMessage.value }}
+						</div>
 
-					<div class="full mb">
-						<p class="alert-default">{{ $t('change_email.Description') }}</p>
-					</div>
-				</form>
+						<div class="full mb">
+							<p class="alert-default">{{ $t('change_email.Description') }}</p>
+						</div>
+					</form>
+				</div>
 			</div>
+
+			<PolicyBar />
 		</div>
-
-		<PolicyBar />
 	</div>
 </template>
 
