@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
 	<PageTitle :title="$t('message.change_email_title')" />
 
-	<div id="app__scrollbar" class="scrollbar-thin">
+	<div id="app__scrollbar" class="scrollbar-page">
 		<div id="page-wraper">
 			<div class="page-auth">
 				<div class="top-bar">
