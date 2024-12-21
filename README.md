@@ -1,19 +1,14 @@
-# Laravel 11 Vue 3.4 Starter SPA
+# DEVPanel Multi Guard Auth (Laravel 11, Vue 3.4, Client/Admin Panel)
 
-Pobierz repozytorium z githuba rozpakuj i przejdż do katalogu.
+Panel z multi guard authentication w Laravel (Vue3, Sessions, Social login, Spatie permissions, 2FA emails, auth emails, local package dev). 
 
-## Wersje
+# Zawiera
 
-- v1.0 Starter - single page
-- v2.0 Starter Router - single page with sub-pages, router, fontawesome.css, animate.css
-- v3.0 Starter SPA - single page with sub-pages, router, stores, locales, themes, fontawesome.css, animate.css
-- v4.0 Starter SPA - single page with sub-pages, router, stores, locales, themes, fontawesome.css, animate.css, custom inputs
-- v4.1 Starter SPA - single page with sub-pages, router, stores, locales, themes, fontawesome.css, animate.css, custom inputs, code highlightjs
-- v5.0 Starter SPA - v4.1 + Client dashboard
+SPA, client dashboard, router, stores, locales, themes, fontawesome.css, animate.css, custom inputs, code highlightjs.
 
 ## Vue
 
-Zainstaluj node.js
+Zainstaluj node.js i pobierz repozytorium z githuba rozpakuj i przejdż do katalogu.
 
 ### Instaluj, kompiluj
 
@@ -95,3 +90,7 @@ FILESYSTEM_DISK=s3
 ```sh
 php artisan test --stop-on-failure --testsuite=Dev
 ```
+
+## Screenshots
+
+<img src="https://raw.githubusercontent.com/atomjoy/dev-panel/refs/heads/main/screenshots/client.png" width="100%">
