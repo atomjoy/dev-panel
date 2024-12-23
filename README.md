@@ -1,6 +1,6 @@
-# DEVPanel Multi Guard Auth (Laravel 11, Vue 3.4, Client/Admin Panel)
+# Multiple Authentication Guards in Laravel (Laravel 11, Vue 3.4)
 
-Panel z multi guard authentication w Laravel (Vue3, Sessions, Social login, Spatie permissions, 2FA emails, auth emails, local package dev). 
+Client and Admin Panel with multiple authentication guards in Laravel 11 (Vue 3, Sessions, Social Login, Spatie Permissions, 2FA emails, Auth emails, Local package dev).
 
 # Zawiera
 
